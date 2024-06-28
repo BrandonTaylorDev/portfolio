@@ -97,7 +97,7 @@
 </script>
 
 <template>
-  <section class="flex flex-col gap-4 justify-center items-center mt-8 px-8 lg:border-l-4 lg:border-slate-500 dark:lg:border-teal-600 text-xl md:text-lg">
+  <section class="flex flex-col gap-4 justify-center items-center mt-8 px-8 max-w-xl mx-auto lg:max-w-full lg:border-l-4 lg:border-slate-500 dark:lg:border-teal-600 text-xl md:text-lg">
 
     <!-- force a loading icon to load since Iconify doesn't support preloading right now. -->
     <icon name="mdi:loading" size="0em" class="absolute w-0 h-0" />
@@ -106,8 +106,8 @@
       Want to Reach Out?
     </span>
 
-    <form @submit.prevent="sendMessage" class="text-gray-600 max-w-xl mx-auto">
-      <p class="text-gray-400 text-md">
+    <form @submit.prevent="sendMessage">
+      <p class="text-md">
         If you have a proposal, a question, or just want to say hi, I'd love to hear from you.
       </p>
 
@@ -151,7 +151,7 @@
         class="mt-4 h-14"
       />
 
-      <span class="text-sm text-slate-300">
+      <span class="text-sm">
         This site is protected by reCAPTCHA and the Google
         <a class="text-teal-500 hover:text-teal-700 dark:text-teal-600 hover:dark:text-teal-500 transition-colors duration-200 hover:underline" href="https://policies.google.com/privacy">Privacy Policy</a> and
         <a class="text-teal-500 hover:text-teal-700 dark:text-teal-600 hover:dark:text-teal-500 transition-colors duration-200 hover:underline" href="https://policies.google.com/terms">Terms of Service</a> apply.

@@ -79,12 +79,12 @@
 </script>
 
 <template>
-  <section class="flex flex-col gap-4 mt-8 px-8 lg:border-l-4 lg:border-slate-500 dark:lg:border-teal-600 text-xl md:text-lg">
-    <span class="text-xl text-slate-900 dark:text-slate-200">
+  <section class="flex flex-col gap-4 mt-8 max-w-xl mx-auto lg:max-w-full lg:border-l-4 lg:border-slate-500 dark:lg:border-teal-600 text-xl md:text-lg">
+    <span class="sticky top-0 text-xl text-slate-900 dark:text-slate-200 backdrop-filter backdrop-blur-sm bg-slate-100/50 dark:bg-slate-900/50 px-8 py-4">
       Highlights of my Career
     </span>
 
-    <div class="flex flex-col gap-12">
+    <div class="flex flex-col gap-12 px-8">
       <div class="wrap flex flex-col 2xl:flex-row" v-for="(exp, i) in experience" :key="i">
 
         <!-- timeframe -->
@@ -113,7 +113,7 @@
           </ul>
 
           <ul class="flex flex-wrap gap-2">
-            <li class="flex items-center rounded-full bg-teal-400 dark:bg-teal-400/10 text-teal-50 dark:text-teal-500 px-3 py-1 text-xs font-medium leading-" v-for="t in exp.tags" :key="t">
+            <li class="flex items-center rounded-full bg-teal-500 hover:bg-teal-600 dark:bg-teal-500/10 hover:dark:bg-teal-500/50 text-teal-50 dark:text-teal-500 hover:dark:text-teal-300 dark:border-2 dark:border-teal-800 transition-colors duration-200 cursor-pointer px-3 py-1 text-xs font-medium leading-" v-for="t in exp.tags" :key="t">
               {{ t }}
             </li>
           </ul>
