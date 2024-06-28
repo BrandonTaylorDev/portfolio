@@ -97,7 +97,7 @@
 </script>
 
 <template>
-  <section class="flex flex-col gap-4 justify-center items-center mt-8 px-8 max-w-xl mx-auto lg:max-w-full lg:border-l-4 lg:border-slate-500 dark:lg:border-teal-600 text-xl md:text-lg">
+  <section class="flex flex-col gap-4 justify-center items-center mt-8 px-8 max-w-xl mx-auto lg:max-w-full lg:mx-0 lg:border-l-4 lg:border-slate-500 dark:lg:border-teal-600 text-xl md:text-lg">
 
     <!-- force a loading icon to load since Iconify doesn't support preloading right now. -->
     <icon name="mdi:loading" size="0em" class="absolute w-0 h-0" />

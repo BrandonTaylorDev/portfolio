@@ -1,5 +1,5 @@
 <template>
-  <section class="relative tracking-tight flex flex-col gap-2 z-0 text-center max-w-xl mx-auto lg:max-w-full">
+  <section class="relative tracking-tight flex flex-col gap-2 z-0 text-center max-w-xl mx-auto lg:max-w-full lg:mx-0">
     <div>
       <image src="/portfolio.webp" class="max-h-96 mx-auto rounded-2xl" />
     </div>
