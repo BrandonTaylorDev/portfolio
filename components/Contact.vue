@@ -1,11 +1,5 @@
 <script setup lang="ts">
-  import { useReCaptcha } from 'vue-recaptcha-v3';
-
-  useHead({
-    script: [
-      { src: 'https://www.google.com/recaptcha/api.js' }
-    ]
-  })
+  import { useReCaptcha } from 'vue-recaptcha-v3'
 
   const name = ref('')
   const email = ref('')
