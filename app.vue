@@ -2,7 +2,8 @@
   useHead({
     title: 'Brandon Taylor | brandontaylor.dev',
     htmlAttrs: {
-      class: 'bg-slate-100 dark:bg-slate-900 overflow-x-hidden'
+      class: 'bg-slate-100 dark:bg-slate-900 overflow-x-hidden',
+      lang: 'en'
     },
     script: [
       !process.dev? {

@@ -14,4 +14,12 @@ export default defineNuxtConfig({
       SMTP2GO_PASS: process.env.SMTP2GO_PASS
     }
   },
+  security: {
+    headers: {
+      crossOriginEmbedderPolicy: process.env.NODE_ENV === 'development' ? 'unsafe-none' : 'require-corp',
+      contentSecurityPolicy: {
+        'script-src': [ "'self'", 'https:', "'unsafe-inline'", "'strict-dynamic'", "'nonce-{{nonce}}'", "https://www.google.com", "https://static.cloudflareinsights.com" ],
+      }
+    },
+  }
 })
