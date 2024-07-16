@@ -2,7 +2,7 @@
   const experience = ref([
     {
       timeframe: 'Jul 2022 - Present',
-      title: 'Cloud Architect and Senior DevOps Engineer',
+      title: 'Cloud Architect, Lead DevOps Engineer',
       company: 'LightChange Technologies',
       link: 'https://lightchange.com',
       description: [

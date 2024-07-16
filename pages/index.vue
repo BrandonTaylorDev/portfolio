@@ -1,3 +1,21 @@
+<script setup lang="ts">
+  const showKubernetes = ref(false)
+
+  const hideAllModals = () => {
+    showKubernetes.value = false
+  }
+
+  const showModal = (name: string) => {
+    hideAllModals()
+
+    switch(name.toLowerCase()) {
+      case 'kubernetes':
+        showKubernetes.value = true
+        break
+    }
+  }
+</script>
+
 <template>
   <div class="page min-h-[50dvh] mx-auto">
     <div class="portfolio-wrap max-w-[120rem] flex flex-col lg:flex-row mx-auto">
@@ -8,21 +26,26 @@
 
       <main class="lg:flex-1">
         <div class="flex flex-col gap-y-24 my-24">
-          <about />
+          <about
+            @click:kubernetes="showModal('kubernetes')"
+          />
           <experience />
-          <contact />
+          <lazy-contact />
         </div>
       </main>
     </div>
 
-    <v-footer />
-    <scroll-back />
+    <lazy-scroll-back />
+    <lazy-v-footer />
+    <div
+      :class="[
+        'fixed top-0 h-full w-full bg-gray-700 dark:bg-gray-900 pointer-events-none select-none duration-500',
+        showKubernetes
+          ? 'opacity-70'
+          : 'opacity-0'
+      ]">
+
+    </div>
+    <lazy-kubernetes v-model="showKubernetes" />
   </div>
 </template>
-
-<style scoped>
-  .coffee-cursor {
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>☕</text></svg>") 16 0, auto;
-  }
-</style>
-
