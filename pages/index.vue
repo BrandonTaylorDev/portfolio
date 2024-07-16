@@ -1,16 +1,21 @@
 <script setup lang="ts">
   const showKubernetes = ref(false)
+  const showMongoDB = ref(false)
 
   const hideAllModals = () => {
     showKubernetes.value = false
+    showMongoDB.value = false
   }
 
-  const showModal = (name: string) => {
+  const showModal = (name: 'kubernetes' | 'mongodb') => {
     hideAllModals()
 
     switch(name.toLowerCase()) {
       case 'kubernetes':
         showKubernetes.value = true
+        break
+      case 'mongodb':
+        showMongoDB.value = true
         break
     }
   }
@@ -28,6 +33,7 @@
         <div class="flex flex-col gap-y-24 my-24">
           <about
             @click:kubernetes="showModal('kubernetes')"
+            @click:mongodb="showModal('mongodb')"
           />
           <experience />
           <lazy-contact />
@@ -40,12 +46,13 @@
     <div
       :class="[
         'fixed top-0 h-full w-full bg-gray-700 dark:bg-gray-900 pointer-events-none select-none duration-500',
-        showKubernetes
+        showKubernetes || showMongoDB
           ? 'opacity-70'
           : 'opacity-0'
       ]">
 
     </div>
     <lazy-kubernetes v-model="showKubernetes" />
+    <lazy-mongodb v-model="showMongoDB" />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  const emit = defineEmits([ 'click:kubernetes' ])
+  const emit = defineEmits([ 'click:kubernetes', 'click:mongodb' ])
 </script>
 
 <template>
@@ -19,7 +19,7 @@
       <p>
         Being a developer, I stay curious. I strive for knowledge, and seek new and exciting ways in which I can grow. Today, I often find myself working
         in high reslience environments, such as <hyperlink @click="emit('click:kubernetes')">Kubernetes</hyperlink> and cloud data
-        storage solutions, such as <hyperlink href="https://www.haproxy.org/">MongoDB Atlas</hyperlink> or <hyperlink href="https://azure.microsoft.com/en-us/products/cosmos-db">Azure Cosmos DB</hyperlink>.
+        storage solutions, such as <hyperlink @click="emit('click:mongodb')">MongoDB</hyperlink> or <hyperlink href="https://azure.microsoft.com/en-us/products/cosmos-db">Azure Cosmos DB</hyperlink>.
         I also often lead the charge in implementing reliable disaster recovery technologies, such as <hyperlink href="https://veeam.com">Veeam</hyperlink>.
       </p>
 

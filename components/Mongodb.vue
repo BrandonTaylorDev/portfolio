@@ -29,9 +29,9 @@
 
       <div class="p-4 md:p-8 md:pt-0 flex flex-col justify-start gap-8">
         <div class="flex flex-col justify-center md:justify-start items-center gap-4">
-          <nuxt-img src="/k8s.png" class="w-fit max-w-20" />
+          <nuxt-img src="/mongodb.png" class="w-fit max-w-20" />
           <span class="text-4xl">
-            Kubernetes
+            MongoDB
           </span>
         </div>
 
@@ -39,11 +39,14 @@
         
         <div class="flex flex-col gap-4 leading-6">
           <p>
-            Kubernetes is the most recent addition to my repitoire of expertise. Beginning in 2023, when
-            LightChange Technologies picked up a DevOps-focused client, it fell to me to learn the technology,
-            own it, and improve our clients infrastructure. Now, I have experienced a variety of implementations,
-            techniques, and tools, ranging from Azure Kubernetes Services to K3s, Deployments to StatefulSets, and ConfigMaps
-            to Azure Key Vault-integrated Secrets.
+            My journey with MongoDB began in 2014 when my love / hate relationship with SQL came to a head. I tried different SQL providers, such as:
+            MSSQL, MySQL, and PostgreSQL. But I found that the more relational systems I used, the more restricted I felt. I sought a system that
+            allowed for complex data storage but also permitted the flexibility of JSON. That is when a former colleague of mine mentioned the term "NoSQL."
+          </p>
+
+          <p>
+            I haven't looked back. MongoDB has empowered me to build applications without sacrificing simplicity for the fullstack. From personal projects,
+            to <hyperlink href="http://lightchange.com/certhunter">MSP service offerings</hyperlink>, I have incorporated this product wherever appropriate.
           </p>
         </div>
       </div>

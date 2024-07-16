@@ -8,7 +8,7 @@
 </script>
 
 <template>
-  <component :is="props ? 'a' : 'span'" :href="props.href" class="text-teal-600 hover:text-teal-400 dark:text-teal-400 hover:dark:text-teal-600 transition-colors duration-200 hover:underline cursor-pointer">
+  <component :is="props.href ? 'a' : 'span'" :href="props.href" class="text-teal-600 hover:text-teal-400 dark:text-teal-400 hover:dark:text-teal-600 transition-colors duration-200 hover:underline cursor-pointer">
     <slot />
   </component>
 </template>
