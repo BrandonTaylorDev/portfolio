@@ -18,7 +18,18 @@ export default defineNuxtConfig({
     headers: {
       crossOriginEmbedderPolicy: process.env.NODE_ENV === 'development' ? 'unsafe-none' : 'require-corp',
       contentSecurityPolicy: {
-        'script-src': [ "'self'", 'https:', "'unsafe-inline'", "'strict-dynamic'", "'nonce-{{nonce}}'", "https://www.google.com", "https://static.cloudflareinsights.com" ],
+        'default-src': ["'self'"],
+        'script-src': [
+          "'self'",
+          'https:',
+          "'unsafe-inline'",
+          "https://www.google.com",
+          "https://static.cloudflareinsights.com"
+        ],
+        'script-src-attr': [
+          "'self'",
+          "'unsafe-inline'"
+        ]
       }
     },
   }

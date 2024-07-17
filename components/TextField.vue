@@ -82,7 +82,7 @@
   })
 
   const labelStyle = computed(() => {
-    let styles = [ 'absolute transition-all duration-200 pe-3 pointer-events-none' ]
+    let styles = [ 'absolute transition-all duration-200 pe-3 pointer-events-none w-full' ]
 
     if(!value.value && !focused.value) {
       styles.push('top-1/2 -translate-y-1/2')
@@ -137,7 +137,7 @@
     <!-- prepend icon -->
     <span
       v-if="prependIcon"
-      class="flex justify-center items-center cursor-pointer p-3"
+      class="flex justify-center items-center cursor-pointer p-[11px]"
       @click="$emit('click:prependIcon')"
     >
       <icon :name="prependIcon" size="1.5em"  />

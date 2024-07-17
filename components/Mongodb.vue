@@ -46,7 +46,7 @@
 
           <p>
             I haven't looked back. MongoDB has empowered me to build applications without sacrificing simplicity for the fullstack. From personal projects,
-            to <hyperlink href="http://lightchange.com/certhunter">MSP service offerings</hyperlink>, I have incorporated this product wherever appropriate.
+            to <hyperlink href="https://lightchange.com/certhunter">MSP service offerings</hyperlink>, I have incorporated this product wherever appropriate.
           </p>
         </div>
       </div>

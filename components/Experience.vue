@@ -7,9 +7,10 @@
       link: 'https://lightchange.com',
       description: [
         'Led organizational effort to grow our DevOps and Cloud Architecture offerings.',
-        'Directed seamless implementation of high resiliency environments, enhancing system and application performance to 99.999% uptime.',
-        'Orchestrated no downtime migration of legacy systems to high resilience environments.',
-        'Planned and developed MSP-powering technology by leveraging Nuxt 3, Tailwind, MongoDB, and RabbitMQ.'
+        'Directed seamless implementation of high resilience environments, enhancing system and application performance to 99.999% uptime.',
+        'Orchestrated zero-downtime migration of legacy systems to high resilience environments.',
+        'Planned and developed MSP-powering technology by harnessing Nuxt 3, Tailwind, MongoDB, and RabbitMQ.',
+        'Leveraged Kubernetes to empower client growth, streamlined performance, and reduced budget expenditure by 45%.'
       ],
       tags: [
         'Azure',
@@ -32,11 +33,12 @@
         'Led team efforts to revolutionize ticket resolution strategies, resulting in a 52% reduction in ticket resolution time.',
         'Achieved a historical low support request time-to-close of 2 minutes and 34 seconds.',
         'Hired and mentored part time staff, leading to a 43% increase in employee retention.',
+        'Developed widely-used application that integrated and extended an existing inventory system to subsidize several missing features, such as duplicate detection.',
         'Orchestrated annual computer sales that reclaimed thousands of dollars in revenue, which allowed for equipment refreshment.'
       ],
       tags: [
-        'Leadersgip',
-        'Auditing',
+        'Leadership',
+        'Compliance Auditing',
         'Project Management',
         'Polycom Telephony',
         'SCCM / Jamf'
@@ -56,6 +58,8 @@
         'Team Management',
         'IT Support',
         'Project Management',
+        'Audio/Visual',
+        'Extron/Crestron'
       ]
     },
     {
@@ -66,13 +70,13 @@
       description: [
         'Spearhearded the upkeep of internal systems which eliminiated internal support requests entirely.',
         'Monitored and analyzed customer systems and prevented four disaster-level events.',
-        'Performed onsite services, such as the replacement of UPS batteries, and rerouting the cabling for networking closets.'
+        'Performed onsite services, such as the replacement of UPS batteries, and rerouting cabling for networking closets.'
       ],
       tags: [
         'Network Monitoring',
-        'Performance Optimization',
+        'Streamline Infrastructure',
         'Cisco UCM',
-        
+        'Disaster Recovery'
       ]
     }
   ])
@@ -113,7 +117,7 @@
           </ul>
 
           <ul class="flex flex-wrap gap-2">
-            <li class="flex items-center rounded-full bg-teal-500 hover:bg-teal-600 dark:bg-teal-500/10 hover:dark:bg-teal-500/50 text-teal-50 dark:text-teal-500 hover:dark:text-teal-300 dark:border-2 dark:border-teal-800 transition-colors duration-200 cursor-pointer px-3 py-1 text-xs font-medium leading-" v-for="t in exp.tags" :key="t">
+            <li class="select-none flex items-center rounded-full bg-teal-500 hover:bg-teal-600 dark:bg-teal-500/10 hover:dark:bg-teal-500/50 text-teal-50 dark:text-teal-500 hover:dark:text-teal-300 dark:border-2 dark:border-teal-800 transition-colors duration-200 cursor-pointer px-3 py-1 text-xs font-medium leading-" v-for="t in exp.tags" :key="t">
               {{ t }}
             </li>
           </ul>
