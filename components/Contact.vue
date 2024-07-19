@@ -107,33 +107,39 @@
 
       <text-field
         label="Name"
-        rounded
-        prepend-icon="mdi:abc"
+        rounded="xl"
         v-model="name"
-        no-gutters
         type="text"
         class="mt-4 h-14"
-      />
+      >
+        <template #prepend-icon>
+          <icon name="mdi:abc" size="2em" />
+        </template>
+      </text-field>
 
       <text-field
         label="E-mail"
-        rounded
-        prepend-icon="mdi:at"
+        rounded="xl"
         v-model="email"
-        no-gutters
         type="email"
         class="mt-4 h-14"
-      />
+      >
+        <template #prepend-icon>
+          <icon name="mdi:abc" size="2em" />
+        </template>
+      </text-field>
 
       <text-field
         label="Subject"
-        rounded
-        prepend-icon="mdi:text-subject"
+        rounded="xl"
         v-model="subject"
-        no-gutters
         type="text"
         class="mt-4 h-14"
-      />
+      >
+        <template #prepend-icon>
+          <icon name="mdi:text-subject" size="2em" />
+        </template>
+      </text-field>
 
       <text-area
         label="Message"

@@ -1,13 +1,17 @@
 <script setup lang="ts">
   const props = defineProps<{
+    type?         : 'text' | 'password' | 'email'
     variant?      : 'filled' | 'underlined' | 'bordered'
     label?        : string
-    modelValue?   : string
+    boldLabel?    : '' | boolean
+    modelValue?   : string | number
     prependIcon?  : string
     appendIcon?   : string
     rounded?      : 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full' | '' | boolean
+    autocomplete? : string
+    autofocus?    : boolean
+    readonly?     : boolean
     noGutters?    : boolean
-    noResize?     : boolean
   }>()
 
   const emits = defineEmits([
@@ -16,11 +20,13 @@
     'click:appendIcon'
   ])
 
-  const textAreaId = useId()
-  const value = ref('')
+  const inputId = useId()
+  const inputField = ref<HTMLInputElement | null>(null)
+  const value = ref(props.modelValue ?? '')
   const focused = ref(false)
 
   const roundedTailwindStyle = computed(() => {
+    if(props.variant === 'underlined') return 'rounded-none'
     switch(props?.rounded) {
       case 'none':
       case false:
@@ -62,30 +68,26 @@
   })
 
   const inputPositionStyle = computed(() => {
-    let styles: string[] = ['pt-2']
+    let styles: string[] = []
 
     if(!props?.prependIcon && props?.variant !== 'underlined') {
       styles.push('ps-3')
-    } else if(props?.prependIcon) {
-      styles.push('ps-12')
     }
 
     if(!props?.appendIcon && props?.variant !== 'underlined') {
       styles.push('pe-3')
-    } else if(props?.appendIcon) {
-      styles.push('pe-14')
     }
 
     return styles
   })
 
   const labelStyle = computed(() => {
-    let styles = [ 'absolute transition-all duration-200 pe-3 pointer-events-none bg-white w-full' ]
+    let styles = [ 'absolute transition-all duration-200 pe-3 pointer-events-none w-full' ]
 
     if(!value.value && !focused.value) {
-      styles.push('top-4')
+      styles.push('top-1/2 -translate-y-1/2')
     } else {
-      styles.push('top-1 text-xs')
+      styles.push('top-0')
     }
 
     if(props?.prependIcon) {
@@ -96,6 +98,10 @@
       }
     }
 
+    if(props?.boldLabel || props.boldLabel === '') {
+      styles.push('font-bold')
+    }
+
     return styles
   })
 
@@ -104,6 +110,8 @@
 
   // update our value with a new prop value on prop update.
   watch(() => props.modelValue, () => value.value = props.modelValue ?? '', { immediate: true })
+
+  onMounted(() => props?.autofocus ? inputField.value?.focus() : false)
 </script>
 
 <template>
@@ -111,18 +119,16 @@
   <!-- wrapper control -->
   <div
     :class="[
-      'relative flex overflow-auto bg-gray-50 h-[8rem] min-w-[12rem] min-h-[6rem]',
+      'relative flex overflow-hidden h-12',
       !noGutters ? 'my-4' : '',
-      noResize ? 'resize-none' : '',
       roundedTailwindStyle,
       variantTailwindStyle
     ]"
   >
-
     <!-- floating label -->
     <label
       v-if="label"
-      :for="textAreaId"
+      :for="inputId"
       :class="labelStyle"
     >
       {{ label }}
@@ -131,32 +137,36 @@
     <!-- prepend icon -->
     <span
       v-if="prependIcon"
-      class="flex justify-center items-start absolute top-4 left-4"
+      class="flex justify-center items-center cursor-pointer p-[11px]"
       @click="$emit('click:prependIcon')"
     >
-      <icon :name="prependIcon" size="1.5em" class="" />
+      <icon :name="prependIcon" size="1.5em"  />
     </span>
 
-    <!-- textarea field -->
-    <textarea
-      :id="textAreaId"
+    <!-- input field -->
+    <input
+      :type="type ?? 'text'"
+      :id="inputId"
       :class="[
-        'bg-transparent grow outline-none pt-5 ',
+        'bg-transparent grow outline-none pt-4',
         inputPositionStyle,
-        noResize ? 'resize-none' : '',
+        'read-only:cursor-not-allowed'
       ]"
       v-model="value"
+      ref="inputField"
+      :autocomplete="autocomplete"
       @focusin="focused = true"
       @focusout="focused = false"
+      :readonly="readonly"
     />
 
     <!-- append icon -->
     <span
       v-if="appendIcon"
-      class="flex justify-center items-start absolute top-4 right-4"
+      class="flex justify-center items-center cursor-pointer p-3"
       @click="$emit('click:appendIcon')"
     >
-      <icon :name="appendIcon" size="1.5em" class="" />
+      <icon :name="appendIcon" class="1.5em" />
     </span>
   </div>
 </template>

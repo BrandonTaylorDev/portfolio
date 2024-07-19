@@ -1,172 +1,104 @@
 <script setup lang="ts">
-  const props = defineProps<{
-    type?         : 'text' | 'password' | 'email'
-    variant?      : 'filled' | 'underlined' | 'bordered'
-    label?        : string
-    boldLabel?    : '' | boolean
-    modelValue?   : string | number
-    prependIcon?  : string
-    appendIcon?   : string
-    rounded?      : 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full' | '' | boolean
-    autocomplete? : string
-    autofocus?    : boolean
-    readonly?     : boolean
-    noGutters?    : boolean
-  }>()
-
-  const emits = defineEmits([
-    'update:modelValue',
-    'click:prependIcon',
-    'click:appendIcon'
-  ])
-
-  const inputId = useId()
-  const inputField = ref<HTMLInputElement | null>(null)
-  const value = ref(props.modelValue ?? '')
-  const focused = ref(false)
-
-  const roundedTailwindStyle = computed(() => {
-    if(props.variant === 'underlined') return 'rounded-none'
-    switch(props?.rounded) {
-      case 'none':
-      case false:
-        return 'rounded-none'
-      case 'sm':
-        return 'rounded-sm'
-      case 'md':
-        return 'rounded-md'
-      case 'lg':
-        return 'rounded-lg'
-      case 'xl':
-        return 'rounded-xl'
-      case 'full':
-      case '':
-      case true:
-        return 'rounded-full'
-      default:
-        return 'rounded-none'
-    }
+  type Props = {
+    modelValue?: string
+    variant?: 'filled' | 'underlined'
+    rounded?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full'
+    shadow?: boolean
+    label?: string
+  }
+  
+  const props = withDefaults(defineProps<Props>(), {
+    variant: 'filled',
+    rounded: 'none',
+    shadow: true
   })
+  const emits = defineEmits([ 'update:modelValue' ])
+  const slots = useSlots()
+  const value = ref('')
 
-  const variantTailwindStyle = computed(() => {
-    const filled      = 'bg-white shadow'
-    const underlined  = 'border-b border-gray-700'
-    const bordered    = 'bg-white border border-gray-300'
-    if(props?.variant === 'filled') {
-      return filled
-    }
+  const hasSlot = (name: string) => !!slots[name]
 
-    if(props?.variant === 'underlined') {
-      return underlined
-    }
-
-    if(props?.variant === 'bordered') {
-      return bordered
-    }
-
-    return filled
-  })
-
-  const inputPositionStyle = computed(() => {
-    let styles: string[] = []
-
-    if(!props?.prependIcon && props?.variant !== 'underlined') {
-      styles.push('ps-3')
-    }
-
-    if(!props?.appendIcon && props?.variant !== 'underlined') {
-      styles.push('pe-3')
-    }
-
-    return styles
-  })
-
-  const labelStyle = computed(() => {
-    let styles = [ 'absolute transition-all duration-200 pe-3 pointer-events-none w-full' ]
-
-    if(!value.value && !focused.value) {
-      styles.push('top-1/2 -translate-y-1/2')
-    } else {
-      styles.push('top-0')
-    }
-
-    if(props?.prependIcon) {
-      styles.push('ps-12')
-    } else {
-      if(props?.variant !== 'underlined') {
-        styles.push('ps-3')
-      }
-    }
-
-    if(props?.boldLabel || props.boldLabel === '') {
-      styles.push('font-bold')
-    }
-
-    return styles
-  })
-
-  // update Vue with our new value.
-  watch(value, () => emits('update:modelValue', value.value))
-
-  // update our value with a new prop value on prop update.
   watch(() => props.modelValue, () => value.value = props.modelValue ?? '', { immediate: true })
-
-  onMounted(() => props?.autofocus ? inputField.value?.focus() : false)
+  watch(() => value.value, () => emits('update:modelValue', value.value))
 </script>
 
 <template>
-
-  <!-- wrapper control -->
   <div
     :class="[
-      'relative flex overflow-hidden h-12',
-      !noGutters ? 'my-4' : '',
-      roundedTailwindStyle,
-      variantTailwindStyle
-    ]"
-  >
-    <!-- floating label -->
-    <label
-      v-if="label"
-      :for="inputId"
-      :class="labelStyle"
-    >
-      {{ label }}
-    </label>
+      'flex h-12',
 
-    <!-- prepend icon -->
-    <span
-      v-if="prependIcon"
-      class="flex justify-center items-center cursor-pointer p-[11px]"
-      @click="$emit('click:prependIcon')"
-    >
-      <icon :name="prependIcon" size="1.5em"  />
-    </span>
+      variant === 'filled'
+        ? 'bg-white'
+        : null,
 
-    <!-- input field -->
-    <input
-      :type="type ?? 'text'"
-      :id="inputId"
-      :class="[
-        'bg-transparent grow outline-none pt-4',
-        inputPositionStyle,
-        'read-only:cursor-not-allowed'
-      ]"
-      v-model="value"
-      ref="inputField"
-      :autocomplete="autocomplete"
-      @focusin="focused = true"
-      @focusout="focused = false"
-      :readonly="readonly"
-    />
+      variant === 'underlined'
+        ? 'bg-transparent border-b-2 border-slate-400 dark:border-slate-500'
+        : null,
 
-    <!-- append icon -->
-    <span
-      v-if="appendIcon"
-      class="flex justify-center items-center cursor-pointer p-3"
-      @click="$emit('click:appendIcon')"
-    >
-      <icon :name="appendIcon" class="1.5em" />
-    </span>
+      rounded && (variant !== 'underlined' && rounded !== 'full')
+        ? `rounded-${rounded}`
+        : null,
+
+      shadow && variant !== 'underlined'
+        ? 'shadow'
+        : null
+    ]">
+    <div v-if="hasSlot('prepend-icon')" class="flex justify-center items-center px-2 bg-transparent">
+      <slot name="prepend-icon" />
+    </div>
+
+    <div class="relative flex-1 rounded-[inherit]">
+      <input
+        type="text"
+        v-model="value"
+        :class="[
+          'w-full h-full block outline-none rounded-[inherit] bg-inherit',
+          !hasSlot('prepend-icon')
+            ? 'ps-4'
+            : null,
+          !hasSlot('append-icon')
+            ? 'pe-4'
+            : null,
+          label || hasSlot('label')
+            ? variant === 'underlined'
+              ? 'pt-2'
+              : 'pt-1'
+            : null
+        ]"
+      />
+      <label
+        v-if="label || hasSlot('label')"
+        :class="[
+          'tracking-wide w-full absolute top-1/2 -translate-y-1/2 flex items-center pointer-events-none select-none duration-300',
+          value
+            ? 'has-value'
+            : null,
+          !hasSlot('prepend-icon')
+            ? 'ps-4'
+            : null,
+          !hasSlot('append-icon')
+            ? 'pe-4'
+            : null
+        ]"
+      >
+        <slot name="label" />
+        <span v-if="!hasSlot('label')">
+          {{ label }}
+        </span>
+      </label>
+    </div>
+
+    <div v-if="hasSlot('append-icon')" class="flex justify-center items-center px-2">
+      <slot name="append-icon" />
+    </div>
   </div>
 </template>
+
+<style scoped>
+  input:focus + label, .has-value {
+    top: 0rem;
+    font-size: 0.75rem;
+    color: var(--tailwind-text-red-500);
+    transform: translateY(0);
+  }
+</style>
