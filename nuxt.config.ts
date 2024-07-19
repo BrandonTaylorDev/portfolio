@@ -30,6 +30,9 @@ export default defineNuxtConfig({
         'script-src-attr': [
           "'self'",
           "'unsafe-inline'"
+        ],
+        'frame-src': [
+          "https://www.google.com/recaptcha/api2/anchor?"
         ]
       }
     },
