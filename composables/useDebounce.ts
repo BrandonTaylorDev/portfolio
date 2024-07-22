@@ -1,7 +1,7 @@
 export default () => (fn: Function, delay: number) => {
-  let timeout: NodeJS.Timeout
+  let timeout: NodeJS.Timeout;
   return (...args: unknown[]) => {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => fn(...args), delay)
-  }
-}
+    clearTimeout(timeout);
+    timeout = setTimeout(() => fn(...args), delay);
+  };
+};
