@@ -1,7 +1,7 @@
-import { VueReCaptcha } from 'vue-recaptcha-v3';
+import { VueReCaptcha } from "vue-recaptcha-v3";
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const config = useRuntimeConfig()
+  const config = useRuntimeConfig();
 
   // @ts-ignore
   nuxtApp.vueApp.use(VueReCaptcha, {

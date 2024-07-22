@@ -1,10 +1,8 @@
 <script setup lang="ts">
-  type Props = {
-    href?: string
-  }
-  const props = withDefaults(defineProps<Props>(), {
-    
-  })
+type Props = {
+  href?: string;
+};
+const props = withDefaults(defineProps<Props>(), {});
 </script>
 
 <template>
