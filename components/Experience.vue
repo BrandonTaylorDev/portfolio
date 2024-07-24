@@ -8,20 +8,21 @@
       description: [
         'Led organizational effort to grow our DevOps and Cloud Architecture offerings.',
         'Directed seamless implementation of high resilience environments, enhancing system and application performance to 99.999% uptime.',
-        'Orchestrated zero-downtime migration of legacy systems to high resilience environments.',
         'Planned and developed MSP-powering technology by harnessing Nuxt 3, Tailwind, MongoDB, and RabbitMQ.',
+        'Orchestrated zero-downtime migration of legacy systems to high resilience environments.',
         'Leveraged Kubernetes to empower client growth, streamlined performance, and reduced budget expenditure by 45%.'
       ],
       tags: [
         'Azure',
+        'Azure DevOps',
         'Kubernetes',
+        'CI/CD',
         'Cloud Architecture',
         'Nagios',
-        'Full-Stack DevOps',
-        'CI/CD',
-        'Vue.js',
-        'Nuxt',
-        '.NET'
+        'Vue / Nuxt.js',
+        'React / Next.js',
+        'Angular.js',
+        'MongoDB'
       ]
     },
     {
@@ -30,10 +31,10 @@
       company: 'Indiana University',
       link: 'https://ius.edu',
       description: [
+        'Developed widely-used application that integrated and extended an existing inventory system to subsidize several missing features, such as duplicate detection.',
         'Led team efforts to revolutionize ticket resolution strategies, resulting in a 52% reduction in ticket resolution time.',
         'Achieved a historical low support request time-to-close of 2 minutes and 34 seconds.',
         'Hired and mentored part time staff, leading to a 43% increase in employee retention.',
-        'Developed widely-used application that integrated and extended an existing inventory system to subsidize several missing features, such as duplicate detection.',
         'Orchestrated annual computer sales that reclaimed thousands of dollars in revenue, which allowed for equipment refreshment.'
       ],
       tags: [
@@ -41,7 +42,14 @@
         'Compliance Auditing',
         'Project Management',
         'Polycom Telephony',
-        'SCCM / Jamf'
+        'SCCM / Jamf',
+        'Windows Server',
+        'Ubuntu',
+        'Red Hat',
+        'Frontend Design',
+        'JavaScript',
+        'Python',
+        'Go'
       ]
     },
     {
@@ -50,11 +58,15 @@
       company: 'Indiana University',
       link: 'https://ius.edu',
       description: [
+        'Invented novel software that interacts with SCCM to automate device lifecycle management and department-based software compliance.',
+        'Leveraged automation technologies to improve the efficiency of student devices.',
         'Introduced the upgrade of software that reduced the ecological footprint of the university\'s electric by 10-20%.',
-        'Performed regular device imaging throughout classroom devices to improve user experience, which resulted in a reduction of performance-related tickets by ~70%.',
+        'Performed regular device imaging throughout classrooms to improve user experience, which resulted in a reduction of performance-related tickets by ~70%.',
         'Introduced and reviewed device policies that cut printer-related support requests by 50%.'
       ],
       tags: [
+        'Python',
+        'Go',
         'Team Management',
         'IT Support',
         'Project Management',
@@ -68,11 +80,13 @@
       company: 'Trace3 (formally Data Strategy)',
       link: 'https://trace3.com',
       description: [
+        'Wrote software leveraging Go and Batch scripting to automate system cloning, directly integrating with Active Directory.',
         'Spearhearded the upkeep of internal systems which eliminiated internal support requests entirely.',
         'Monitored and analyzed customer systems and prevented four disaster-level events.',
         'Performed onsite services, such as the replacement of UPS batteries, and rerouting cabling for networking closets.'
       ],
       tags: [
+        'Go',
         'Network Monitoring',
         'Streamline Infrastructure',
         'Cisco UCM',
