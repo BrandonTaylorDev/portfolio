@@ -18,7 +18,7 @@
 
       <p>
         Being a developer, I stay curious. I strive for knowledge, and seek new and exciting ways in which I can grow. Today, I often find myself working
-        in high reslience environments, such as <hyperlink @click="emit('click:kubernetes')">Kubernetes <icon name="mdi:launch" /></hyperlink> and cloud data
+        in high resilience environments, such as <hyperlink @click="emit('click:kubernetes')">Kubernetes <icon name="mdi:launch" /></hyperlink> and cloud data
         storage solutions, such as <hyperlink @click="emit('click:mongodb')">MongoDB <icon name="mdi:launch" /></hyperlink> or <hyperlink href="https://azure.microsoft.com/en-us/products/cosmos-db">Azure Cosmos DB</hyperlink>.
         I also often lead the charge in implementing reliable disaster recovery technologies, such as <hyperlink href="https://veeam.com">Veeam</hyperlink>.
       </p>
