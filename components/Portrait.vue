@@ -4,8 +4,8 @@
       <image src="/portfolio.webp" class="max-h-96 mx-auto rounded-2xl" />
     </div>
     
-    <span class="text-[2.75rem] font-bold tracking-tight text-slate-500 dark:text-slate-200 z-40">
-      &lpar; Brandon Taylor &rpar;
+    <span class="text-4xl md:text-5xl font-bold tracking-tight text-slate-500 dark:text-slate-200 z-40 transition-all duration-500">
+      &lt; Brandon Taylor /&gt;
     </span>
 
     <p class="text-xl">

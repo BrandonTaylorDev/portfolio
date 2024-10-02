@@ -36,6 +36,7 @@
             @click:mongodb="showModal('mongodb')"
           />
           <experience />
+          <resume />
           <lazy-contact />
         </div>
       </main>
