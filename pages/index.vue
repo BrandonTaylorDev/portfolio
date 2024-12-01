@@ -24,10 +24,7 @@
 <template>
   <div class="page min-h-[50dvh] mx-auto">
     <div class="portfolio-wrap max-w-[120rem] flex flex-col lg:flex-row mx-auto">
-      <div class="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-center items-center p-8">
-        <portrait />
-        <socials />
-      </div>
+      <hero />
 
       <main class="lg:flex-1">
         <div class="flex flex-col gap-y-24 my-24">
@@ -51,7 +48,6 @@
           ? 'opacity-70'
           : 'opacity-0'
       ]">
-
     </div>
     <lazy-kubernetes v-model="showKubernetes" />
     <lazy-mongodb v-model="showMongoDB" />
