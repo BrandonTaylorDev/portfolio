@@ -1,13 +1,16 @@
 <script setup lang="ts">
   const emit = defineEmits([ 'click:kubernetes', 'click:mongodb' ])
+
+  const { elementRef, isVisible } = useElementVisibility()
 </script>
 
 <template>
-  <section class="flex flex-col gap-4 max-w-xl mx-auto lg:max-w-full lg:mx-0 lg:border-l-4 lg:border-slate-500 dark:lg:border-teal-600 text-xl md:text-lg">
+  <section ref="elementRef" :class="[ 'flex flex-col gap-4 max-w-xl mx-auto lg:max-w-full lg:mx-0 lg:border-l-4 lg:border-slate-500 dark:lg:border-teal-600 text-xl md:text-lg duration-200', isVisible ? 'opacity-100' : 'opacity-0' ]">
     <span class="sticky top-0 text-center text-xl text-slate-900 dark:text-slate-200 backdrop-filter backdrop-blur-sm bg-slate-100/50 dark:bg-slate-900/50 px-8 py-4">
       A Little About Me
     </span>
-    <div class="px-8">
+
+    <div class="px-8 flex flex-col gap-4">
       <p>
         Throughout my career, I have had the opportunity to assume diverse roles encompassing a broad spectrum of responsibilities.
         It began in 2014 when I started as a <span class="italic">Network Analyst</span> at a <hyperlink href="https://trace3.com">NOC</hyperlink>.

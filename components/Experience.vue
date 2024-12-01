@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  const { elementRef, isVisible } = useElementVisibility()
   const experience = ref([
     {
       timeframe: 'Jul 2022 - Present',
@@ -97,13 +98,17 @@
 </script>
 
 <template>
-  <section class="flex flex-col gap-4 mt-8 max-w-xl mx-auto lg:max-w-full lg:mx-0 lg:border-l-4 lg:border-slate-500 dark:lg:border-teal-600 text-xl md:text-lg">
+  <section ref="elementRef" :class="[ 'flex flex-col gap-4 mt-8 max-w-xl mx-auto lg:max-w-full lg:mx-0 lg:border-l-4 lg:border-slate-500 dark:lg:border-teal-600 text-xl md:text-lg duration-200', isVisible ? 'opacity-100' : 'opacity-0' ]">
     <span class="sticky top-0 text-center text-xl text-slate-900 dark:text-slate-200 backdrop-filter backdrop-blur-sm bg-slate-100/50 dark:bg-slate-900/50 px-8 py-4">
       Highlights of my Career
     </span>
 
     <div class="flex flex-col gap-12 px-8">
-      <div class="wrap flex flex-col 2xl:flex-row" v-for="(exp, i) in experience" :key="i">
+      <div
+        v-for="(exp, i) in experience"
+        :key="i"
+        class="wrap flex flex-col 2xl:flex-row"
+      >
 
         <!-- timeframe -->
         <div class="timeframe whitespace-nowrap shrink-1 min-w-32 text-sm">
@@ -113,7 +118,7 @@
         </div>
 
         <!-- description -->
-        <div class="description flex flex-col gap-2 flex-1 2xl:ps-16 transition-[padding 5s ease]">
+        <div class="description flex flex-col gap-2 flex-1 2xl:ps-4 transition-[padding 5s ease]">
           <div class="flex flex-col">
             <a :href="exp.link" class="text-lg text-slate-700 dark:text-slate-200">
               {{ exp.title }}
