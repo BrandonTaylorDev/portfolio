@@ -1,21 +1,26 @@
 <script setup lang="ts">
   useHead({
     title: 'Brandon Taylor | brandontaylor.dev',
-    htmlAttrs: {
-      class: 'bg-slate-100 dark:bg-slate-900 overflow-x-hidden',
-      lang: 'en'
-    },
-    script: [
-      { src: 'https://www.google.com/recaptcha/api.js', defer: true },
-      !process.dev?
-        { 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "1b2831f35e1140dbb0adf5f5c8c5d7ce"}', defer: true } : {}
-    ]
+    bodyAttrs: {
+      class: 'bg-slate-900 text-slate-100'
+    }
   })
 </script>
 
 <template>
-  <v-app class="bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-400">
-    <nuxt-loading-indicator />
-    <nuxt-page />
-  </v-app>
+  <div class="page min-h-[50dvh] mx-auto">
+    <div class="portfolio-wrap max-w-dvw flex flex-col lg:flex-row mx-auto">
+      <hero />
+
+      <main class="lg:flex-1">
+        <div class="flex flex-col gap-y-24 my-24">
+          <about />
+          <experience />
+        </div>
+      </main>
+    </div>
+
+    <lazy-scroll-back />
+    <lazy-v-footer />
+  </div>
 </template>

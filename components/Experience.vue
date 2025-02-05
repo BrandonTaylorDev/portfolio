@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  const { elementRef, isVisible } = useElementVisibility()
+
   const experience = ref([
     {
       timeframe: 'Jul 2022 - Present',
@@ -94,22 +94,26 @@
         'Disaster Recovery'
       ]
     }
-  ])
+  ]);
 </script>
 
 <template>
-  <section ref="elementRef" :class="[ 'flex flex-col gap-4 mt-8 max-w-xl mx-auto lg:max-w-full lg:mx-0 lg:border-l-4 lg:border-slate-500 dark:lg:border-teal-600 text-xl md:text-lg duration-200', isVisible ? 'opacity-100' : 'opacity-0' ]">
-    <span class="sticky top-0 text-center text-xl text-slate-900 dark:text-slate-200 backdrop-filter backdrop-blur-sm bg-slate-100/50 dark:bg-slate-900/50 px-8 py-4">
+  <section :class="[ 'flex flex-col gap-4 mt-8 max-w-3xl mx-auto lg:max-w-full lg:mx-0 lg:border-l-4 lg:border-teal-600 text-xl md:text-lg' ]">
+    <span class="sticky top-0 text-center text-xl text-slate-200 backdrop-filter backdrop-blur-sm bg-slate-900/50 px-8 py-4">
       Highlights of my Career
     </span>
 
-    <div class="flex flex-col gap-12 px-8">
+    {{  }}
+
+    <div class="experience flex flex-col gap-12 px-8">
       <div
         v-for="(exp, i) in experience"
         :key="i"
-        class="wrap flex flex-col 2xl:flex-row"
+        ref="descriptionRefs"
+        :class="[
+          'flex flex-col 2xl:flex-row transition-all duration-1000'
+        ]"
       >
-
         <!-- timeframe -->
         <div class="timeframe whitespace-nowrap shrink-1 min-w-32 text-sm">
           <span>
@@ -118,7 +122,7 @@
         </div>
 
         <!-- description -->
-        <div class="description flex flex-col gap-2 flex-1 2xl:ps-4 transition-[padding 5s ease]">
+        <div class="description flex flex-col gap-2 flex-1 2xl:ps-4">
           <div class="flex flex-col">
             <a :href="exp.link" class="text-lg text-slate-700 dark:text-slate-200">
               {{ exp.title }}
@@ -136,7 +140,7 @@
           </ul>
 
           <ul class="flex flex-wrap gap-2">
-            <li class="select-none flex items-center rounded-full bg-teal-500 hover:bg-teal-600 dark:bg-teal-500/10 hover:dark:bg-teal-500/50 text-teal-50 dark:text-teal-500 hover:dark:text-teal-300 dark:border-2 dark:border-teal-800 transition-colors duration-200 cursor-pointer px-3 py-1 text-xs font-medium leading-" v-for="t in exp.tags" :key="t">
+            <li class="select-none flex items-center rounded-full  bg-teal-500/10 hover:bg-teal-500/50 text-teal-500 hover:text-teal-300 dark:border-2 border-teal-800 transition-colors duration-200 cursor-pointer px-3 py-1 text-xs font-medium leading-" v-for="t in exp.tags" :key="t">
               {{ t }}
             </li>
           </ul>
@@ -146,3 +150,8 @@
   </section>
 </template>
 
+<style lang="css" scoped>
+  .experience {
+    transition: transform 500ms ease-out, opacity 5000ms ease-out;
+  }
+</style>
