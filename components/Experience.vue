@@ -82,7 +82,7 @@
       link: 'https://trace3.com',
       description: [
         'Wrote software leveraging Go and Batch scripting to automate system cloning, directly integrating with Active Directory.',
-        'Spearhearded the upkeep of internal systems which eliminiated internal support requests entirely.',
+        'Spearheaded the upkeep of internal systems which eliminiated internal support requests entirely.',
         'Monitored and analyzed customer systems and prevented four disaster-level events.',
         'Performed onsite services, such as the replacement of UPS batteries, and rerouting cabling for networking closets.'
       ],

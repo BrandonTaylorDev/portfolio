@@ -67,7 +67,7 @@
         : 'translate-y-4 opacity-0'
     ]">
       <span class="italic text-lg">
-        Fueled by <span class="coffee-cursor">coffee</span>, driven by ambititon.
+        Fueled by <span class="coffee-cursor">coffee</span>, driven by ambition.
       </span>
     </div>
   </div>
