@@ -13,9 +13,7 @@
 </script>
 
 <template>
-  <section
-    class="h-dvh grid place-items-center lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-center items-center p-8 duration-200"
-  >
+  <section class="hero h-dvh grid place-items-center xl:sticky xl:top-0 xl:flex xl:max-h-screen xl:w-1/2 xl:flex-col xl:justify-center items-center p-8 duration-200">
     <div>
       <portrait />
       <socials />
@@ -32,7 +30,7 @@
           </div>
 
           <div class="flex-1">
-            hello@dakotahtaylor.com
+            hello@brandontaylor.dev
           </div>
         </button>
       </div>

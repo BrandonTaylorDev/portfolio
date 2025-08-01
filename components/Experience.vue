@@ -98,14 +98,12 @@
 </script>
 
 <template>
-  <section :class="[ 'flex flex-col gap-4 mt-8 max-w-3xl mx-auto lg:max-w-full lg:mx-0 lg:border-l-4 lg:border-teal-600 text-xl md:text-lg' ]">
+  <section class="experience flex flex-col flex-1">
     <span class="sticky top-0 text-center text-xl text-slate-200 backdrop-filter backdrop-blur-sm bg-slate-900/50 px-8 py-4">
       Highlights of my Career
     </span>
 
-    {{  }}
-
-    <div class="experience flex flex-col gap-12 px-8">
+    <div class="flex flex-col gap-12 px-8">
       <div
         v-for="(exp, i) in experience"
         :key="i"
