@@ -1,9 +1,17 @@
+<script setup lang="ts">
+  const showResume = ref(false);
+  provide('showResume', showResume);
+</script>
+
 <template>
-  <div class="flex flex-co xl:flex-row">
-    <hero />
-    <main class="flex-1 flex-col">
-      <about />
-      <experience />
-    </main>
+  <div>
+    <rail>
+      <pretty-side />
+      <resume-side />
+    </rail>
+
+    <rail-control
+      @click="showResume = !showResume"
+    />
   </div>
 </template>
