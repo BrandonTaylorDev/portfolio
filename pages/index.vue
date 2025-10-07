@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  const showResume = ref(false);
+  const showResume = ref(true);
   provide('showResume', showResume);
 </script>
 
