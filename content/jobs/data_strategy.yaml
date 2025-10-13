@@ -1,0 +1,9 @@
+title: Network Analyst
+company: Data Strategy
+start: 2014-08-01
+end: 2016-11-01 # null = Present
+bullets:
+  - Wrote an in-house software similar to Intune, leveraging Go and Batch scripting, to automate system cloning, directly integrating with Active Directory.
+  - Spearheaded the upkeep of internal systems which eliminated internal support requests entirely.
+  - Monitored and analyzed customer systems and prevented 4 disaster-level events.
+  - Performed onsite services, such as the replacement of UPS batteries, and rerouting cabling for networking closets.

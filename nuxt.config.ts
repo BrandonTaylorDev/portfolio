@@ -2,22 +2,30 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-07-18',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', 'nuxt-security', 'nuxt-icons'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', 'nuxt-security', 'nuxt-icons', '@nuxt/content'],
   security: {
+    nonce: true, // add nonce to every <script>/<style>/<link> the app emits
     headers: {
-      crossOriginEmbedderPolicy: process.env.NODE_ENV === 'development' ? 'unsafe-none' : 'require-corp',
       contentSecurityPolicy: {
-        'default-src': ["'self'"],
+        // Scripts: strict CSP via nonce + strict-dynamic
         'script-src': [
-          "'self'",
-          'https:',
-          "'unsafe-inline'"
+          "'self'", 'https:',       // fallbacks
+          "'strict-dynamic'",       // modern browsers honor nonce + dynamic
+          "'nonce-{{nonce}}'"       // Nuxt Security injects this per request
         ],
-        'script-src-attr': [
-          "'self'",
-          "'unsafe-inline'"
-        ]
+        // 'script-src-elem': ["'strict-dynamic'", "'nonce-{{nonce}}'"],
+
+        // Keep attributes locked down (blocks onClick=..., etc.)
+        'script-src-attr': ["'none'"],
+
+        // Styles – keep inline allowed unless ready to hash/nonce all of them
+        'style-src': ["'self'", 'https:', "'unsafe-inline'"],
+
+        // Add dev sockets/APIs here:
+        'connect-src': process.env.NODE_ENV === 'development'
+          ? ["'self'", 'ws://localhost:4000', 'http://localhost:4000']
+          : ["'self'", 'https:', 'wss:'],
       }
-    },
+    }
   }
-})
+});

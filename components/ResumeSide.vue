@@ -1,3 +1,11 @@
+<script setup lang="ts">
+  const { data: jobs } = await useAsyncData('jobs', () =>
+    queryCollection('jobs')
+      .order('start', 'DESC')   // newest first
+      .all()
+  );
+</script>
+
 <template>
   <section class="min-h-screen min-w-screen bg-zinc-50 text-zinc-900 flex-1 py-8">
 
@@ -51,60 +59,57 @@
               </div>
 
               <!-- job entries section -->
-              <section class="w-full">
+              <section class="relative w-full">
+
+                <!-- timeline line -->
+                <div class="absolute left-4 top-0 h-full w-px bg-gray-400"></div>
+
+                <!-- timeline item -->
+                <article
+                  class="relative pl-8 pb-8 last:pb-0"
+                  v-for="job in jobs"
+                  :key="job.id"
+                >
+
+                  <!-- dot -->
+                  <span class="absolute left-4 -translate-x-1/2 top-1.5 inline-flex h-3 w-3 items-center justify-center">
+                    <span class="h-3 w-3 bg-black dark:bg-gray-900"></span>
+                  </span>
+
+                  <!-- content (your original block) -->
+                  <div>
+                    <!-- title -->
+                    <div>
+                      <span class="font-bold">
+                        {{ job.title }}
+                      </span>
+                    </div>
+
+                    <!-- company -->
+                    <div>
+                      <span class="font-light">
+                        {{ job.company }}
+                      </span>
+                    </div>
+
+                    <!-- date/time -->
+                    <div>
+                      <span>
+                        {{ new Date(job.start).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) }}
+                        - {{ job.end ? new Date(job.end).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) : 'Present' }}
+                      </span>
+                    </div>
+
+                    <div>
+                      <ul class="list-disc list-inside font-light">
+                        <li v-for="(b, i) in job.bullets" :key="i">{{ b }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </article>
                 
-                <!-- loop job entry -->
-                <div>
-                  <!-- title -->
-                  <div>
-                    <span class="font-bold">
-                      Test Job
-                    </span>
-                  </div>
-
-                  <!-- company -->
-                  <div>
-                    <span>
-                      Fake Company
-                    </span>
-                  </div>
-
-                  <!-- date/time -->
-                  <div>
-                    <span>
-                      Jul 2022 - Present
-                    </span>
-                  </div>
-
-                  <div>
-                    <ul class="list-disc list-inside">
-                      <li>
-                        this is a job description bullet point.
-                      </li>
-
-                      <li>
-                        this is a job description bullet point.
-                      </li>
-
-                      <li>
-                        this is a job description bullet point.
-                      </li>
-
-                      <li>
-                        this is a job description bullet point.
-                      </li>
-
-                      <li>
-                        this is a job description bullet point.
-                      </li>
-
-                      <li>
-                        this is a job description bullet point.
-                      </li>
-                    </ul>
-                  </div>
-                </div>
               </section>
+
             </div>
 
             <!-- everything else (1/3) -->
