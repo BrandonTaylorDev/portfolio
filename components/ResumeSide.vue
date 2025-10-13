@@ -25,13 +25,13 @@
 </script>
 
 <template>
-  <section class="min-h-screen min-w-screen bg-zinc-50 text-zinc-900 flex-1 py-8">
+  <rail-side class="bg-zinc-200 text-zinc-900">
 
     <!-- padding helper. -->
-    <div class="h-full w-full ps-8 pe-4">
+    <div class="w-full ps-8 pe-4">
 
       <!-- shadow wrapper to simulate page design -->
-      <div class="h-full max-w-7xl mx-auto shadow">
+      <div class="max-w-7xl mx-auto shadow-[0_0_1rem_rgb(0_0_0_/_25%)] bg-zinc-50">
 
         <!-- header -->
         <header class="h-64 bg-zinc-100 flex flex-col md:flex-row items-center">
@@ -283,5 +283,5 @@
         </section>
       </div>
     </div>
-  </section>
+  </rail-side>
 </template>

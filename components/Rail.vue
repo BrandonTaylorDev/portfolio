@@ -10,7 +10,7 @@
 
 <template>
   <div :class="[
-    'w-[200vw] min-h-screen flex flex-row transition-transform duration-700 ease-in-out',
+    'w-[200vw] h-screen max-h-screen overflow-hidden flex flex-row transition-transform duration-700 ease-in-out',
     translateClass
   ]">
     <slot />

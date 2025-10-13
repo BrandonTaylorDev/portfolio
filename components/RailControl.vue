@@ -30,12 +30,13 @@
         ? 'transform-gpu will-change-transform transition-[transform,background-color,box-shadow] duration-700 ease-in-out'
         : 'transition-none',
       showResume
-        ? '-translate-x-[calc(100vw-1rem)] bg-zinc-300 shadow-2xl'
+        ? '-translate-x-[calc(100vw-1rem)] bg-zinc-50 shadow-2xl'
         : 'translate-x-0 bg-zinc-700 shadow-none'
     ]"
   >
     <!-- NON-ANIMATING WRAPPER: handles vertical centering only -->
     <div class="absolute right-4 top-1/2 -translate-y-1/2">
+
       <!-- INNER: animates X, radius, and bg -->
       <div
         :class="[
@@ -49,7 +50,12 @@
         ]"
       >
         <button
-          class="flex items-center h-full w-full text-2xl"
+          :class="[
+            'flex items-center h-full w-full text-2xl transform-gpu will-change-[transform,background-color] transition-[border-radius,transform,background-color] duration-700 ease-in-out',
+            showResume
+              ? 'bg-zinc-50'
+              : 'bg-zinc-700'
+          ]"
           @click="$emit('click')"
         >
           <!-- Spacer grows 0 -> 1 (order preserved) -->
