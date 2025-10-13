@@ -4,6 +4,24 @@
       .order('start', 'DESC')   // newest first
       .all()
   );
+
+  const { data: education } = await useAsyncData('education', () =>
+    queryCollection('education')
+      .order('start', 'DESC')   // newest first
+      .all()
+  );
+
+  const { data: skills } = await useAsyncData('skills', () =>
+    queryCollection('skills')
+      .order('platforms', 'DESC')   // newest first
+      .all()
+  );
+
+  const { data: projects } = await useAsyncData('projects', () =>
+    queryCollection('projects')
+      // .order('tags', 'DESC')   // newest first
+      .all()
+  );
 </script>
 
 <template>
@@ -53,16 +71,16 @@
           <div class="flex flex-col md:flex-row">
 
             <!-- work experience column (2/3) -->
-            <div class="flex flex-col justify-center items-center md:basis-2/3 md:flex-none md:border-r-2 md:border-zinc-200">
+            <div class="flex flex-col md:basis-2/3 md:border-r-2 md:border-zinc-200">
               <div class="border-b-2 border-zinc-200 w-full text-center py-4">
                 <h2 class="text-2xl uppercase tracking-[0.5rem]">Work Experience</h2>
               </div>
 
-              <!-- job entries section -->
-              <section class="relative w-full">
+              <!-- job section -->
+              <section class="relative w-full p-4">
 
                 <!-- timeline line -->
-                <div class="absolute left-4 top-0 h-full w-px bg-gray-400"></div>
+                <div class="absolute top-8 left-8 top-0 h-[calc(100%-4rem)] w-px bg-gray-400"></div>
 
                 <!-- timeline item -->
                 <article
@@ -73,14 +91,14 @@
 
                   <!-- dot -->
                   <span class="absolute left-4 -translate-x-1/2 top-1.5 inline-flex h-3 w-3 items-center justify-center">
-                    <span class="h-3 w-3 bg-black dark:bg-gray-900"></span>
+                    <span class="h-3 w-3 bg-zinc-700"></span>
                   </span>
 
-                  <!-- content (your original block) -->
+                  <!-- content -->
                   <div>
                     <!-- title -->
                     <div>
-                      <span class="font-bold">
+                      <span class="font-bold text-zinc-700">
                         {{ job.title }}
                       </span>
                     </div>
@@ -107,16 +125,159 @@
                     </div>
                   </div>
                 </article>
-                
               </section>
-
             </div>
 
             <!-- everything else (1/3) -->
             <div class="md:basis-1/3 md:flex-none">
-              <div class="border-b-2 border-zinc-200 w-full text-center py-4">
-                <h2 class="text-2xl uppercase tracking-[0.5rem]">Education</h2>
-              </div>
+              
+              <!-- education section -->
+              <section class="relative w-full">
+                <div class="border-b-2 border-zinc-200 w-full text-center py-4 mb-4">
+                  <h2 class="text-2xl uppercase tracking-[0.5rem]">Education</h2>
+                </div>
+
+                <article
+                  class="pl-4 pb-8"
+                  v-for="edu in education"
+                  :key="edu.id"
+                >
+                  <!-- degree -->
+                  <div>
+                    <span class="font-bold text-zinc-700">
+                      {{ edu.degree }}
+                    </span>
+                  </div>
+
+                  <!-- institution -->
+                  <div>
+                    <span class="font-light">
+                      {{ edu.institution }}
+                    </span>
+                  </div>
+
+                  <!-- date/time -->
+                  <div>
+                    <span class="text-zinc-700">
+                      {{ new Date(edu.start).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) }}
+                      - {{ edu.end ? new Date(edu.end).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) : 'Present' }}
+                    </span>
+                  </div>
+
+                  <!-- gpa -->
+                   <div>
+                    <span class="text-zinc-700">
+                      GPA {{ edu.gpa }}
+                    </span>
+                  </div>
+                </article>
+              </section>
+
+              <!-- skills section -->
+              <section class="relative w-full">
+                <div class="border-y-2 border-zinc-200 w-full text-center py-4 mb-4">
+                  <h2 class="text-2xl uppercase tracking-[0.5rem]">Skills</h2>
+                </div>
+
+                <!-- platforms -->
+                <article
+                  class="pl-4 pb-8"
+                  v-for="skill in skills"
+                  :key="skill.id"
+                >
+                  <div>
+                    <h3 class="text-2xl text-zinc-700 tracking-widest">Platforms</h3>
+                  </div>
+                  
+                  <div>
+                    <ul class="list-disc list-inside font-light text-zinc-700 text-sm">
+                      <li v-for="(b, i) in skill.platforms" :key="i">{{ b }}</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <!-- languages -->
+                <article
+                  class="pl-4 pb-8"
+                  v-for="skill in skills"
+                  :key="skill.id"
+                >
+                  <div>
+                    <h3 class="text-2xl text-zinc-700 tracking-widest">Languages</h3>
+                  </div>
+                  
+                  <div>
+                    <ul class="list-disc list-inside font-light text-zinc-700 text-sm">
+                      <li v-for="(b, i) in skill.languages" :key="i">{{ b }}</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <!-- frameworks -->
+                <article
+                  class="pl-4 pb-8"
+                  v-for="skill in skills"
+                  :key="skill.id"
+                >
+                  <div>
+                    <h3 class="text-2xl text-zinc-700 tracking-widest">Frameworks</h3>
+                  </div>
+                  
+                  <div>
+                    <ul class="list-disc list-inside font-light text-zinc-700 text-sm">
+                      <li v-for="(b, i) in skill.frameworks" :key="i">{{ b }}</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <!-- other -->
+                <article
+                  class="pl-4 pb-8"
+                  v-for="skill in skills"
+                  :key="skill.id"
+                >
+                  <div>
+                    <h3 class="text-2xl text-zinc-700 tracking-widest">Other</h3>
+                  </div>
+
+                  <!-- platform names -->
+                  <div>
+                    <ul class="list-disc list-inside font-light text-zinc-700 text-sm">
+                      <li v-for="(b, i) in skill.other" :key="i">{{ b }}</li>
+                    </ul>
+                  </div>
+                </article>
+              </section>
+
+              <!-- projects section -->
+              <section class="relative w-full">
+                <div class="border-y-2 border-zinc-200 w-full text-center py-4 mb-4">
+                  <h2 class="text-2xl uppercase tracking-[0.5rem]">Projects</h2>
+                </div>
+
+                <!-- projects -->
+                <article
+                  class="pl-4 pb-8"
+                  v-for="proj in projects"
+                  :key="proj.id"
+                >
+                  <div>
+                    <h3 class="text-2xl text-zinc-700 tracking-widest">{{ proj.name }}</h3>
+                  </div>
+                  
+                  <div>
+                    <span class="font-thin tracking-widest text-xs italic text-zinc-700">
+                      {{ (proj.tags ?? []).join(' | ').toString() }}
+                    </span>
+                  </div>
+
+                  <div>
+                    <span class="font-thin text-zinc-700">
+                      {{ proj.description }}
+                    </span>
+                  </div>
+                </article>
+              </section>
             </div>
           </div>
         </section>
