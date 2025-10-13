@@ -38,7 +38,7 @@
           <!-- name/title (2/3) -->
           <div class="h-full flex flex-col justify-center items-center md:basis-2/3 md:flex-none md:border-r-2 border-zinc-200">
             <div class="flex flex-col gap-4">
-              <h1 class="uppercase text-3xl md:text-4xl lg:text-6xl max-w-[8ch] tracking-[0.5rem] text-zinc-600 font-light">
+              <h1 class="uppercase text-3xl md:text-4xl lg:text-6xl max-w-[8ch] tracking-[0.5rem] text-zinc-600 font-thin">
                 Brandon Taylor
               </h1>
               <p class="uppercase text-[0.85rem] md:text-[0.9rem] lg:text-[1.25rem] tracking-[0.75rem] text-zinc-500">
@@ -105,21 +105,21 @@
 
                     <!-- company -->
                     <div>
-                      <span class="font-light">
+                      <span>
                         {{ job.company }}
                       </span>
                     </div>
 
                     <!-- date/time -->
                     <div>
-                      <span>
-                        {{ new Date(job.start).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) }}
-                        - {{ job.end ? new Date(job.end).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) : 'Present' }}
+                      <span class="text-sm font-thin">
+                        <time :datetime="job.start">{{ new Date(job.start).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) }}</time>
+                        &ndash; <time :datetimte="job.end ?? 'Present'">{{ job.end ? new Date(job.end).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) : 'Present' }}</time>
                       </span>
                     </div>
 
                     <div>
-                      <ul class="list-disc list-inside font-light">
+                      <ul class="list-disc list-inside font-thin text-sm">
                         <li class="py-px first:pt-0 last:pb-0" v-for="(b, i) in job.bullets" :key="i">{{ b }}</li>
                       </ul>
                     </div>
@@ -151,22 +151,22 @@
 
                   <!-- institution -->
                   <div>
-                    <span class="font-light">
+                    <span class="text-sm">
                       {{ edu.institution }}
                     </span>
                   </div>
 
                   <!-- date/time -->
                   <div>
-                    <span class="text-zinc-700">
-                      {{ new Date(edu.start).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) }}
-                      - {{ edu.end ? new Date(edu.end).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) : 'Present' }}
+                    <span class="text-zinc-700 whitespace-nowrap tabular-nums font-thin text-sm">
+                      <time :datetime="edu.start">{{ new Date(edu.start).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) }}</time>
+                      &ndash; <time :datetime="edu.end ?? 'Present'">{{ edu.end ? new Date(edu.end).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) : 'Present' }}</time>
                     </span>
                   </div>
 
                   <!-- gpa -->
                    <div>
-                    <span class="text-zinc-700">
+                    <span class="text-zinc-700 font-thin text-sm">
                       GPA {{ edu.gpa }}
                     </span>
                   </div>
@@ -190,7 +190,7 @@
                   </div>
                   
                   <div>
-                    <ul class="list-disc list-inside font-light text-zinc-700 text-sm">
+                    <ul class="list-disc list-inside font-thin text-zinc-700 text-sm">
                       <li v-for="(b, i) in skill.platforms" :key="i">{{ b }}</li>
                     </ul>
                   </div>
@@ -207,7 +207,7 @@
                   </div>
                   
                   <div>
-                    <ul class="list-disc list-inside font-light text-zinc-700 text-sm">
+                    <ul class="list-disc list-inside font-thin text-zinc-700 text-sm">
                       <li v-for="(b, i) in skill.languages" :key="i">{{ b }}</li>
                     </ul>
                   </div>
@@ -224,7 +224,7 @@
                   </div>
                   
                   <div>
-                    <ul class="list-disc list-inside font-light text-zinc-700 text-sm">
+                    <ul class="list-disc list-inside font-thin text-zinc-700 text-sm">
                       <li v-for="(b, i) in skill.frameworks" :key="i">{{ b }}</li>
                     </ul>
                   </div>
@@ -242,7 +242,7 @@
 
                   <!-- platform names -->
                   <div>
-                    <ul class="list-disc list-inside font-light text-zinc-700 text-sm">
+                    <ul class="list-disc list-inside font-thin text-zinc-700 text-sm">
                       <li v-for="(b, i) in skill.other" :key="i">{{ b }}</li>
                     </ul>
                   </div>
