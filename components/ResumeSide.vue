@@ -120,7 +120,7 @@
 
                     <div>
                       <ul class="list-disc list-inside font-light">
-                        <li v-for="(b, i) in job.bullets" :key="i">{{ b }}</li>
+                        <li class="py-px first:pt-0 last:pb-0" v-for="(b, i) in job.bullets" :key="i">{{ b }}</li>
                       </ul>
                     </div>
                   </div>
