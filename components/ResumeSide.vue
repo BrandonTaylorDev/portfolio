@@ -1,4 +1,8 @@
 <script setup lang="ts">
+  import type { Theme } from '~/types/Theme';
+
+  const theme: Ref<Theme> = ref('dark');
+
   const { data: jobs } = await useAsyncData('jobs', () =>
     queryCollection('jobs')
       .order('start', 'DESC')   // newest first
@@ -22,19 +26,41 @@
       // .order('tags', 'DESC')   // newest first
       .all()
   );
+
+  const switchTheme = () => {
+    if (theme.value === 'light')
+      return theme.value = 'dark';
+    theme.value = 'light';
+  }
 </script>
 
 <template>
-  <rail-side class="bg-zinc-200 text-zinc-900">
+  <rail-side :class="[
+    theme === 'light'
+      ? 'bg-zinc-200 text-zinc-900'
+      : 'bg-zinc-900 text-zinc-100'
+  ]">
+
+    <theme-changer :current-theme="theme" @switch-theme="switchTheme" />
 
     <!-- padding helper. -->
     <div class="w-full ps-8 pe-4">
 
       <!-- shadow wrapper to simulate page design -->
-      <div class="max-w-7xl mx-auto shadow-[0_0_1rem_rgb(0_0_0_/_25%)] bg-zinc-50">
+      <div :class="[
+        'max-w-7xl mx-auto shadow-[0_0_1rem_rgb(0_0_0_/_25%)]',
+        theme === 'light'
+          ? 'bg-zinc-50'
+          : 'bg-zinc-900'
+      ]">
 
         <!-- header -->
-        <header class="h-64 bg-zinc-100 flex flex-col md:flex-row items-center">
+        <header :class="[
+          'h-64  flex flex-col md:flex-row items-center',
+          theme === 'light'
+            ? 'bg-zinc-100'
+            : 'bg-zinc-800'
+        ]">
           <!-- name/title (2/3) -->
           <div class="h-full flex flex-col justify-center items-center md:basis-2/3 md:flex-none md:border-r-2 border-zinc-200">
             <div class="flex flex-col gap-4">
