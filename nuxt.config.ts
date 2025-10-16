@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-07-18',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', 'nuxt-security', 'nuxt-icons', '@nuxt/content'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', 'nuxt-security', '@nuxt/content', '@nuxt/icon'],
   security: {
     nonce: true, // add nonce to every <script>/<style>/<link> the app emits
     headers: {

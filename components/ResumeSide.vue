@@ -1,7 +1,10 @@
 <script setup lang="ts">
-  import type { Theme } from '~/types/Theme';
 
-  const theme: Ref<Theme> = ref('dark');
+  type Props = {
+    showResume?: boolean
+  }
+  withDefaults(defineProps<Props>(), { showResume: false });
+  defineEmits([ 'updateShowResume' ]);
 
   const { data: jobs } = await useAsyncData('jobs', () =>
     queryCollection('jobs')
@@ -26,43 +29,31 @@
       // .order('tags', 'DESC')   // newest first
       .all()
   );
-
-  const switchTheme = () => {
-    if (theme.value === 'light')
-      return theme.value = 'dark';
-    theme.value = 'light';
-  }
 </script>
 
 <template>
-  <rail-side :class="[
-    theme === 'light'
-      ? 'bg-zinc-200 text-zinc-900'
-      : 'bg-zinc-900 text-zinc-100'
-  ]">
-
-    <theme-changer :current-theme="theme" @switch-theme="switchTheme" />
+  <rail-side class="relative bg-zinc-200 text-zinc-900">
 
     <!-- padding helper. -->
     <div class="w-full ps-8 pe-4">
 
       <!-- shadow wrapper to simulate page design -->
-      <div :class="[
-        'max-w-7xl mx-auto shadow-[0_0_1rem_rgb(0_0_0_/_25%)]',
-        theme === 'light'
-          ? 'bg-zinc-50'
-          : 'bg-zinc-900'
-      ]">
+      <div class="relative max-w-7xl mx-auto shadow-[0_0_1rem_rgb(0_0_0_/_25%)] bg-zinc-50">
+
+        <!-- go back button -->
+        <button
+          class="absolute top-4 right-4 p-2 flex justify-center items-center text-zinc-900 rounded-full"
+          @click="$emit('updateShowResume', !showResume)"
+        >
+          <icon name="mdi:close" size="1.75rem" />
+        </button>
 
         <!-- header -->
-        <header :class="[
-          'h-64  flex flex-col md:flex-row items-center',
-          theme === 'light'
-            ? 'bg-zinc-100'
-            : 'bg-zinc-800'
-        ]">
+        <header class="h-64 flex flex-col md:flex-row items-center bg-zinc-100">
+
           <!-- name/title (2/3) -->
           <div class="h-full flex flex-col justify-center items-center md:basis-2/3 md:flex-none md:border-r-2 border-zinc-200">
+
             <div class="flex flex-col gap-4">
               <h1 class="uppercase text-3xl md:text-4xl lg:text-6xl max-w-[8ch] tracking-[0.5rem] text-zinc-600 font-thin">
                 Brandon Taylor
@@ -91,7 +82,7 @@
         </header>
 
         <!-- resume -->
-        <section>
+        <section class="bg-zinc-50">
 
           <!-- columns -->
           <div class="flex flex-col md:flex-row">

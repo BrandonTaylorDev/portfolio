@@ -1,8 +1,14 @@
 <script setup lang="ts">
-  const showResume = inject<Ref<boolean>>('showResume', ref(false));
+
+  type Props = {
+    showResume?: boolean
+  }
+  const props = withDefaults(defineProps<Props>(), {
+    showResume: false
+  });
 
   let translateClass: ComputedRef<string> = computed(() => 
-    showResume?.value === false
+    props.showResume === false
       ? 'translate-x-0'
       : '-translate-x-1/2'
   );

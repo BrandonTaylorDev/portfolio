@@ -11,12 +11,12 @@
   },
   "dependencies": {
     "@nuxt/content": "^3.7.1",
+    "@nuxt/icon": "^2.0.0",
     "@nuxt/image": "^1.9.0",
     "@nuxtjs/tailwindcss": "^6.13.1",
     "@vueuse/core": "^12.7.0",
     "better-sqlite3": "^12.4.1",
     "nuxt": "^4.1.2",
-    "nuxt-icons": "^4.0.0",
     "nuxt-security": "^2.1.5",
     "vue": "^3.4.19",
     "vue-router": "^4.5.0"

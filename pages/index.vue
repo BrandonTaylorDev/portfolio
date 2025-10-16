@@ -1,17 +1,13 @@
 <script setup lang="ts">
-  const showResume = ref(true);
-  provide('showResume', showResume);
+
+  const showResume = ref(false);
 </script>
 
 <template>
   <div>
-    <rail>
-      <pretty-side />
-      <resume-side />
+    <rail :show-resume="showResume">
+      <pretty-side :show-resume="showResume" @update-show-resume="(val: boolean) => showResume = val" />
+      <resume-side :show-resume="showResume" @update-show-resume="(val: boolean) => showResume = val" />
     </rail>
-
-    <rail-control
-      @click="showResume = !showResume"
-    />
   </div>
 </template>
