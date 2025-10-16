@@ -9,49 +9,101 @@
 
 <template>
   <rail-side class="bg-zinc-900 text-zinc-100">
-    <header class="flex flex-row-reverse w-full max-w-7xl mx-auto">
-
-      <!-- portrait -->
-      <div class="flex-1">
-        <div>
-          <nuxt-img
-            class="rounded-full"
-            src="/portfolio.webp"
-            alt="Me"
-          />
-        </div>
-      </div>
-
-      <!-- blurb -->
-      <div class="flex-1 flex flex-col justify-center items-center gap-4">
-        <div class="flex flex-col items-start">
-          <span class="text-4xl md:text-[2.8rem] md:leading-[3.25rem] lg:text-[3.5rem] lg:leading-[3.75rem] xl:text-[4rem] xl:text-[4.25rem]">
-            Hi, I'm <span class="text-teal-500">Brandon</span> Taylor
-          </span>
+    <div class="min-h-screen flex flex-col items-center justify-center px-6 py-12">
+      
+      <div class="max-w-4xl mx-auto text-center space-y-8">
+        
+        <div class="space-y-2 animate-fade-in-left">
+          <h2 class="text-5xl md:text-6xl lg:text-7xl font-light text-zinc-400 tracking-wide">
+            Hi!<span class="animate-shaka inline-block">🤙</span>
+          </h2>
         </div>
 
-        <div>
-          <span>
-             Fueled by <span class="coffee-cursor">coffee</span>, driven by ambition. 
-          </span>
+        <div class="space-y-4 animate-fade-in-left animation-delay-100">
+          <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight">
+             I'm <span class="text-teal-500">Brandon</span> Taylor
+          </h1>
         </div>
 
-        <div class="">
-          <button class="flex justify-center items-center px-4 py-2 rounded-full cursor-pointer text-zinc-50" @click="$emit('updateShowResume', !showResume)">
-            <icon name="mdi:document" />
-            
-            <span>
-              Resume
-            </span>
+        <div class="space-y-4 animate-fade-in-left animation-delay-200">
+          <p class="text-xl md:text-2xl lg:text-3xl font-light text-zinc-300 max-w-3xl mx-auto leading-relaxed">
+            Fueled by <span class="coffee-cursor">coffee</span>, driven by ambition.
+          </p>
+        </div>
+
+        <div class="pt-8 animate-fade-in-left animation-delay-300">
+          <button 
+            class="inline-flex items-center gap-3 px-8 py-4 bg-teal-600 hover:bg-teal-500 text-zinc-100 rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            @click="$emit('updateShowResume', !showResume)"
+          >
+            <icon name="mdi:document" size="1.25rem" />
+            <span>View Resume</span>
           </button>
         </div>
       </div>
-    </header>
+
+      <div class="absolute bottom-8 right-8 opacity-20">
+        <nuxt-img
+          class="rounded-full w-24 h-24 md:w-32 md:h-32"
+          src="/portfolio.webp"
+          alt="Brandon Taylor"
+        />
+      </div>
+
+    </div>
   </rail-side>
 </template>
 
 <style scoped>
   .coffee-cursor {
     cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>☕</text></svg>") 16 0, auto;
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes shaka {
+    0%, 100% {
+      transform: rotate(0deg) scale(1);
+    }
+    25% {
+      transform: rotate(-15deg) scale(1.1);
+    }
+    50% {
+      transform: rotate(10deg) scale(1.05);
+    }
+    75% {
+      transform: rotate(-5deg) scale(1.02);
+    }
+  }
+
+  .animate-fade-in-left {
+    animation: fadeInLeft 0.25s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-shaka {
+    animation: shaka 1.2s ease-in-out 0.8s forwards;
+    transform-origin: center bottom;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 0.1s;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 0.3s;
   }
 </style>
