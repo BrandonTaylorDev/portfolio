@@ -9,47 +9,53 @@
 
 <template>
   <rail-side class="bg-zinc-900 text-zinc-100">
-    <div class="min-h-screen flex flex-col items-center justify-center px-6 py-12">
+    <div class="h-full flex flex-col items-center justify-center px-6 py-12">
       
-      <div class="max-w-4xl mx-auto text-center space-y-8">
+      <!-- Main hero content with portrait -->
+      <div class="max-w-8xl mx-auto grid grid-cols-1 lg:grid-cols-4 items-stretch">
         
-        <div class="space-y-2 animate-fade-in-left">
-          <h2 class="text-5xl md:text-6xl lg:text-7xl font-light text-zinc-400 tracking-wide">
-            Hi!<span class="animate-shaka inline-block">🤙</span>
-          </h2>
-        </div>
+        <!-- Hero text - center/left -->
+        <div class="lg:col-span-2 flex flex-col justify-center items-center pl-8">
+          <div class="text-center lg:text-start space-y-4">
+            <div class="space-y-2 animate-fade-in-left">
+              <h2 class="text-5xl md:text-6xl lg:text-7xl font-light text-zinc-400 tracking-wide">
+                Hi!<span class="animate-shaka inline-block">🤙</span>
+              </h2>
+            </div>
 
-        <div class="space-y-4 animate-fade-in-left animation-delay-100">
-          <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight">
-             I'm <span class="text-teal-500">Brandon</span> Taylor
-          </h1>
-        </div>
+            <div class="space-y-4 animate-fade-in-left animation-delay-100">
+              <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight">
+                 I'm <span class="text-teal-500">Brandon</span> Taylor
+              </h1>
+            </div>
 
-        <div class="space-y-4 animate-fade-in-left animation-delay-200">
-          <p class="text-xl md:text-2xl lg:text-3xl font-light text-zinc-300 max-w-3xl mx-auto leading-relaxed">
-            Fueled by <span class="coffee-cursor">coffee</span>, driven by ambition.
-          </p>
-        </div>
+            <div class="space-y-4 animate-fade-in-left animation-delay-200">
+              <p class="text-xl md:text-2xl lg:text-3xl font-light text-zinc-300 max-w-3xl mx-auto lg:mx-0 leading-relaxed">
+                Fueled by <span class="coffee-cursor">coffee</span>, driven by ambition.
+              </p>
+            </div>
 
-        <div class="pt-8 animate-fade-in-left animation-delay-300">
-          <button 
-            class="inline-flex items-center gap-3 px-8 py-4 bg-teal-600 hover:bg-teal-500 text-zinc-100 rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-            @click="$emit('updateShowResume', !showResume)"
-          >
-            <icon name="mdi:document" size="1.25rem" />
-            <span>View Resume</span>
-          </button>
+            <div class="pt-8 animate-fade-in-left animation-delay-300">
+              <button 
+                class="inline-flex items-center gap-3 px-8 py-4 bg-teal-600 hover:bg-teal-500 text-zinc-100 rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                @click="$emit('updateShowResume', !showResume)"
+              >
+                <icon name="mdi:document" size="1.25rem" />
+                <span>View Resume</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Portrait - prominent on right -->
+        <div class="lg:col-span-2 flex justify-center lg:justify-center items-center animate-fade-in-left animation-delay-400">
+          <nuxt-img
+            class="rounded-full w-48 h-48 md:w-64 md:h-64 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] shadow-2xl border-4 border-zinc-700"
+            src="/portfolio.webp"
+            alt="Brandon Taylor"
+          />
         </div>
       </div>
-
-      <div class="absolute bottom-8 right-8 opacity-20">
-        <nuxt-img
-          class="rounded-full w-24 h-24 md:w-32 md:h-32"
-          src="/portfolio.webp"
-          alt="Brandon Taylor"
-        />
-      </div>
-
     </div>
   </rail-side>
 </template>
@@ -91,7 +97,7 @@
   }
 
   .animate-shaka {
-    animation: shaka 1.2s ease-in-out 0.8s forwards;
+    animation: shaka 0.6s ease-in-out 0.8s forwards;
     transform-origin: center bottom;
   }
 
@@ -105,5 +111,9 @@
 
   .animation-delay-300 {
     animation-delay: 0.3s;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
   }
 </style>
