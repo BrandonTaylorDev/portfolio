@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative max-w-[32rem] mx-auto h-48
+    class="relative max-w-[40rem] mx-auto h-48
            flex items-center justify-center gap-4 px-6
            text-center transform-gpu will-change-transform
            animate-fade-in-bottom [animation-delay:600ms]"
