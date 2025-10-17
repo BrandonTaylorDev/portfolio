@@ -13,17 +13,17 @@
     <div class="max-w-5xl mx-auto flex flex-row items-center justify-center">
       
       <!-- Hero text - center/left -->
-      <div class="flex flex-col items-center lg:items-end text-center lg:text-right duration-300 ease-in-out">
+      <div class="flex flex-col items-center lg:items-end text-center lg:text-right duration-500 ease-in-out max-w-2xl lg:max-w-full">
         <div class="text-left space-y-4 w-fit">
 
           <!-- Greeting & Name -->
           <div>
-            <h2 class="animate-fade-in-left text-3xl font-light text-zinc-400 tracking-wide">
+            <h2 class="animate-fade-in-left text-3xl xl:text-4xl font-light text-zinc-400 tracking-wide transition-[font-size]">
               Hi!<span class="animate-shaka animation-delay-1.5s inline-block">🤙</span>
             </h2>
 
             <h1 class="animate-fade-in-left animation-delay-100 text-6xl xl:text-7xl font-bold transition-[font-size]">
-                I'm <span class="text-teal-500">Brandon</span> Taylor
+              I'm <span class="text-teal-500">Brandon</span> <span class="initial">Taylor</span>
             </h1>
           </div>
 
@@ -48,9 +48,9 @@
       </div>
       
       <!-- Portrait - prominent on right -->
-      <div class="hidden lg:inline-block w-72 flex justify-center items-center animate-fade-in animation-delay-500 duration-300 ease-in-out">
+      <div class="hidden lg:inline-block w-96 flex justify-center items-center animate-fade-in animation-delay-500 duration-300 ease-in-out">
         <img
-          class="rounded-full h-auto w-64 xl:w-96 shadow-2xl border-4 border-zinc-700 transition-[width,height]"
+          class="rounded-full h-auto w-full shadow-2xl border-4 border-zinc-700 transition-[width,height]"
           src="/portfolio.webp"
           alt="Brandon Taylor"
         />
