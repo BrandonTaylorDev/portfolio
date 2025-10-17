@@ -12,6 +12,12 @@
       :show-resume="showResume"
       @update-show-resume="(val: boolean) => $emit('updateShowResume', val)"
     />
+
+    <!-- Technical skills & expertise section -->
+    <portfolio-skills />
+    
+    <!-- Expertise section -->
+    <portfolio-expertise />
   </rail-side>
 </template>
 

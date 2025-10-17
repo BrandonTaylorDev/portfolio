@@ -47,7 +47,7 @@
 
       <header class="h-64 pt-8 lg:pt-0 flex flex-col md:flex-row items-center bg-zinc-100">
         <div class="h-full flex flex-col justify-center items-center md:basis-2/3 md:flex-none md:border-r-2 border-zinc-200 px-4">
-          <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-4 items-center text-center md:items-start md:text-left">
             <h1 class="uppercase text-3xl md:text-4xl lg:text-6xl tracking-[0.5rem] text-zinc-600 font-thin">
               Brandon Taylor
             </h1>
