@@ -19,7 +19,7 @@
           <div class="text-left space-y-4 w-fit">
             <div class="space-y-2 animate-fade-in-left">
               <h2 class="text-5xl md:text-6xl lg:text-7xl font-light text-zinc-400 tracking-wide">
-                Hi!<span class="emoji-shaka inline-block">🤙</span>
+                Hi!<span class="animate-shaka inline-block">🤙</span>
               </h2>
             </div>
 

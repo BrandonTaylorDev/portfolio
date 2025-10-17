@@ -15,8 +15,10 @@ export default defineNuxtConfig({
         ],
         // 'script-src-elem': ["'strict-dynamic'", "'nonce-{{nonce}}'"],
 
-        // Keep attributes locked down (blocks onClick=..., etc.)
-        'script-src-attr': ["'none'"],
+        // Keep attributes locked down (blocks onClick=..., etc.) - allow with nonce
+        'script-src-attr': process.env.NODE_ENV === 'development'
+          ? ["'unsafe-inline'"]
+          : ["'self'", "'nonce-{{nonce}}'"],
 
         // Styles – keep inline allowed unless ready to hash/nonce all of them
         'style-src': ["'self'", 'https:', "'unsafe-inline'"],
