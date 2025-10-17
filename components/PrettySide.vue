@@ -12,14 +12,14 @@
     <div class="h-full flex flex-col items-center justify-center px-6 py-12">
       
       <!-- Main hero content with portrait -->
-      <div class="max-w-8xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-center gap-8 lg:gap-16">
+      <div class="max-w-8xl mx-auto flex flex-row items-center justify-center gap-8 lg:gap-16">
         
         <!-- Hero text - center/left -->
         <div class="flex flex-col items-center lg:items-end text-center lg:text-right">
           <div class="text-left space-y-4 w-fit">
             <div class="space-y-2 animate-fade-in-left">
               <h2 class="text-5xl md:text-6xl lg:text-7xl font-light text-zinc-400 tracking-wide">
-                Hi!<span class="animate-shaka inline-block">🤙</span>
+                Hi!<span class="emoji-shaka inline-block">🤙</span>
               </h2>
             </div>
 
@@ -40,7 +40,7 @@
                 class="inline-flex items-center gap-3 px-8 py-4 bg-teal-600 hover:bg-teal-500 text-zinc-100 rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                 @click="$emit('updateShowResume', !showResume)"
               >
-                <icon name="mdi:document" size="1.25rem" />
+                <icon name="mdi:document" size="1.75rem" />
                 <span>View Resume</span>
               </button>
             </div>
@@ -48,7 +48,7 @@
         </div>
         
         <!-- Portrait - prominent on right -->
-        <div class="flex justify-center items-center animate-fade-in-left animation-delay-400">
+        <div class="hidden lg:inline-block flex justify-center items-center animate-fade-in-left animation-delay-400">
           <nuxt-img
             class="rounded-full w-48 h-48 md:w-64 md:h-64 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] shadow-2xl border-4 border-zinc-700"
             src="/portfolio.webp"
@@ -76,6 +76,23 @@
     }
   }
 
+  /* played when page loads. */
+  @keyframes shaka-in {
+    0%, 100% {
+      transform: rotate(0deg) scale(1);
+    }
+    25% {
+      transform: rotate(-15deg) scale(1.1);
+    }
+    50% {
+      transform: rotate(10deg) scale(1.05);
+    }
+    75% {
+      transform: rotate(-5deg) scale(1.02);
+    }
+  }
+
+  /* played on hover */
   @keyframes shaka {
     0%, 100% {
       transform: rotate(0deg) scale(1);
@@ -96,10 +113,8 @@
     opacity: 0;
   }
 
-  .animate-shaka {
-    animation: shaka 0.6s ease-in-out 0.8s forwards;
-    transform-origin: center bottom;
-  }
+  .animate-shaka { animation: shaka-in 0.6s ease-in-out 0.8s both; }
+  .animate-shaka:hover { animation: shaka 0.6s ease-in-out both; }
 
   .animation-delay-100 {
     animation-delay: 0.1s;
