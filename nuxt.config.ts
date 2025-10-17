@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-07-18',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', 'nuxt-security', '@nuxt/content', '@nuxt/icon'],
+  modules: ['@nuxtjs/tailwindcss', 'nuxt-security', '@nuxt/content', '@nuxt/icon'],
   security: {
     nonce: true, // add nonce to every <script>/<style>/<link> the app emits
     headers: {
@@ -16,9 +16,10 @@ export default defineNuxtConfig({
         // 'script-src-elem': ["'strict-dynamic'", "'nonce-{{nonce}}'"],
 
         // Keep attributes locked down (blocks onClick=..., etc.) - allow with nonce
-        'script-src-attr': process.env.NODE_ENV === 'development'
-          ? ["'unsafe-inline'"]
-          : ["'self'", "'nonce-{{nonce}}'"],
+        'script-src-attr': [
+          "'self'", 
+          "'nonce-{{nonce}}'"
+        ],
 
         // Styles – keep inline allowed unless ready to hash/nonce all of them
         'style-src': ["'self'", 'https:', "'unsafe-inline'"],
