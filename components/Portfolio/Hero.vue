@@ -19,7 +19,7 @@
           <!-- Greeting & Name -->
           <div>
             <h2 class="animate-fade-in-left text-3xl xl:text-4xl font-light text-zinc-400 tracking-wide transition-[font-size]">
-              Hi!<span class="animate-shaka animation-delay-1.5s inline-block">🤙</span>
+              Hi! <span class="animate-shaka animation-delay-1.5s inline-block">🤙</span>
             </h2>
 
             <h1 class="animate-fade-in-left animation-delay-100 text-6xl xl:text-7xl font-bold transition-[font-size]">
