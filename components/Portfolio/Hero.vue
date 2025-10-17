@@ -14,7 +14,7 @@
       
       <!-- Hero text - center/left -->
       <div class="flex flex-col items-center lg:items-end text-center lg:text-right duration-500 ease-in-out max-w-2xl lg:max-w-full">
-        <div class="text-left space-y-4 w-fit">
+        <div class="space-y-4 lg:text-start">
 
           <!-- Greeting & Name -->
           <div>
