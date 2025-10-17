@@ -1,10 +1,42 @@
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted, nextTick, type ComponentPublicInstance, type VNodeRef } from 'vue'
+
+const cardRefs = ref<HTMLElement[]>([])
+let observer: IntersectionObserver
+
+const setCardRef = (i: number): VNodeRef => (el, _refs) => {
+  if (el instanceof HTMLElement) cardRefs.value[i] = el
+}
+
+const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+  for (const entry of entries) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate-fade-in-bottom')
+      entry.target.classList.remove('opacity-0')
+      observer.unobserve(entry.target)
+    }
+  }
+}
+
+onMounted(async () => {
+  await nextTick()
+  observer = new IntersectionObserver(handleIntersection, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' })
+  cardRefs.value.forEach(el => el && observer.observe(el))
+})
+
+onUnmounted(() => observer?.disconnect())
+</script>
+
 <template>
   <section class="max-w-5xl mx-auto px-6 py-12">
     <h2 class="text-3xl font-bold text-center mb-12 text-teal-400">Expertise</h2>
     
     <div class="grid gap-8 md:grid-cols-3">
       <!-- Cybersecurity Card -->
-      <div class="relative bg-zinc-800 rounded-lg p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+      <div 
+        :ref="setCardRef(0)"
+        class="relative bg-zinc-800 rounded-lg p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 animation-delay-200 opacity-0"
+      >
         <!-- Hexagon on top border -->
         <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
           <div class="hexagon bg-teal-600 flex items-center justify-center">
@@ -21,7 +53,10 @@
       </div>
 
       <!-- Platform Engineering Card -->
-      <div class="relative bg-zinc-800 rounded-lg p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+      <div 
+        :ref="setCardRef(1)"
+        class="relative bg-zinc-800 rounded-lg p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 animation-delay-300 opacity-0"
+      >
         <!-- Hexagon on top border -->
         <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
           <div class="hexagon bg-teal-600 flex items-center justify-center">
@@ -38,7 +73,10 @@
       </div>
 
       <!-- Systems Engineering Card -->
-      <div class="relative bg-zinc-800 rounded-lg p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+      <div 
+        :ref="setCardRef(2)"
+        class="relative bg-zinc-800 rounded-lg p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 animation-delay-400 opacity-0"
+      >
         <!-- Hexagon on top border -->
         <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
           <div class="hexagon bg-teal-600 flex items-center justify-center">

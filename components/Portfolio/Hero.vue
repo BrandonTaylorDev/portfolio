@@ -7,7 +7,7 @@
 </script>
 
 <template>
-  <div class="h-full flex flex-col items-center justify-center px-6">
+  <div class="h-3/4 flex flex-col items-center justify-center px-6">
 
     <!-- Main hero content with portrait -->
     <div class="max-w-5xl mx-auto flex flex-row items-center justify-center">
@@ -56,8 +56,6 @@
         />
       </div>
     </div>
-
-    <portfolio-tagline class="pt-16" />
   </div>
 </template>
 
