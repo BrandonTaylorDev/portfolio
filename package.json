@@ -19,5 +19,8 @@
     "nuxt-security": "^2.1.5",
     "vue": "^3.4.19",
     "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@iconify-json/mdi": "^1.2.3"
   }
 }
