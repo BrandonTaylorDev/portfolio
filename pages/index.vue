@@ -51,18 +51,18 @@
   }
 
   .animate-fade-in {
-    animation: fadeIn 0.25s ease-out forwards;
     opacity: 0;
+    animation: fadeIn 0.25s ease-out both;
   }
 
   .animate-fade-in-left {
-    animation: fadeInLeft 0.25s ease-out forwards;
     opacity: 0;
+    animation: fadeInLeft 0.25s ease-out both;
   }
 
   .animate-fade-in-bottom {
-    animation: fadeInBottom 0.25s ease-out forwards;
     opacity: 0;
+    animation: fadeInBottom 0.25s ease-out both;
   }
 
   .animation-delay-100 {

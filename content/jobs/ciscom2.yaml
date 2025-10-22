@@ -1,7 +1,10 @@
-title: Professional Services / Cloud & Security Engineer
+title: Professional Services / Cloud & Security Project Engineer
 company: CisCom Solutions
 start: 2025-07-01
 end: null # null = Present
 bullets:
-  - this is a job description bullet point.
-  - another bullet point
+  - Led cloud migration projects, transitioning clients to Microsoft Azure & Entra ID.
+  - Implemented Zero Trust security models to enhance organizational security postures.
+  - Conducted security audits and compliance assessments for various industries.
+  - Operated closely with clients to identify pain points, design solutions, and ensure a successful deployment.
+  - Delivered training sessions and documentation to empower local IT teams.

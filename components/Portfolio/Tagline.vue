@@ -1,12 +1,13 @@
+
 <template>
   <div
-    class="relative max-w-[40rem] mx-auto h-48
-           flex items-center justify-center gap-4 px-6
+    class="relative max-w-[40rem] mx-auto h-96
+           flex gap-4 px-6
            text-center transform-gpu will-change-transform
            animate-fade-in-bottom [animation-delay:600ms]"
   >
     <!-- Background decoration -->
-    <div class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-5">
+    <div class="pointer-events-none absolute inset-0 flex justify-center opacity-5 absolute top-0 -translate-y-10">
       <div class="w-32 h-32 border-4 border-teal-400 rounded-full rotate-45"></div>
     </div>
 
@@ -32,23 +33,39 @@
 </template>
 
 <style scoped>
-.coffee-cursor {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>☕</text></svg>") 16 0, auto;
-  position: relative;
-}
-.coffee-cursor::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #14b8a6, transparent);
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.3s ease;
-}
-.coffee-cursor:hover::after {
-  transform: scaleX(1);
-}
+  /* Local animation to avoid flash from global stylesheet load order */
+  @keyframes fadeInBottom {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-bottom {
+    animation: fadeInBottom 0.50s ease-out both;
+  }
+
+  .coffee-cursor {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>☕</text></svg>") 16 0, auto;
+    position: relative;
+  }
+  .coffee-cursor::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #14b8a6, transparent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+  .coffee-cursor:hover::after {
+    transform: scaleX(1);
+  }
 </style>

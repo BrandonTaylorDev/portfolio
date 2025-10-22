@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+  const { formatLocalMonthYear, parseLocalDate } = useDate()
+
   type Props = {
     showResume?: boolean
   }
@@ -30,10 +32,12 @@
       // .order('tags', 'DESC')   // newest first
       .all()
   );
+
+
 </script>
 
 <template>
-  <div class="w-full ps-8 pe-4">
+  <div class="w-full px-4">
     <div class="relative max-w-7xl mx-auto shadow-[0_0_1rem_rgb(0_0_0_/_25%)] bg-zinc-50">
       <div class="absolute top-4 left-4">
         <button
@@ -131,8 +135,8 @@
 
                   <div>
                     <span class="text-sm font-thin">
-                      <time :datetime="job.start">{{ new Date(job.start).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) }}</time>
-                      &ndash; <time :datetimte="job.end ?? 'Present'">{{ job.end ? new Date(job.end).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) : 'Present' }}</time>
+                        <time :datetime="job.start">{{ formatLocalMonthYear(job.start) }}</time>
+                        &ndash; <time :datetimte="job.end ?? 'Present'">{{ job.end ? formatLocalMonthYear(job.end) : 'Present' }}</time>
                     </span>
                   </div>
 
@@ -171,8 +175,8 @@
 
                 <div>
                   <span class="text-zinc-700 whitespace-nowrap tabular-nums font-thin text-sm">
-                    <time :datetime="edu.start">{{ new Date(edu.start).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) }}</time>
-                    &ndash; <time :datetime="edu.end ?? 'Present'">{{ edu.end ? new Date(edu.end).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) : 'Present' }}</time>
+                      <time :datetime="edu.start">{{ formatLocalMonthYear(edu.start) }}</time>
+                      &ndash; <time :datetime="edu.end ?? 'Present'">{{ edu.end ? formatLocalMonthYear(edu.end) : 'Present' }}</time>
                   </span>
                 </div>
 

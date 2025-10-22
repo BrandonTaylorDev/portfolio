@@ -3,5 +3,8 @@ company: CisCom Solutions
 start: 2025-02-01
 end: 2025-07-01 # null = Present
 bullets:
-  - this is a job description bullet point.
-  - another bullet point
+  - Ensured penetration testing and vulnerability assessment continuity for client infrastructure.
+  - BCDR planning and implementation for small to medium-sized businesses.
+  - Managed and maintained virtualized environments using VMware and Hyper-V/Failover Clustering.
+  - Configured and supported network infrastructure, including firewalls, switches, and routers.
+  - Provided advanced troubleshooting and support for Windows Server environments.
