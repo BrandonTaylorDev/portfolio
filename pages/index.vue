@@ -1,5 +1,31 @@
 <script setup lang="ts">
   const showResume = ref(false);
+  useSeoMeta({
+    title: 'Brandon Taylor | brandontaylor.dev',
+    description: 'Brandon Taylor - Platform Engineer - I build resilient infrastructure, scalable platforms, and secure systems.',
+    ogTitle: 'Brandon Taylor | brandontaylor.dev',
+    ogDescription: 'Brandon Taylor - Platform Engineer - I build resilient infrastructure, scalable platforms, and secure systems.',
+    ogImage: '/portfolio.webp',
+    ogUrl: 'https://www.brandontaylor.dev'
+  });
+
+  useHead({
+    script: [
+      {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: 'Brandon Taylor',
+          url: 'https://www.brandontaylor.dev',
+          jobTitle: 'Platform Engineer',
+          description: 'Brandon Taylor - Platform Engineer - I build resilient infrastructure, scalable platforms, and secure systems.',
+          image: 'https://www.brandontaylor.dev/portfolio.webp'
+          // sameAs: ['https://github.com/your-username', 'https://www.linkedin.com/in/your-profile']
+        })
+      }
+    ]
+  })
 </script>
 
 <template>
