@@ -1,9 +1,11 @@
 <script setup lang="ts">
-  useHead({
+  useSeoMeta({
     title: 'Brandon Taylor | brandontaylor.dev',
-    bodyAttrs: {
-      class: 'bg-zinc-900 text-zinc-100'
-    }
+    description: 'Brandon Taylor - Platform Engineer - I build resilient infrastructure, scalable platforms, and secure systems.',
+    ogTitle: 'Brandon Taylor | brandontaylor.dev',
+    ogDescription: 'Brandon Taylor - Platform Engineer - I build resilient infrastructure, scalable platforms, and secure systems.',
+    ogImage: '/portfolio.webp',
+    ogUrl: 'https://www.brandontaylor.dev'
   })
 </script>
 
