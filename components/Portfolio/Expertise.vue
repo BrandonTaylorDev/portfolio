@@ -89,7 +89,7 @@
 </script>
 
 <template>
-  <section class="relative overflow-hidden w-full mt-64">
+  <section class="relative overflow-hidden w-full mt-64 py-32">
     <circuit-background :opacity="30" />
     <div class="max-w-5xl mx-auto px-6 py-12">
       <h2 ref="titleRef" class="text-3xl font-bold text-center mb-12 text-teal-400 opacity-0">Core Engineering & Technical Expertise</h2>

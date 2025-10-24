@@ -7,7 +7,7 @@
 </script>
 
 <template>
-  <section class="h-full flex flex-col items-center justify-center px-6 relative overflow-hidden gap-64 md:gap-32">
+  <section class="h-full flex flex-col items-center justify-center px-6 relative overflow-hidden gap-32 md:gap-16 py-32">
 
     <!-- Hexagon pattern background with radial fade -->
     <hexagon-background :opacity="15" fade-type="radial" />

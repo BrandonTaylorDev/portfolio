@@ -34,9 +34,9 @@ const tools = computed(() => {
 </script>
 
 <template>
-  <section class="relative overflow-hidden w-full h-1/2 flex items-center justify-center mt-64">
+  <section class="relative overflow-hidden w-full flex items-center justify-center mt-64 py-32">
     <!-- <energy-flow-background :opacity="20" fade-type="linear" primary-color="#14b8a6" secondary-color="#0891b2" /> -->
-     <particle-field-background :opacity="50" fade-type="radial" primary-color="#14b8a6" secondary-color="#0891b2" :node-count="100" :connection-distance="150" :animation-speed="2" />
+     <particle-field-background :opacity="50" fade-type="radial" primary-color="#14b8a6" secondary-color="#0891b2" :node-count="100" :connection-distance="150" :animation-speed="1" />
 
     <div class="max-w-5xl mx-auto px-6 py-12">
       <h2 class="text-3xl font-bold text-center mb-8 text-teal-400">Tool Stack</h2>
