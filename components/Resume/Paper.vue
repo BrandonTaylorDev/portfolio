@@ -38,10 +38,10 @@
 
 <template>
   <div class="w-full px-4">
-    <div class="relative max-w-7xl mx-auto shadow-[0_0_1rem_rgb(0_0_0_/_25%)] bg-zinc-50">
+    <div class="relative max-w-7xl mx-auto shadow-[0_0_1rem_rgb(0_0_0_/_25%)] bg-zinc-50 dark:bg-zinc-900 transform-colors duration-500">
       <div class="absolute top-4 left-4">
         <button
-          class="flex items-center gap-2 px-3 py-1.5 bg-zinc-600 hover:bg-zinc-700 text-zinc-100 rounded-md text-sm font-medium transition-colors duration-200"
+          class="flex items-center gap-2 px-3 py-1.5 bg-zinc-600 hover:bg-zinc-700 text-zinc-100 rounded-md text-sm font-medium transition-colors duration-200 transform-colors duration-500"
           @click="$emit('updateShowResume', !showResume)"
         >
           <icon name="mdi:arrow-left" size="1rem" />
@@ -49,13 +49,13 @@
         </button>
       </div>
 
-      <header class="h-64 pt-8 lg:pt-0 flex flex-col md:flex-row items-center bg-zinc-100">
-        <div class="h-full flex flex-col justify-center items-center md:basis-2/3 md:flex-none md:border-r-2 border-zinc-200 px-4">
+      <header class="h-64 pt-8 lg:pt-0 flex flex-col md:flex-row items-center bg-zinc-100 dark:bg-zinc-800 transform-colors duration-500">
+        <div class="h-full flex flex-col justify-center items-center md:basis-2/3 md:flex-none md:border-r-2 border-zinc-200 dark:border-zinc-600 px-4 transform-colors duration-500">
           <div class="flex flex-col gap-4 items-center text-center md:items-start md:text-left">
-            <h1 class="uppercase text-3xl md:text-4xl lg:text-6xl tracking-[0.5rem] text-zinc-600 font-thin">
+            <h1 class="uppercase text-3xl md:text-4xl lg:text-6xl tracking-[0.5rem] text-zinc-600 dark:text-zinc-300 font-thin">
               Brandon Taylor
             </h1>
-            <p class="uppercase text-[0.85rem] md:text-[0.9rem] lg:text-[1.25rem] tracking-[0.75rem] text-zinc-500">
+            <p class="uppercase text-[0.85rem] md:text-[0.9rem] lg:text-[1.25rem] tracking-[0.75rem] text-zinc-500 dark:text-zinc-400">
               Platform Engineer
             </p>
           </div>
@@ -101,15 +101,15 @@
         </div>
       </header>
 
-      <section class="bg-zinc-50">
+      <section>
         <div class="flex flex-col md:flex-row">
-          <div class="flex flex-col md:basis-2/3 md:border-r-2 md:border-zinc-200">
-            <div class="border-b-2 border-zinc-200 w-full text-center py-4">
+          <div class="flex flex-col md:basis-2/3 md:border-r-2 md:border-zinc-200 md:dark:border-zinc-600 transition-colors duration-500">
+            <div class="border-b-2 border-zinc-200 dark:border-zinc-600 w-full text-center py-4 transform-colors duration-500">
               <h2 class="text-2xl uppercase tracking-[0.5rem]">Work Experience</h2>
             </div>
 
             <section class="relative w-full p-4">
-              <div class="absolute top-8 left-8 top-0 h-[calc(100%-4rem)] w-px bg-gray-400"></div>
+              <div class="absolute top-8 left-8 top-0 h-[calc(100%-4rem)] w-px bg-gray-400 transition-colors duration-500"></div>
 
               <article
                 class="relative pl-8 pb-8 last:pb-0"
@@ -122,7 +122,7 @@
 
                 <div>
                   <div>
-                    <span class="font-bold text-zinc-700">
+                    <span class="font-bold text-zinc-700 dark:text-zinc-200">
                       {{ job.title }}
                     </span>
                   </div>
@@ -140,7 +140,7 @@
                     </span>
                   </div>
 
-                  <div>
+                  <div class="dark:text-zinc-400">
                     <ul class="list-disc list-inside font-thin text-sm">
                       <li class="py-px first:pt-0 last:pb-0" v-for="(b, i) in job.bullets" :key="i">{{ b }}</li>
                     </ul>
@@ -152,7 +152,7 @@
 
           <div class="md:basis-1/3 md:flex-none">
             <section class="relative w-full">
-              <div class="border-b-2 border-zinc-200 w-full text-center py-4 mb-4">
+              <div class="border-b-2 border-zinc-200 dark:border-zinc-600 w-full text-center py-4 mb-4 transform-colors duration-500">
                 <h2 class="text-2xl uppercase tracking-[0.5rem]">Education</h2>
               </div>
 
@@ -162,7 +162,7 @@
                 :key="edu.id"
               >
                 <div>
-                  <span class="font-bold text-zinc-700">
+                  <span class="font-bold text-zinc-700 dark:text-zinc-400">
                     {{ edu.degree }}
                   </span>
                 </div>
@@ -174,14 +174,14 @@
                 </div>
 
                 <div>
-                  <span class="text-zinc-700 whitespace-nowrap tabular-nums font-thin text-sm">
+                  <span class="text-zinc-700 dark:text-zinc-400 whitespace-nowrap tabular-nums font-thin text-sm">
                       <time :datetime="edu.start">{{ formatLocalMonthYear(edu.start) }}</time>
                       &ndash; <time :datetime="edu.end ?? 'Present'">{{ edu.end ? formatLocalMonthYear(edu.end) : 'Present' }}</time>
                   </span>
                 </div>
 
                   <div>
-                  <span class="text-zinc-700 font-thin text-sm">
+                  <span class="text-zinc-700 dark:text-zinc-400 font-thin text-sm">
                     GPA {{ edu.gpa }}
                   </span>
                 </div>
@@ -189,7 +189,7 @@
             </section>
 
             <section class="relative w-full">
-              <div class="border-y-2 border-zinc-200 w-full text-center py-4 mb-4">
+              <div class="border-y-2 border-zinc-200 dark:border-zinc-600 w-full text-center py-4 mb-4 transform-colors duration-500">
                 <h2 class="text-2xl uppercase tracking-[0.5rem]">Skills</h2>
               </div>
 
@@ -199,11 +199,11 @@
                 :key="skill.id"
               >
                 <div>
-                  <h3 class="text-2xl text-zinc-700 tracking-widest">Platforms</h3>
+                  <h3 class="text-2xl text-zinc-700 dark:text-zinc-200 tracking-widest">Platforms</h3>
                 </div>
                 
                 <div>
-                  <ul class="list-disc list-inside font-thin text-zinc-700 text-sm">
+                  <ul class="list-disc list-inside font-thin text-zinc-700 dark:text-zinc-400 text-sm">
                     <li v-for="(b, i) in skill.platforms" :key="i">{{ b }}</li>
                   </ul>
                 </div>
@@ -215,11 +215,11 @@
                 :key="skill.id"
               >
                 <div>
-                  <h3 class="text-2xl text-zinc-700 tracking-widest">Languages</h3>
+                  <h3 class="text-2xl text-zinc-700 dark:text-zinc-200 tracking-widest">Languages</h3>
                 </div>
                 
                 <div>
-                  <ul class="list-disc list-inside font-thin text-zinc-700 text-sm">
+                  <ul class="list-disc list-inside font-thin text-zinc-700 dark:text-zinc-400 text-sm">
                     <li v-for="(b, i) in skill.languages" :key="i">{{ b }}</li>
                   </ul>
                 </div>
@@ -231,11 +231,11 @@
                 :key="skill.id"
               >
                 <div>
-                  <h3 class="text-2xl text-zinc-700 tracking-widest">Frameworks</h3>
+                  <h3 class="text-2xl text-zinc-700 dark:text-zinc-200 tracking-widest">Frameworks</h3>
                 </div>
                 
                 <div>
-                  <ul class="list-disc list-inside font-thin text-zinc-700 text-sm">
+                  <ul class="list-disc list-inside font-thin text-zinc-700 dark:text-zinc-400 text-sm">
                     <li v-for="(b, i) in skill.frameworks" :key="i">{{ b }}</li>
                   </ul>
                 </div>
@@ -247,11 +247,11 @@
                 :key="skill.id"
               >
                 <div>
-                  <h3 class="text-2xl text-zinc-700 tracking-widest">Other</h3>
+                  <h3 class="text-2xl text-zinc-700 dark:text-zinc-200 tracking-widest">Other</h3>
                 </div>
 
                 <div>
-                  <ul class="list-disc list-inside font-thin text-zinc-700 text-sm">
+                  <ul class="list-disc list-inside font-thin text-zinc-700 dark:text-zinc-400 text-sm">
                     <li v-for="(b, i) in skill.other" :key="i">{{ b }}</li>
                   </ul>
                 </div>
@@ -259,7 +259,7 @@
             </section>
 
             <section class="relative w-full">
-              <div class="border-y-2 border-zinc-200 w-full text-center py-4 mb-4">
+              <div class="border-y-2 border-zinc-200 dark:border-zinc-600 w-full text-center py-4 mb-4 transform-colors duration-500">
                 <h2 class="text-2xl uppercase tracking-[0.5rem]">Projects</h2>
               </div>
 
@@ -269,17 +269,17 @@
                 :key="proj.id"
               >
                 <div>
-                  <h3 class="text-2xl text-zinc-700 tracking-widest">{{ proj.name }}</h3>
+                  <h3 class="text-2xl text-zinc-700 dark:text-zinc-200 tracking-widest">{{ proj.name }}</h3>
                 </div>
                 
                 <div>
-                  <span class="font-thin tracking-widest text-xs italic text-zinc-700">
+                  <span class="font-thin tracking-widest text-xs italic text-zinc-700 dark:text-zinc-400">
                     {{ (proj.tags ?? []).join(' | ').toString() }}
                   </span>
                 </div>
 
                 <div>
-                  <span class="font-thin text-zinc-700">
+                  <span class="font-thin text-zinc-700 dark:text-zinc-400">
                     {{ proj.description }}
                   </span>
                 </div>

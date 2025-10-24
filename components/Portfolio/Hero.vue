@@ -7,15 +7,18 @@
 </script>
 
 <template>
-  <div class="h-3/4 flex flex-col items-center justify-center px-6">
+  <section class="h-full flex flex-col items-center justify-center px-6 relative overflow-hidden gap-64 md:gap-32">
+
+    <!-- Hexagon pattern background with radial fade -->
+    <hexagon-background :opacity="15" fade-type="radial" />
 
     <!-- Main hero content with portrait -->
     <div class="max-w-5xl mx-auto flex flex-row items-center justify-center">
-      
+
       <!-- Hero text - center/left -->
       <div class="flex flex-col items-center lg:items-end text-center lg:text-right duration-500 ease-in-out max-w-2xl lg:max-w-full">
         <div class="space-y-4 lg:text-start">
-
+          
           <!-- Greeting & Name -->
           <div>
             <h2 class="animate-fade-in-left text-3xl xl:text-4xl font-light text-zinc-400 tracking-wide transition-[font-size]">
@@ -36,7 +39,7 @@
 
           <!-- CTA -->
           <div>
-            <button 
+            <button
               class="animate-fade-in-left animation-delay-300 inline-flex items-center gap-3 px-8 py-4 bg-teal-600 hover:bg-teal-500 text-zinc-100 rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
               @click="$emit('updateShowResume', !showResume);"
             >
@@ -46,7 +49,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Portrait - prominent on right -->
       <div class="hidden lg:inline-block w-96 flex justify-center items-center animate-fade-in animation-delay-500 duration-300 ease-in-out">
         <img
@@ -56,43 +59,28 @@
         />
       </div>
     </div>
-  </div>
+
+    <portfolio-tagline class="" />
+  </section>
 </template>
 
 <style scoped>
 
+
   /* played when page loads. */
   @keyframes shaka-in {
-    0%, 100% {
-      transform: rotate(0deg) scale(1);
-    }
-    25% {
-      transform: rotate(-15deg) scale(1.1);
-    }
-    50% {
-      transform: rotate(10deg) scale(1.05);
-    }
-    75% {
-      transform: rotate(-5deg) scale(1.02);
-    }
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-15deg) scale(1.1); }
+    50% { transform: rotate(10deg) scale(1.05); }
+    75% { transform: rotate(-5deg) scale(1.02); }
   }
-
   /* played on hover */
   @keyframes shaka {
-    0%, 100% {
-      transform: rotate(0deg) scale(1);
-    }
-    25% {
-      transform: rotate(-15deg) scale(1.1);
-    }
-    50% {
-      transform: rotate(10deg) scale(1.05);
-    }
-    75% {
-      transform: rotate(-5deg) scale(1.02);
-    }
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-15deg) scale(1.1); }
+    50% { transform: rotate(10deg) scale(1.05); }
+    75% { transform: rotate(-5deg) scale(1.02); }
   }
-
   .animate-shaka { animation: shaka-in 0.6s ease-in-out 0.8s both; }
   .animate-shaka:hover { animation: shaka 0.6s ease-in-out both; }
 </style>
