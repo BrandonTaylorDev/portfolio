@@ -49,7 +49,7 @@ const tools = computed(() => {
             <button
               v-for="(tool, i) in tools"
               :key="tool"
-              class="rounded-full px-4 py-2 text-sm bg-zinc-800 text-zinc-100 transform-gpu transition duration-300 hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              class="rounded-full px-4 py-2 text-sm bg-zinc-800 text-zinc-100 transform-gpu transition duration-300 hover:scale-105 hover:bg-teal-600 hover:text-zinc-100 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-teal-500"
               type="button"
               aria-label="tool"
             >
