@@ -1,41 +1,32 @@
 <template>
-  <div
-    class="relative max-w-[40rem] mx-auto min-h-24
-           flex gap-4 px-6 justify-center items-center
-           text-center transform-gpu will-change-transform
-           animate-fade-in-bottom [animation-delay:600ms]"
-  >
-    <!-- Larger radial zinc-900 fade background -->
-    <div class="pointer-events-none absolute inset-0 -z-10">
-      <!-- Huge, smooth radial centered slightly above the content -->
-      <div
-        class="absolute inset-[-35%]
-               bg-[radial-gradient(90rem_90rem_at_50%_20%,theme(colors.zinc.900/0.85)_0%,theme(colors.zinc.900/0.25)_50%,transparent_90%)]">
+  <div class="mx-auto min-h-24 transform-gpu will-change-transform animate-fade-in-bottom [animation-delay:600ms]">
+    <div class="relative w-full">
+
+      <!-- Content wrapper with responsive translation -->
+      <div class="flex gap-4 justify-center items-center text-center translate-y-8 sm:-translate-y-64 relative">
+        <!-- Background decoration -->
+        <div class="pointer-events-none absolute inset-0 flex justify-center opacity-5 top-1/2 -translate-y-16">
+          <div class="w-32 h-32 border-4 border-teal-400 rounded-full rotate-45"></div>
+        </div>
+        <!-- Left quote -->
+        <div class="shrink-0" aria-hidden="true">
+          <icon name="mdi:format-quote-open" size="2.5rem" class="text-teal-400 opacity-60" />
+        </div>
+
+        <!-- Tagline -->
+        <div class="relative z-10 px-2 md:px-6">
+          <span class="text-xl md:text-2xl font-light tracking-wide leading-relaxed">
+            Fueled by
+            <span class="coffee-cursor font-semibold text-teal-300 hover:text-teal-200 transition-colors duration-300"> Coffee</span>,
+            Driven by Ambition
+          </span>
+        </div>
+
+        <!-- Right quote -->
+        <div class="shrink-0" aria-hidden="true">
+          <icon name="mdi:format-quote-close" size="2.5rem" class="text-teal-400 opacity-60" />
+        </div>
       </div>
-    </div>
-
-    <!-- Background decoration -->
-    <div class="pointer-events-none absolute inset-0 flex justify-center opacity-5 top-1/2 -translate-y-16">
-      <div class="w-32 h-32 border-4 border-teal-400 rounded-full rotate-45"></div>
-    </div>
-
-    <!-- Left quote -->
-    <div class="shrink-0" aria-hidden="true">
-      <icon name="mdi:format-quote-open" size="2.5rem" class="text-teal-400 opacity-60" />
-    </div>
-
-    <!-- Tagline -->
-    <div class="relative z-10 px-2 md:px-6">
-      <span class="text-xl md:text-2xl font-light tracking-wide leading-relaxed">
-        Fueled by
-        <span class="coffee-cursor font-semibold text-teal-300 hover:text-teal-200 transition-colors duration-300"> Coffee</span>,
-        Driven by Ambition
-      </span>
-    </div>
-
-    <!-- Right quote -->
-    <div class="shrink-0" aria-hidden="true">
-      <icon name="mdi:format-quote-close" size="2.5rem" class="text-teal-400 opacity-60" />
     </div>
   </div>
 </template>
