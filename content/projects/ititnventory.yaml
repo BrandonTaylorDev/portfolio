@@ -1,5 +1,0 @@
-name: IT Inventory
-tags:
-  - React
-  - PostgreSQL
-description: Intranet web application that connects to Samanage inventory and augmented with missing features, such as duplicate item detection, non-compliance checking, and more.

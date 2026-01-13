@@ -1,6 +1,0 @@
-name: CertHunter
-tags:
-  - Nuxt 3
-  - MongoDB
-  - Containerized
-description: Novel software that scans both IPv4 and IPv6 networks and reports any discovered TLS certificates.

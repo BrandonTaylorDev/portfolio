@@ -1,6 +1,0 @@
-name: Monolith
-tags:
-  - Nuxt 4
-  - MongoDB
-  - Containerized
-description: Software-as-a-Service solution that provides simple but powerful opt-in features for MSP customers.
