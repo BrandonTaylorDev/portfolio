@@ -19,6 +19,14 @@
 				'A simple and efficient URL shortening service that allows users to create and use shortened links with ease.',
 			icon: 'mdi:link-variant',
 			href: 'https://short.app.brandontaylor.dev/'
+		},
+		{
+			name: 'Random Quote Generator',
+			tags: ['Nuxt', 'TypeScript', 'Tailwind CSS', 'MongoDB', 'Vercel'],
+			description:
+				'A goofy website that provides visitors with random quotes to inspire and entertain them.',
+			icon: 'mdi:format-quote-close',
+			href: 'https://quotes.app.brandontaylor.dev/'
 		}
 	];
 </script>
