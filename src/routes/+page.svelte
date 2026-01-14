@@ -1,13 +1,5 @@
-<script lang="ts">
-	import { fly } from 'svelte/transition';
+<script lang="ts">;
 	import Portfolio from '$lib/components/portfolio/index.svelte';
-	import Resume from '$lib/components/resume/index.svelte';
-
-	let showResume = $state(false);
-
-	function handleUpdateShowResume(val: boolean) {
-		showResume = val;
-	}
 </script>
 
 <svelte:head>
@@ -25,22 +17,6 @@
 	<meta property="og:url" content="https://www.brandontaylor.dev" />
 </svelte:head>
 
-<div class="relative h-screen w-screen overflow-hidden bg-zinc-900">
-	{#if !showResume}
-		<div
-			class="absolute inset-0 flex"
-			in:fly={{ x: '-100%', duration: 700 }}
-			out:fly={{ x: '-100%', duration: 700 }}
-		>
-			<Portfolio {showResume} onUpdateShowResume={handleUpdateShowResume} />
-		</div>
-	{:else}
-		<div
-			class="absolute inset-0 flex"
-			in:fly={{ x: '100%', duration: 700 }}
-			out:fly={{ x: '100%', duration: 700 }}
-		>
-			<Resume {showResume} onUpdateShowResume={handleUpdateShowResume} />
-		</div>
-	{/if}
+<div class="relative h-screen w-screen bg-zinc-900">
+	<Portfolio />
 </div>

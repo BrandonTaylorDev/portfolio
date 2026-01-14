@@ -1,8 +1,9 @@
 <script lang="ts">
+	import QuoteMark from '$lib/components/QuoteMark.svelte';
 </script>
 
 <div
-	class="animate-fade-in-bottom relative mx-auto flex min-h-24 transform-gpu items-center justify-center gap-4 text-center will-change-transform [animation-delay:600ms]"
+	class="animate-fade-in-bottom relative mx-auto flex min-h-48 transform-gpu items-center justify-center gap-4 text-center will-change-transform [animation-delay:600ms]"
 >
 	<div
 		class="pointer-events-none absolute inset-0 top-1/2 flex -translate-y-16 justify-center opacity-5"
@@ -10,11 +11,7 @@
 		<div class="h-32 w-32 rotate-45 rounded-full border-4 border-teal-400"></div>
 	</div>
 
-	<div class="shrink-0" aria-hidden="true">
-		<svg class="h-10 w-10 text-teal-400 opacity-60" viewBox="0 0 24 24">
-			<path fill="currentColor" d="M10,7L8,11H11V17H5V11L7,7H10M18,7L16,11H19V17H13V11L15,7H18Z" />
-		</svg>
-	</div>
+	<QuoteMark position="left" />
 
 	<div class="relative z-10 px-2 md:px-6">
 		<span class="text-xl leading-relaxed font-light tracking-wide md:text-2xl">
@@ -27,11 +24,7 @@
 		</span>
 	</div>
 
-	<div class="shrink-0" aria-hidden="true">
-		<svg class="h-10 w-10 text-teal-400 opacity-60" viewBox="0 0 24 24">
-			<path fill="currentColor" d="M14,17H17L19,13V7H14V13L16,17M6,17H9L11,13V7H6V13L8,17Z" />
-		</svg>
-	</div>
+	<QuoteMark position="right" />
 </div>
 
 <style>

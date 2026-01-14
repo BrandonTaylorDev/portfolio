@@ -1,11 +1,10 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import HexagonBackground from '../HexagonBackground.svelte';
-
-	let { showResume = false, onUpdateShowResume } = $props();
 </script>
 
 <section
-	class="relative flex h-full flex-col items-center justify-center gap-4 overflow-hidden px-6 py-32 md:gap-16"
+	class="relative flex h-screen flex-col items-center justify-center gap-4 overflow-hidden px-6 py-32 md:gap-16"
 >
 	<HexagonBackground opacity={15} fadeType="radial" />
 
@@ -40,7 +39,7 @@
 				<div class="flex flex-col gap-4 sm:flex-row">
 					<button
 						class="animate-fade-in-left animation-delay-300 inline-flex transform cursor-pointer items-center gap-3 rounded-full bg-teal-600 px-8 py-4 text-lg font-medium text-zinc-100 shadow-lg transition-all duration-300 hover:scale-105 hover:bg-teal-500 hover:shadow-xl"
-						onclick={() => onUpdateShowResume?.(!showResume)}
+						onclick={() => goto('/resume/') }
 					>
 						<svg class="h-7 w-7" viewBox="0 0 24 24">
 							<path

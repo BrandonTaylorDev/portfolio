@@ -4,8 +4,7 @@
 	import { education } from '$lib/data/education';
 	import { skills } from '$lib/data/skills';
 	import { projects } from '$lib/data/projects';
-
-	let { showResume = false, onUpdateShowResume } = $props();
+	import { goto } from '$app/navigation';
 </script>
 
 <div class="w-full px-4 py-8">
@@ -15,7 +14,7 @@
 		<div class="absolute top-4 left-4">
 			<button
 				class="flex cursor-pointer items-center gap-2 rounded-md bg-zinc-600 px-3 py-1.5 text-sm font-medium text-zinc-100 transition-colors duration-200 hover:bg-zinc-700"
-				onclick={() => onUpdateShowResume?.(!showResume)}
+				onclick={() => goto('/')}
 			>
 				<svg class="h-4 w-4" viewBox="0 0 24 24">
 					<path

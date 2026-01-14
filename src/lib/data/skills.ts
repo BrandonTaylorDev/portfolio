@@ -1,23 +1,32 @@
 export interface Skills {
 	platforms: string[];
-	languages: string[];
-	frameworks: string[];
-	other: string[];
+	languagesFrameworks: string[];
+	cloudInfrastructure: string[];
+	databaseTools: string[];
 }
 
 export const skills: Skills = {
-	platforms: [
+	platforms: ['Linux', 'Windows Server', 'Node.js'],
+	languagesFrameworks: [
+		'JavaScript',
+		'TypeScript',
+		'Go',
+		'Python',
+		'Bash',
+		'Vue',
+		'Nuxt',
+		'React',
+		'Next.js',
+		'Svelte'
+	],
+	cloudInfrastructure: [
 		'Microsoft Azure',
 		'Kubernetes',
 		'Docker',
-		'Linux',
-		'Windows Server',
 		'HA Proxy',
 		'Ansible',
 		'RabbitMQ',
 		'Redis'
 	],
-	languages: ['JavaScript', 'Go', 'Python', 'Bash'],
-	frameworks: ['Node', 'Vue', 'Nuxt', 'React', 'Next'],
-	other: ['CI/CD', 'MongoDB', 'PostgreSQL', 'Cosmos DB']
+	databaseTools: ['MongoDB', 'PostgreSQL', 'Cosmos DB', 'CI/CD', 'Git', 'GitHub Actions']
 };
