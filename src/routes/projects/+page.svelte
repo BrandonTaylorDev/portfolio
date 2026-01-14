@@ -27,6 +27,22 @@
 				'A goofy website that provides visitors with random quotes to inspire and entertain them.',
 			icon: 'mdi:format-quote-close',
 			href: 'https://quotes.app.brandontaylor.dev/'
+		},
+		{
+			name: 'GQL Query Builder',
+			tags: ['TypeScript', 'GraphQL'],
+			description:
+				'A TypeScript file that functions as a boilerplate for a library that constructs GraphQL queries easily. Soon to be a published library.',
+			icon: 'mdi:code-braces',
+			href: 'https://github.com/BrandonTaylorDev/gql-query-builder',
+		},
+		{
+			name: 'Password Generator',
+			tags: ['Many Languages', 'Example Implementations'],
+			description:
+				'A collection of password generator implementations in various programming languages, showcasing the same mechanism across different ecosystems.',
+			icon: 'mdi:shield-key',
+			href: 'https://github.com/BrandonTaylorDev/password-generator'
 		}
 	];
 </script>
@@ -68,7 +84,7 @@
 		<CircuitBackground opacity={30} />
 		<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 			<div
-				class="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] justify-items-center gap-8"
+				class="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] justify-items-center gap-10"
 			>
 				{#each projects as project, i}
 					<div
