@@ -76,7 +76,7 @@
               <div class="flex flex-wrap gap-2">
                 {#each category.items as tool}
                   <span
-                    class="rounded-md border border-zinc-700 bg-zinc-800/70 px-3 py-1.5 text-sm text-zinc-300 transition-all duration-200 hover:border-teal-500 hover:bg-zinc-800 hover:text-teal-400 hover:shadow-md"
+                    class="rounded-md border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-300 transition-all duration-200 hover:border-teal-500 hover:bg-zinc-800 hover:text-teal-400 hover:shadow-md"
                   >
                     {tool}
                   </span>

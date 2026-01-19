@@ -57,7 +57,7 @@
 
               <a
                 href="/projects"
-                class="animate-fade-in-left animation-delay-400 inline-flex transform items-center gap-3 rounded-full border border-zinc-700 bg-zinc-800/70 px-8 py-4 text-lg font-medium text-zinc-100 shadow-lg transition-all duration-300 hover:scale-105 hover:border-zinc-600 hover:bg-zinc-700 hover:shadow-xl"
+                class="animate-fade-in-left animation-delay-400 inline-flex transform items-center gap-3 rounded-full border border-zinc-700 bg-zinc-800/70 px-8 py-4 text-lg font-medium text-zinc-100 shadow-lg transition-all duration-300 hover:scale-105 hover:border-zinc-500 hover:bg-zinc-700 hover:shadow-xl"
               >
                 <svg class="h-7 w-7" viewBox="0 0 24 24">
                   <path
@@ -75,7 +75,7 @@
           class="animate-fade-in animation-delay-500 hidden w-96 items-center justify-center duration-300 ease-in-out lg:flex"
         >
           <img
-            class="h-auto w-full rounded-full border-4 border-zinc-700 shadow-2xl transition-[width,height]"
+            class="h-auto w-full rounded-full border-4 border-zinc-700 hover:border-teal-500 shadow-2xl transition-[width,height,border-color] duration-300 ease-in-out"
             src="/portfolio.webp"
             alt="Brandon Taylor"
           />
