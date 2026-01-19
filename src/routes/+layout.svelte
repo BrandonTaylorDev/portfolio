@@ -1,6 +1,7 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
+	import ToastHost from '$lib/components/ui/ToastHost.svelte';
 
 	let { children } = $props();
 </script>
@@ -9,6 +10,7 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="h-0 min-h-screen min-w-screen overflow-x-hidden p-0">
+<div class="min-h-screen min-w-screen h-0 p-0 overflow-x-hidden">
 	{@render children()}
+	<ToastHost />
 </div>

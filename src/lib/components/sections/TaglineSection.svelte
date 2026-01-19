@@ -1,5 +1,8 @@
 <script lang="ts">
-	import QuoteMark from '$lib/components/QuoteMark.svelte';
+	import QuoteMark from '$lib/components/ui/QuoteMark.svelte';
+	import ParallaxGroup from '../parallax/ParallaxGroup.svelte';
+	import ParallaxLayerBase from '../parallax/ParallaxLayerBase.svelte';
+	import ParallaxContent from '../parallax/ParallaxContent.svelte';
 </script>
 
 <div

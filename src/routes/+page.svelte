@@ -1,5 +1,9 @@
-<script lang="ts">;
-	import Portfolio from '$lib/components/portfolio/index.svelte';
+<script lang="ts">
+	import HeroSection from '$lib/components/sections/HeroSection.svelte';
+	import TaglineSection from '$lib/components/sections/TaglineSection.svelte';
+	import ExpertiseSection from '$lib/components/sections/ExpertiseSection.svelte';
+	import ToolStackSection from '$lib/components/sections/ToolStackSection.svelte';
+	import ContactSection from '$lib/components/sections/ContactSection.svelte';
 </script>
 
 <svelte:head>
@@ -17,6 +21,10 @@
 	<meta property="og:url" content="https://www.brandontaylor.dev" />
 </svelte:head>
 
-<div class="relative h-screen w-screen bg-zinc-900">
-	<Portfolio />
+<div class="parallax bg-zinc-900 text-zinc-100">
+	<HeroSection />
+	<TaglineSection />
+	<ExpertiseSection />
+	<ToolStackSection />
+	<ContactSection />
 </div>

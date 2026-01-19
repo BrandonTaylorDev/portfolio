@@ -132,7 +132,7 @@
 	});
 </script>
 
-<div class="pointer-events-none absolute inset-0">
+<div class="pointer-events-none absolute inset-0 z-40">
 	<canvas bind:this={canvas} class="particle-fade h-full w-full" style="opacity: {opacity / 100}"
 	></canvas>
 

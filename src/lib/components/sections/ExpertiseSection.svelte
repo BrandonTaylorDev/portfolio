@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
-	import CircuitBackground from '../CircuitBackground.svelte';
+  import ParallaxGroup from '$lib/components/parallax/ParallaxGroup.svelte';
+  import ParallaxLayerBase from '$lib/components/parallax/ParallaxLayerBase.svelte';
+  import ParallaxContent from '$lib/components/parallax/ParallaxContent.svelte';
 
 	const cards = [
 		{
@@ -83,40 +85,43 @@
 	});
 </script>
 
-<section class="relative mt-64 w-full overflow-hidden py-32">
-	<CircuitBackground opacity={30} />
-	<div class="mx-auto max-w-5xl px-6 py-12">
-		<h2 bind:this={titleRef} class="mb-12 text-center text-3xl font-bold text-teal-400 opacity-0">
-			Core Engineering & Technical Expertise
-		</h2>
-		<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-			{#each cards as card, i}
-				<div
-					bind:this={cardRefs[i]}
-					data-index={i}
-					class="relative rounded-lg border border-zinc-600 bg-zinc-800 p-6 opacity-0 shadow-lg transition-all duration-300 hover:scale-105 hover:border-teal-500 hover:shadow-2xl"
-				>
-					<div class="absolute -top-6 left-1/2 -translate-x-1/2 transform">
-						<div class="hexagon flex items-center justify-center bg-teal-600">
-							<svg class="h-6 w-6 text-white" viewBox="0 0 24 24">
-								<path fill="currentColor" d={card.icon} />
-							</svg>
-						</div>
-					</div>
+<ParallaxGroup>
+  <ParallaxLayerBase>
+    <ParallaxContent>
+			<div class="mx-auto max-w-5xl px-6 py-12">
+				<h2 bind:this={titleRef} class="mb-12 text-center text-3xl font-bold text-teal-400 opacity-0">
+					Core Engineering & Technical Expertise
+				</h2>
+				<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+					{#each cards as card, i}
+						<div
+							bind:this={cardRefs[i]}
+							data-index={i}
+							class="relative rounded-lg border border-zinc-600 bg-zinc-800/70 p-6 opacity-0 shadow-lg transition-all duration-300 hover:scale-105 hover:border-teal-500 hover:shadow-2xl"
+						>
+							<div class="absolute -top-6 left-1/2 -translate-x-1/2 transform">
+								<div class="hexagon flex items-center justify-center bg-teal-600">
+									<svg class="h-6 w-6 text-white" viewBox="0 0 24 24">
+										<path fill="currentColor" d={card.icon} />
+									</svg>
+								</div>
+							</div>
 
-					<div class="mt-4">
-						<h3 class="mb-4 text-center text-xl font-semibold text-teal-400">
-							{card.title}
-						</h3>
-						<p class="text-center text-sm text-zinc-300">
-							{card.copy}
-						</p>
-					</div>
+							<div class="mt-4">
+								<h3 class="mb-4 text-center text-xl font-semibold text-teal-400">
+									{card.title}
+								</h3>
+								<p class="text-center text-sm text-zinc-300">
+									{card.copy}
+								</p>
+							</div>
+						</div>
+					{/each}
 				</div>
-			{/each}
-		</div>
-	</div>
-</section>
+			</div>
+		</ParallaxContent>
+  </ParallaxLayerBase>
+</ParallaxGroup>
 
 <style>
 	.hexagon {
@@ -138,3 +143,4 @@
 		z-index: -1;
 	}
 </style>
+
