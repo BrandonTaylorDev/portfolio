@@ -1,15 +1,12 @@
 <script lang="ts">
 	import QuoteMark from '$lib/components/ui/QuoteMark.svelte';
-	import ParallaxGroup from '../parallax/ParallaxGroup.svelte';
-	import ParallaxLayerBase from '../parallax/ParallaxLayerBase.svelte';
-	import ParallaxContent from '../parallax/ParallaxContent.svelte';
 </script>
 
 <div
 	class="animate-fade-in-bottom relative mx-auto flex min-h-48 transform-gpu items-center justify-center gap-4 text-center will-change-transform [animation-delay:600ms]"
 >
 	<div
-		class="pointer-events-none absolute inset-0 top-1/2 flex -translate-y-16 justify-center opacity-5"
+		class="pointer-events-none absolute inset-0 top-1/2 flex -translate-y-16 justify-center opacity-15"
 	>
 		<div class="h-32 w-32 rotate-45 rounded-full border-4 border-teal-400"></div>
 	</div>

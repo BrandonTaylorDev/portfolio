@@ -21,7 +21,7 @@
 			description:
 				'A simple and efficient URL shortening service that allows users to create and use shortened links with ease.',
 			icon: 'mdi:link-variant',
-			href: 'https://short.app.brandontaylor.dev/'
+			href: 'https://url-shortener.app.brandontaylor.dev/'
 		},
 		{
 			name: 'Random Quote Generator',
@@ -58,12 +58,12 @@
 <div class="parallax bg-zinc-900 text-zinc-100">
 	<ParallaxGroup>
 		<ParallaxLayerBack>
-			<HexagonBackground opacity={15} fadeType="radial" />
+			<HexagonBackground opacity={30} fadeType="radial" />
 		</ParallaxLayerBack>
 
 		<ParallaxLayerBase>
 			<ParallaxContent>
-				<div class="w-full space-y-16">
+				<div class="w-full space-y-16 pb-48">
 					<div class="min-h-[50vh] flex flex-col justify-center items-center">
 						<a
 							href="/"
@@ -91,7 +91,7 @@
 					>
 						{#each projects as project, i}
 							<div
-								class="group relative w-full max-w-sm rounded-lg border border-zinc-600 bg-zinc-800/70 p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:border-teal-500 hover:shadow-2xl"
+								class="group relative w-full max-w-sm rounded-lg border border-zinc-600 bg-zinc-800/70 pt-6 px-6 pb-10 shadow-lg transition-all duration-300 hover:border-teal-500 hover:shadow-2xl"
 								style="animation-delay: {i * 100}ms"
 							>
 								<!-- Icon -->
@@ -127,7 +127,7 @@
 
 									<a
 										href={project.href}
-										class="mt-6 inline-flex items-center justify-center gap-1 text-teal-400 transition-colors hover:text-teal-300"
+										class="relative mt-6 inline-flex items-center justify-center gap-1 text-teal-400 transition-colors hover:text-teal-300 after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-0 after:-translate-x-1/2 after:bg-teal-400 after:transition-all after:duration-300 hover:after:w-28"
 									>
 										Check it out
 										<Icon icon="mdi:arrow-right" class="h-4 w-4" />

@@ -9,6 +9,8 @@
 		vy: number;
 		radius: number;
 		opacity: number;
+		gridX?: number;
+		gridY?: number;
 	}
 
 	let {
@@ -24,13 +26,37 @@
 	let canvas = $state<HTMLCanvasElement | null>(null);
 	let animationId = $state<number | null>(null);
 	let particles = $state<Particle[]>([]);
+	
+	// Cache values for performance
+	let canvasWidth = 0;
+	let canvasHeight = 0;
+	let connectionDistanceSquared = 0;
+	let gridSize = 0;
+	let gridCols = 0;
+	let gridRows = 0;
+	let grid: Particle[][][] = [];
+	
+	// Parse primary color RGB once
+	let primaryRGB = '';
+
+	function hexToRgb(hex: string): string {
+		const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+		if (!result) return '20, 184, 166'; // fallback to teal
+		return `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}`;
+	}
 
 	function initParticles() {
 		particles = [];
+		connectionDistanceSquared = connectionDistance * connectionDistance;
+		gridSize = connectionDistance;
+		gridCols = Math.ceil(canvasWidth / gridSize);
+		gridRows = Math.ceil(canvasHeight / gridSize);
+		primaryRGB = hexToRgb(primaryColor);
+		
 		for (let i = 0; i < nodeCount; i++) {
 			particles.push({
-				x: Math.random() * (canvas?.width || 800),
-				y: Math.random() * (canvas?.height || 600),
+				x: Math.random() * canvasWidth,
+				y: Math.random() * canvasHeight,
 				vx: (Math.random() - 0.5) * animationSpeed,
 				vy: (Math.random() - 0.5) * animationSpeed,
 				radius: Math.random() * 2 + 1,
@@ -39,57 +65,87 @@
 		}
 	}
 
+	function updateGrid() {
+		// Clear grid
+		grid = Array.from({ length: gridRows }, () => 
+			Array.from({ length: gridCols }, () => [])
+		);
+		
+		// Assign particles to grid cells
+		for (const particle of particles) {
+			const gridX = Math.floor(particle.x / gridSize);
+			const gridY = Math.floor(particle.y / gridSize);
+			particle.gridX = gridX;
+			particle.gridY = gridY;
+			
+			if (gridY >= 0 && gridY < gridRows && gridX >= 0 && gridX < gridCols) {
+				grid[gridY][gridX].push(particle);
+			}
+		}
+	}
+
 	function drawConnections(ctx: CanvasRenderingContext2D) {
+		ctx.lineWidth = 0.5;
+		
 		for (let i = 0; i < particles.length; i++) {
 			const particle1 = particles[i];
-			if (!particle1) continue;
+			if (!particle1 || particle1.gridX === undefined || particle1.gridY === undefined) continue;
 
-			for (let j = i + 1; j < particles.length; j++) {
-				const particle2 = particles[j];
-				if (!particle2) continue;
+			// Only check neighboring grid cells
+			for (let dy = -1; dy <= 1; dy++) {
+				for (let dx = -1; dx <= 1; dx++) {
+					const gridY = particle1.gridY + dy;
+					const gridX = particle1.gridX + dx;
+					
+					if (gridY < 0 || gridY >= gridRows || gridX < 0 || gridX >= gridCols) continue;
+					if (!grid[gridY] || !grid[gridY][gridX]) continue;
+					
+					for (const particle2 of grid[gridY][gridX]) {
+						// Skip if same particle or already processed
+						if (particle2 === particle1) continue;
+						
+						const dx2 = particle1.x - particle2.x;
+						const dy2 = particle1.y - particle2.y;
+						const distanceSquared = dx2 * dx2 + dy2 * dy2;
 
-				const dx = particle1.x - particle2.x;
-				const dy = particle1.y - particle2.y;
-				const distance = Math.sqrt(dx * dx + dy * dy);
-
-				if (distance < connectionDistance) {
-					const opacity = (1 - distance / connectionDistance) * 0.3;
-					ctx.strokeStyle = `${primaryColor}${Math.floor(opacity * 255)
-						.toString(16)
-						.padStart(2, '0')}`;
-					ctx.lineWidth = 0.5;
-					ctx.beginPath();
-					ctx.moveTo(particle1.x, particle1.y);
-					ctx.lineTo(particle2.x, particle2.y);
-					ctx.stroke();
+						if (distanceSquared < connectionDistanceSquared) {
+							const opacity = (1 - Math.sqrt(distanceSquared) / connectionDistance) * 0.3;
+							ctx.strokeStyle = `rgba(${primaryRGB}, ${opacity})`;
+							ctx.beginPath();
+							ctx.moveTo(particle1.x, particle1.y);
+							ctx.lineTo(particle2.x, particle2.y);
+							ctx.stroke();
+						}
+					}
 				}
 			}
 		}
 	}
 
 	function drawParticles(ctx: CanvasRenderingContext2D) {
-		particles.forEach((particle) => {
-			ctx.fillStyle = `${primaryColor}${Math.floor(particle.opacity * 255)
-				.toString(16)
-				.padStart(2, '0')}`;
+		// Batch drawing by using a single path
+		for (const particle of particles) {
+			ctx.fillStyle = `rgba(${primaryRGB}, ${particle.opacity})`;
 			ctx.beginPath();
 			ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
 			ctx.fill();
-		});
+		}
 	}
 
 	function updateParticles() {
-		particles.forEach((particle) => {
+		for (const particle of particles) {
 			particle.x += particle.vx;
 			particle.y += particle.vy;
 
-			if (particle.x <= 0 || particle.x >= (canvas?.width || 800)) {
+			if (particle.x <= 0 || particle.x >= canvasWidth) {
 				particle.vx = -particle.vx;
+				particle.x = Math.max(0, Math.min(canvasWidth, particle.x));
 			}
-			if (particle.y <= 0 || particle.y >= (canvas?.height || 600)) {
+			if (particle.y <= 0 || particle.y >= canvasHeight) {
 				particle.vy = -particle.vy;
+				particle.y = Math.max(0, Math.min(canvasHeight, particle.y));
 			}
-		});
+		}
 	}
 
 	function animate() {
@@ -98,8 +154,9 @@
 		const ctx = canvas.getContext('2d');
 		if (!ctx) return;
 
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
+		updateGrid();
 		drawConnections(ctx);
 		drawParticles(ctx);
 		updateParticles();
@@ -109,8 +166,10 @@
 
 	function handleResize() {
 		if (!canvas) return;
-		canvas.width = canvas.offsetWidth;
-		canvas.height = canvas.offsetHeight;
+		canvasWidth = canvas.offsetWidth;
+		canvasHeight = canvas.offsetHeight;
+		canvas.width = canvasWidth;
+		canvas.height = canvasHeight;
 		initParticles();
 	}
 

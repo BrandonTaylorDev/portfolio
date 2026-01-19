@@ -30,11 +30,11 @@
 
 <style>
 	.hex-fade {
-		mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 80%);
+		mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 92%);
 		-webkit-mask-image: radial-gradient(
 			ellipse at center,
 			rgba(0, 0, 0, 1) 0%,
-			rgba(0, 0, 0, 0) 80%
+			rgba(0, 0, 0, 0) 92%
 		);
 		mask-mode: alpha;
 	}

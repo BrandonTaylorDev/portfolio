@@ -33,12 +33,13 @@
 <ParallaxGroup>
   <ParallaxLayerBack>
     <ParticleFieldBackground
-      opacity={50}
+      opacity={100}
       fadeType="radial"
       primaryColor="#14b8a6"
       secondaryColor="#0891b2"
-      animationSpeed={1.0}
-      nodeCount={200}
+      animationSpeed={2.0}
+      nodeCount={150}
+      connectionDistance={200}
     />
   </ParallaxLayerBack>
   <ParallaxLayerBase>
@@ -53,15 +54,15 @@
               class="group relative overflow-hidden rounded-lg border-2 border-zinc-700 bg-zinc-800/70 p-8 shadow-lg transition-all duration-300 hover:border-teal-500 hover:shadow-2xl"
             >
               <!-- Icon and Title Row -->
-              <div class="mb-6 flex items-center gap-4 border-b border-zinc-700 pb-4">
+              <div class="relative mb-6 border-b border-zinc-700 pb-4">
                 <div
-                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-zinc-900 transition-all duration-300 group-hover:bg-teal-600"
+                  class="mx-auto mb-4 flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-zinc-900 transition-all duration-300 group-hover:bg-teal-600 lg:absolute lg:left-0 lg:top-0 lg:mx-0 lg:mb-0"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 fill-teal-400 transition-colors duration-300 group-hover:fill-white">
                     <path d={category.icon} />
                   </svg>
                 </div>
-                <div class="flex-1">
+                <div class="text-center">
                   <h3 class="text-lg font-bold text-zinc-100 transition-colors duration-300 group-hover:text-teal-400">
                     {category.title}
                   </h3>

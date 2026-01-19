@@ -101,7 +101,7 @@
 
 	.parallax__group {
 		position: relative;
-		height: 100vh;
+		min-height: 100vh;
 		transform-style: preserve-3d;
 	}
 
@@ -116,6 +116,8 @@
 	}
 
 	.parallax__layer--base {
+		position: relative;
+		bottom: auto;
 		transform: translateZ(0);
 	}
 
