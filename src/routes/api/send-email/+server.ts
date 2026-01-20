@@ -1,11 +1,11 @@
 import {
-	SMTP2GO_ENABLED,
 	SMTP2GO_API_KEY,
 	SMTP2GO_FROM,
 	SMTP2GO_TO,
 	TURNSTILE_SECRET_KEY,
 	TURNSTILE_CHALLENGE_URI
 } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { PUBLIC_SMTP2GO_SEND_URI } from '$env/static/public';
 import { json, type RequestHandler } from '@sveltejs/kit';
 import { dev } from '$app/environment';
@@ -220,7 +220,7 @@ export const POST: RequestHandler = async (event) => {
 	`;
 
 	// Check if email sending is enabled based on environment
-	if (dev && SMTP2GO_ENABLED !== 'true') {
+	if (dev && env.SMTP2GO_ENABLED !== 'true') {
 		return json(
 			{
 				ok: true,
