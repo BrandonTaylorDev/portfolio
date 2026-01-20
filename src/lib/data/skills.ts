@@ -10,20 +10,8 @@ export interface Skills {
 
 export const skills: Skills = {
 	platforms: ['Linux', 'Windows Server', 'Node.js'],
-	languages: [
-		'JavaScript',
-		'TypeScript',
-		'Go',
-		'Python',
-		'Bash'
-	],
-	frameworks: [
-		'Vue',
-		'Nuxt',
-		'React',
-		'Next.js',
-		'Svelte'
-	],
+	languages: ['JavaScript', 'TypeScript', 'Go', 'Python', 'Bash'],
+	frameworks: ['Vue', 'Nuxt', 'React', 'Next.js', 'Svelte'],
 	other: ['MongoDB', 'PostgreSQL', 'Cosmos DB', 'CI/CD', 'Git', 'GitHub Actions'],
 	languagesFrameworks: [
 		'JavaScript',

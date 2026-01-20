@@ -20,20 +20,25 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </svelte:head>
 
-<div class="min-h-screen min-w-screen h-0 p-0 overflow-x-hidden">
+<div class="h-0 min-h-screen min-w-screen overflow-x-hidden p-0">
 	{@render children()}
 	<ToastHost />
 </div>
 
 <style>
 	@keyframes fade-in {
-		from { opacity: 0; }
+		from {
+			opacity: 0;
+		}
 	}
 
 	@keyframes fade-out {
-		to { opacity: 0; }
+		to {
+			opacity: 0;
+		}
 	}
 
 	:global(::view-transition-old(root)) {

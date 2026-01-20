@@ -26,7 +26,7 @@
 	let canvas = $state<HTMLCanvasElement | null>(null);
 	let animationId = $state<number | null>(null);
 	let particles = $state<Particle[]>([]);
-	
+
 	// Cache values for performance
 	let canvasWidth = 0;
 	let canvasHeight = 0;
@@ -35,7 +35,7 @@
 	let gridCols = 0;
 	let gridRows = 0;
 	let grid: Particle[][][] = [];
-	
+
 	// Parse primary color RGB once
 	let primaryRGB = '';
 
@@ -52,7 +52,7 @@
 		gridCols = Math.ceil(canvasWidth / gridSize);
 		gridRows = Math.ceil(canvasHeight / gridSize);
 		primaryRGB = hexToRgb(primaryColor);
-		
+
 		for (let i = 0; i < nodeCount; i++) {
 			particles.push({
 				x: Math.random() * canvasWidth,
@@ -67,17 +67,15 @@
 
 	function updateGrid() {
 		// Clear grid
-		grid = Array.from({ length: gridRows }, () => 
-			Array.from({ length: gridCols }, () => [])
-		);
-		
+		grid = Array.from({ length: gridRows }, () => Array.from({ length: gridCols }, () => []));
+
 		// Assign particles to grid cells
 		for (const particle of particles) {
 			const gridX = Math.floor(particle.x / gridSize);
 			const gridY = Math.floor(particle.y / gridSize);
 			particle.gridX = gridX;
 			particle.gridY = gridY;
-			
+
 			if (gridY >= 0 && gridY < gridRows && gridX >= 0 && gridX < gridCols) {
 				grid[gridY][gridX].push(particle);
 			}
@@ -86,7 +84,7 @@
 
 	function drawConnections(ctx: CanvasRenderingContext2D) {
 		ctx.lineWidth = 0.5;
-		
+
 		for (let i = 0; i < particles.length; i++) {
 			const particle1 = particles[i];
 			if (!particle1 || particle1.gridX === undefined || particle1.gridY === undefined) continue;
@@ -96,14 +94,14 @@
 				for (let dx = -1; dx <= 1; dx++) {
 					const gridY = particle1.gridY + dy;
 					const gridX = particle1.gridX + dx;
-					
+
 					if (gridY < 0 || gridY >= gridRows || gridX < 0 || gridX >= gridCols) continue;
 					if (!grid[gridY] || !grid[gridY][gridX]) continue;
-					
+
 					for (const particle2 of grid[gridY][gridX]) {
 						// Skip if same particle or already processed
 						if (particle2 === particle1) continue;
-						
+
 						const dx2 = particle1.x - particle2.x;
 						const dy2 = particle1.y - particle2.y;
 						const distanceSquared = dx2 * dx2 + dy2 * dy2;

@@ -1,12 +1,12 @@
 <script lang="ts">
-  import ParallaxGroup from '$lib/components/parallax/ParallaxGroup.svelte';
-  import ParallaxLayerBase from '$lib/components/parallax/ParallaxLayerBase.svelte';
-  import ParallaxContent from '$lib/components/parallax/ParallaxContent.svelte';
+	import ParallaxGroup from '$lib/components/parallax/ParallaxGroup.svelte';
+	import ParallaxLayerBase from '$lib/components/parallax/ParallaxLayerBase.svelte';
+	import ParallaxContent from '$lib/components/parallax/ParallaxContent.svelte';
 	import ParallaxLayerBack from '$lib/components/parallax/ParallaxLayerBack.svelte';
-  import ParticleFieldBackground from '$lib/components/backgrounds/ParticleFieldBackground.svelte';
+	import ParticleFieldBackground from '$lib/components/backgrounds/ParticleFieldBackground.svelte';
 	import { skills } from '$lib/data/skills';
 
-  const categories = [
+	const categories = [
 		{
 			title: 'Platforms',
 			items: skills.platforms,
@@ -31,61 +31,67 @@
 </script>
 
 <ParallaxGroup>
-  <ParallaxLayerBack>
-    <ParticleFieldBackground
-      opacity={100}
-      fadeType="radial"
-      primaryColor="#14b8a6"
-      secondaryColor="#0891b2"
-      animationSpeed={2.0}
-      nodeCount={150}
-      connectionDistance={200}
-    />
-  </ParallaxLayerBack>
-  <ParallaxLayerBase>
-    <ParallaxContent>
-      <div class="relative z-50 mx-auto max-w-6xl px-6 py-12">
-        <h2 class="mb-16 text-center text-3xl font-bold text-teal-400">Tool Stack</h2>
+	<ParallaxLayerBack>
+		<ParticleFieldBackground
+			opacity={100}
+			fadeType="radial"
+			primaryColor="#14b8a6"
+			secondaryColor="#0891b2"
+			animationSpeed={2.0}
+			nodeCount={150}
+			connectionDistance={200}
+		/>
+	</ParallaxLayerBack>
+	<ParallaxLayerBase>
+		<ParallaxContent>
+			<div class="relative z-50 mx-auto max-w-6xl px-6 py-12">
+				<h2 class="mb-16 text-center text-3xl font-bold text-teal-400">Tool Stack</h2>
 
-        <!-- Categories Grid -->
-        <div class="grid gap-8 md:grid-cols-2">
-          {#each categories as category}
-            <div
-              class="group relative overflow-hidden rounded-lg border-2 border-zinc-700 bg-zinc-800/70 p-8 shadow-lg transition-all duration-300 hover:border-teal-500 hover:shadow-2xl"
-            >
-              <!-- Icon and Title Row -->
-              <div class="relative mb-6 border-b border-zinc-700 pb-4">
-                <div
-                  class="mx-auto mb-4 flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-zinc-900 transition-all duration-300 group-hover:bg-teal-600 lg:absolute lg:left-0 lg:top-0 lg:mx-0 lg:mb-0"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 fill-teal-400 transition-colors duration-300 group-hover:fill-white">
-                    <path d={category.icon} />
-                  </svg>
-                </div>
-                <div class="text-center">
-                  <h3 class="text-lg font-bold text-zinc-100 transition-colors duration-300 group-hover:text-teal-400">
-                    {category.title}
-                  </h3>
-                  <p class="text-xs text-zinc-500">
-                    {category.items.length} technologies
-                  </p>
-                </div>
-              </div>
+				<!-- Categories Grid -->
+				<div class="grid gap-8 md:grid-cols-2">
+					{#each categories as category}
+						<div
+							class="group relative overflow-hidden rounded-lg border-2 border-zinc-700 bg-zinc-800/70 p-8 shadow-lg transition-all duration-300 hover:border-teal-500 hover:shadow-2xl"
+						>
+							<!-- Icon and Title Row -->
+							<div class="relative mb-6 border-b border-zinc-700 pb-4">
+								<div
+									class="mx-auto mb-4 flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-zinc-900 transition-all duration-300 group-hover:bg-teal-600 lg:absolute lg:top-0 lg:left-0 lg:mx-0 lg:mb-0"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										class="h-6 w-6 fill-teal-400 transition-colors duration-300 group-hover:fill-white"
+									>
+										<path d={category.icon} />
+									</svg>
+								</div>
+								<div class="text-center">
+									<h3
+										class="text-lg font-bold text-zinc-100 transition-colors duration-300 group-hover:text-teal-400"
+									>
+										{category.title}
+									</h3>
+									<p class="text-xs text-zinc-500">
+										{category.items.length} technologies
+									</p>
+								</div>
+							</div>
 
-              <!-- Tools Grid -->
-              <div class="flex flex-wrap gap-2">
-                {#each category.items as tool}
-                  <span
-                    class="rounded-md border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-300 transition-all duration-200 hover:border-teal-500 hover:bg-zinc-800 hover:text-teal-400 hover:shadow-md"
-                  >
-                    {tool}
-                  </span>
-                {/each}
-              </div>
-            </div>
-          {/each}
-        </div>
-      </div>
-    </ParallaxContent>
-  </ParallaxLayerBase>
+							<!-- Tools Grid -->
+							<div class="flex flex-wrap gap-2">
+								{#each category.items as tool}
+									<span
+										class="rounded-md border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-300 transition-all duration-200 hover:border-teal-500 hover:bg-zinc-800 hover:text-teal-400 hover:shadow-md"
+									>
+										{tool}
+									</span>
+								{/each}
+							</div>
+						</div>
+					{/each}
+				</div>
+			</div>
+		</ParallaxContent>
+	</ParallaxLayerBase>
 </ParallaxGroup>

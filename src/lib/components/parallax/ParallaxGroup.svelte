@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
-  
-  let { children }: { children?: Snippet } = $props();
+	import type { Snippet } from 'svelte';
+
+	let { children }: { children?: Snippet } = $props();
 </script>
 
 <section class="parallax__group">
-  {@render children?.()}
+	{@render children?.()}
 </section>

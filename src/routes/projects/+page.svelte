@@ -37,7 +37,7 @@
 			description:
 				'A TypeScript file that functions as a boilerplate for a library that constructs GraphQL queries easily. Soon to be a published library.',
 			icon: 'mdi:code-braces',
-			href: 'https://github.com/BrandonTaylorDev/gql-query-builder',
+			href: 'https://github.com/BrandonTaylorDev/gql-query-builder'
 		},
 		{
 			name: 'Password Generator',
@@ -64,7 +64,7 @@
 		<ParallaxLayerBase>
 			<ParallaxContent>
 				<div class="w-full space-y-16 pb-48">
-					<div class="min-h-[50vh] flex flex-col justify-center items-center">
+					<div class="flex min-h-[50vh] flex-col items-center justify-center">
 						<a
 							href="/"
 							class="group mb-6 inline-flex items-center gap-2 text-zinc-400 transition-colors hover:text-teal-400"
@@ -91,7 +91,7 @@
 					>
 						{#each projects as project, i}
 							<div
-								class="group relative w-full max-w-sm rounded-lg border border-zinc-600 bg-zinc-800/70 pt-6 px-6 pb-10 shadow-lg transition-all duration-300 hover:border-teal-500 hover:shadow-2xl"
+								class="group relative w-full max-w-sm rounded-lg border border-zinc-600 bg-zinc-800/70 px-6 pt-6 pb-10 shadow-lg transition-all duration-300 hover:border-teal-500 hover:shadow-2xl"
 								style="animation-delay: {i * 100}ms"
 							>
 								<!-- Icon -->
@@ -127,7 +127,7 @@
 
 									<a
 										href={project.href}
-										class="relative mt-6 inline-flex items-center justify-center gap-1 text-teal-400 transition-colors hover:text-teal-300 after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-0 after:-translate-x-1/2 after:bg-teal-400 after:transition-all after:duration-300 hover:after:w-28"
+										class="relative mt-6 inline-flex items-center justify-center gap-1 text-teal-400 transition-colors after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-0 after:-translate-x-1/2 after:bg-teal-400 after:transition-all after:duration-300 hover:text-teal-300 hover:after:w-28"
 									>
 										Check it out
 										<Icon icon="mdi:arrow-right" class="h-4 w-4" />

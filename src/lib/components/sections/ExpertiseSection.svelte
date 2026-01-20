@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
-  import ParallaxGroup from '$lib/components/parallax/ParallaxGroup.svelte';
-  import ParallaxLayerBase from '$lib/components/parallax/ParallaxLayerBase.svelte';
-  import ParallaxContent from '$lib/components/parallax/ParallaxContent.svelte';
+	import ParallaxGroup from '$lib/components/parallax/ParallaxGroup.svelte';
+	import ParallaxLayerBase from '$lib/components/parallax/ParallaxLayerBase.svelte';
+	import ParallaxContent from '$lib/components/parallax/ParallaxContent.svelte';
 
 	const cards = [
 		{
@@ -86,10 +86,13 @@
 </script>
 
 <ParallaxGroup>
-  <ParallaxLayerBase>
-    <ParallaxContent>
+	<ParallaxLayerBase>
+		<ParallaxContent>
 			<div class="mx-auto max-w-5xl px-6 py-12">
-				<h2 bind:this={titleRef} class="mb-12 text-center text-3xl font-bold text-teal-400 opacity-0">
+				<h2
+					bind:this={titleRef}
+					class="mb-12 text-center text-3xl font-bold text-teal-400 opacity-0"
+				>
 					Core Engineering & Technical Expertise
 				</h2>
 				<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -120,7 +123,7 @@
 				</div>
 			</div>
 		</ParallaxContent>
-  </ParallaxLayerBase>
+	</ParallaxLayerBase>
 </ParallaxGroup>
 
 <style>
@@ -143,4 +146,3 @@
 		z-index: -1;
 	}
 </style>
-
