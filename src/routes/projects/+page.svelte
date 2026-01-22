@@ -41,7 +41,7 @@
 		},
 		{
 			name: 'Password Generator',
-			tags: ['Many Languages', 'Example Implementations'],
+			tags: ['Many Languages', 'Example Implementations', 'Monorepo'],
 			description:
 				'A collection of password generator implementations in various programming languages, showcasing the same mechanism across different ecosystems.',
 			icon: 'mdi:shield-key',
@@ -56,7 +56,7 @@
 		},
 		{
 			name: 'Guess a Number',
-			tags: ['Many Languages', 'Example Implementations'],
+			tags: ['Many Languages', 'Example Implementations', 'Monorepo'],
 			description:
 				'A collection of "Guess a Number" game implementations in various programming languages, demonstrating the same logic across different ecosystems.',
 			icon: 'mdi:numeric-9-box-multiple-outline',
