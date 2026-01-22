@@ -46,6 +46,14 @@
 				'A collection of password generator implementations in various programming languages, showcasing the same mechanism across different ecosystems.',
 			icon: 'mdi:shield-key',
 			href: 'https://github.com/BrandonTaylorDev/password-generator'
+		},
+		{
+			name: 'Lexle',
+			tags: ['Svelte', 'TypeScript', 'Tailwind CSS'],
+			description:
+				'A word guessing game inspired by Wordle. Nothing more, nothing less.',
+			icon: 'mdi:alphabetical',
+			href: 'https://lexle.app.brandontaylor.dev/'
 		}
 	];
 </script>
