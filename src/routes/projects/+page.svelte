@@ -50,10 +50,17 @@
 		{
 			name: 'Lexle',
 			tags: ['Svelte', 'TypeScript', 'Tailwind CSS'],
-			description:
-				'A word guessing game inspired by Wordle. Nothing more, nothing less.',
+			description: 'A word guessing game inspired by Wordle. Nothing more, nothing less.',
 			icon: 'mdi:alphabetical',
 			href: 'https://lexle.app.brandontaylor.dev/'
+		},
+		{
+			name: 'Guess a Number',
+			tags: ['Many Languages', 'Example Implementations'],
+			description:
+				'A collection of "Guess a Number" game implementations in various programming languages, demonstrating the same logic across different ecosystems.',
+			icon: 'mdi:numeric-9-box-multiple-outline',
+			href: 'https://github.com/BrandonTaylorDev/guess-a-number'
 		}
 	];
 </script>
@@ -71,7 +78,7 @@
 
 		<ParallaxLayerBase>
 			<ParallaxContent>
-				<div class="w-full space-y-16 pb-48">
+				<div class="w-full">
 					<div class="flex min-h-[50vh] flex-col items-center justify-center">
 						<a
 							href="/"
