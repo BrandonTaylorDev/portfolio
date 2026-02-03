@@ -15,11 +15,13 @@ export const jobs: Job[] = [
 		start: '2025-07-01',
 		end: null,
 		bullets: [
-			'Led cloud migration projects, transitioning clients to Microsoft Azure & Entra ID.',
-			'Implemented Zero Trust security models to enhance organizational security postures.',
-			'Conducted security audits and compliance assessments for various industries.',
-			'Operated closely with clients to identify pain points, design solutions, and ensure a successful deployment.',
-			'Delivered training sessions and documentation to empower local IT teams.'
+			'Deployed Microsoft 365, Azure, VMware, and disaster recovery solutions with 98%+ client satisfaction.',
+			'Performed project management tasks, including generation of scopes of work, breakdown structures, and bill of materials.',
+			'Led complex migrations of Active Directory, Exchange, and cloud platforms with zero unplanned downtime.',
+			'Documented client configurations, reducing incident resolution time by approx. 30% and improved Support Services confidence.',
+			'Maintained infrastructure across Windows & Linux Server, SQL, Azure, and network security products within the Cisco and Ubiquiti ecosystem.',
+			'Conducted annual business reviews with customer and account representatives to address pain points and attain revenue opportunities.',
+			'Resolved escalated infrastructure issues during on-call rotations while mentoring junior staff.'
 		]
 	},
 	{
