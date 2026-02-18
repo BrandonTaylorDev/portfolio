@@ -36,8 +36,17 @@
 						<p
 							class="animate-fade-in-left animation-delay-200 mx-auto max-w-3xl leading-relaxed font-light text-zinc-300 transition-[font-size] lg:mx-0 lg:text-lg"
 						>
-							A passionate enterprise platform engineer specializing in building scalable solutions
-							and services tailored for the modern world.
+							Founder of
+							<a
+								href="https://www.getmonolithic.com/"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="font-medium text-teal-300 transition-colors duration-300 hover:text-teal-200"
+							>
+								Monolithic, LLC</a
+							>
+							and an enterprise platform engineer building secure,
+							scalable systems that help teams move faster with confidence.
 						</p>
 					</div>
 
