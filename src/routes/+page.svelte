@@ -1,30 +1,40 @@
 <script lang="ts">
-	import HeroSection from '$lib/components/sections/HeroSection.svelte';
-	import TaglineSection from '$lib/components/sections/TaglineSection.svelte';
-	import ExpertiseSection from '$lib/components/sections/ExpertiseSection.svelte';
-	import ToolStackSection from '$lib/components/sections/ToolStackSection.svelte';
+	import Navigation from '$lib/components/portfolio/Navigation.svelte';
+	import Footer from '$lib/components/portfolio/Footer.svelte';
+	import Hero from '$lib/components/portfolio/Hero.svelte';
+	import Impact from '$lib/components/portfolio/Impact.svelte';
+	import Experience from '$lib/components/portfolio/Experience.svelte';
+	import Foundation from '$lib/components/portfolio/Foundation.svelte';
 	import ContactSection from '$lib/components/sections/ContactSection.svelte';
+	import { scrollReveal } from '$lib/actions/scrollReveal';
+	import '$lib/styles/profile.css';
+
+	const title = 'Brandon Taylor | IT Leadership';
+	const description =
+		'IT leadership focused on people, service delivery, and business outcomes. Explore Brandon Taylor’s experience developing teams, improving operations, and delivering technology projects.';
 </script>
 
 <svelte:head>
-	<title>Brandon Taylor | brandontaylor.dev</title>
-	<meta
-		name="description"
-		content="Brandon Taylor - Founder of Monolithic, LLC and Platform Engineer building resilient infrastructure, scalable platforms, and secure systems."
-	/>
-	<meta property="og:title" content="Brandon Taylor | brandontaylor.dev" />
-	<meta
-		property="og:description"
-		content="Brandon Taylor - Founder of Monolithic, LLC and Platform Engineer building resilient infrastructure, scalable platforms, and secure systems."
-	/>
-	<meta property="og:image" content="/portfolio.webp" />
-	<meta property="og:url" content="https://www.brandontaylor.dev" />
+	<title>{title}</title>
+	<meta name="description" content={description} />
+	<link rel="canonical" href="https://www.brandontaylor.dev/" />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="https://www.brandontaylor.dev/portfolio.webp" />
+	<meta property="og:image:alt" content="Brandon Taylor" />
+	<meta property="og:url" content="https://www.brandontaylor.dev/" />
 </svelte:head>
 
-<div class="parallax bg-zinc-900 text-zinc-100">
-	<HeroSection />
-	<TaglineSection />
-	<ExpertiseSection />
-	<ToolStackSection />
-	<ContactSection />
+<div class="professional-site">
+	<a class="skip-link" href="#main-content">Skip to content</a>
+	<Navigation />
+	<main id="main-content" class="site-container" tabindex="-1" use:scrollReveal>
+		<Hero />
+		<Impact />
+		<Experience />
+		<Foundation />
+		<ContactSection />
+	</main>
+	<Footer />
 </div>

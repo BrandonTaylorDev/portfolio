@@ -1,10 +1,4 @@
-import {
-	SMTP2GO_API_KEY,
-	SMTP2GO_FROM,
-	SMTP2GO_TO,
-	TURNSTILE_SECRET_KEY,
-	TURNSTILE_CHALLENGE_URI
-} from '$env/static/private';
+import { SMTP2GO_API_KEY, SMTP2GO_FROM, SMTP2GO_TO } from '$env/static/private';
 import { env } from '$env/dynamic/private';
 import { PUBLIC_SMTP2GO_SEND_URI } from '$env/static/public';
 import { json, type RequestHandler } from '@sveltejs/kit';
@@ -48,7 +42,6 @@ type SendEmailBody = {
 	email: string;
 	subject: string;
 	message: string;
-	turnstileToken: string;
 };
 
 export const POST: RequestHandler = async (event) => {
@@ -83,7 +76,7 @@ export const POST: RequestHandler = async (event) => {
 		);
 	}
 
-	const { name, email, subject, message, turnstileToken } = (body ?? {}) as Partial<SendEmailBody>;
+	const { name, email, subject, message } = (body ?? {}) as Partial<SendEmailBody>;
 
 	// Validate required fields
 	if (!isNonEmptyString(name)) {
@@ -119,74 +112,6 @@ export const POST: RequestHandler = async (event) => {
 		return json(
 			{ ok: false, message: 'Please enter a message.' },
 			{ status: 400, headers: { 'cache-control': 'no-store' } }
-		);
-	}
-
-	// Verify Turnstile token
-	if (!turnstileToken || typeof turnstileToken !== 'string' || turnstileToken.trim() === '') {
-		return json(
-			{
-				ok: false,
-				message: 'Security verification is required. Please refresh the page and try again.'
-			},
-			{ status: 400, headers: { 'cache-control': 'no-store' } }
-		);
-	}
-
-	if (!TURNSTILE_SECRET_KEY || !TURNSTILE_CHALLENGE_URI) {
-		console.error('Turnstile configuration missing');
-		return json(
-			{ ok: false, message: 'Unable to verify request. Please try again later.' },
-			{ status: 500, headers: { 'cache-control': 'no-store' } }
-		);
-	}
-
-	try {
-		const formData = new URLSearchParams();
-		formData.append('secret', TURNSTILE_SECRET_KEY);
-		formData.append('response', turnstileToken);
-		formData.append('remoteip', ip);
-
-		const turnstileResponse = await fetch(TURNSTILE_CHALLENGE_URI, {
-			method: 'POST',
-			body: formData
-		});
-
-		if (!turnstileResponse.ok) {
-			console.error('Turnstile API error', { status: turnstileResponse.status });
-			return json(
-				{ ok: false, message: 'Unable to verify request. Please try again.' },
-				{ status: 502, headers: { 'cache-control': 'no-store' } }
-			);
-		}
-
-		const outcome = (await turnstileResponse.json()) as {
-			success: boolean;
-			'error-codes'?: string[];
-		};
-
-		if (!outcome.success) {
-			const errorCodes = outcome['error-codes'] || [];
-			console.warn('Turnstile verification failed', { ip, errors: errorCodes });
-
-			// Provide user-friendly messages based on error codes
-			if (errorCodes.includes('timeout-or-duplicate')) {
-				return json(
-					{ ok: false, message: 'Verification expired. Please try again.' },
-					{ status: 400, headers: { 'cache-control': 'no-store' } }
-				);
-			}
-
-			return json(
-				{ ok: false, message: 'Security verification failed. Please try again.' },
-				{ status: 400, headers: { 'cache-control': 'no-store' } }
-			);
-		}
-	} catch (err) {
-		console.error('Turnstile verification error', err);
-		return json(
-			{ ok: false, message: 'Unable to verify request. Please try again.' },
-			{ status: 502, headers: { 'cache-control': 'no-store' } }
 		);
 	}
 

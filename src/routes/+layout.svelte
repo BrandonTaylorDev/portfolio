@@ -1,13 +1,15 @@
 <script lang="ts">
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
-	import ToastHost from '$lib/components/ui/ToastHost.svelte';
 	import { onNavigate } from '$app/navigation';
 
 	let { children } = $props();
 
 	onNavigate((navigation) => {
-		if (!document.startViewTransition) return;
+		if (
+			!document.startViewTransition ||
+			window.matchMedia('(prefers-reduced-motion: reduce)').matches
+		)
+			return;
 
 		return new Promise((resolve) => {
 			document.startViewTransition(async () => {
@@ -18,14 +20,8 @@
 	});
 </script>
 
-<svelte:head>
-	<link rel="icon" href={favicon} />
-	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-</svelte:head>
-
-<div class="h-0 min-h-screen min-w-screen overflow-x-hidden p-0">
+<div class="min-h-screen">
 	{@render children()}
-	<ToastHost />
 </div>
 
 <style>
@@ -47,5 +43,11 @@
 
 	:global(::view-transition-new(root)) {
 		animation: 300ms cubic-bezier(0, 0, 0.2, 1) both fade-in;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		:global(::view-transition-old(root)),
+		:global(::view-transition-new(root)) {
+			animation: none;
+		}
 	}
 </style>

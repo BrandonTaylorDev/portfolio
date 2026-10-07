@@ -5,11 +5,4 @@ export interface Project {
 	description: string;
 }
 
-export const projects: Project[] = [
-	{
-		id: 'monolithic',
-		name: 'Monolithic',
-		tags: ['Microservices', 'Containerization'],
-		description: 'Enterprise-grade platform for B2B...'
-	}
-];
+export const projects: Project[] = [];

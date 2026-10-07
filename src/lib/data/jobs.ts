@@ -9,11 +9,26 @@ export interface Job {
 
 export const jobs: Job[] = [
 	{
+		id: 'unified',
+		title: 'IT Systems Engineer',
+		company: 'Unified Technologies',
+		start: '2026-04-01',
+		end: null,
+		bullets: [
+			'Implement and support Microsoft 365, Azure, virtualization, and disaster recovery solutions.',
+			'Plan and deliver technology projects, including scopes of work, work breakdown structures, and bills of materials.',
+			'Manage Windows and Linux server environments, SQL services, and network security products.',
+			'Support Active Directory, Exchange, and cloud platform migrations.',
+			'Configure and troubleshoot firewalls, switches, routers, and virtualized environments.',
+			'Document client systems and resolve escalated technical issues.'
+		]
+	},
+	{
 		id: 'ciscom2',
 		title: 'Professional Services / Cloud & Security Project Engineer',
 		company: 'CisCom Solutions',
 		start: '2025-07-01',
-		end: null,
+		end: '2026-04-01',
 		bullets: [
 			'Deployed Microsoft 365, Azure, VMware, and disaster recovery solutions with 98%+ client satisfaction.',
 			'Performed project management tasks, including generation of scopes of work, breakdown structures, and bill of materials.',
