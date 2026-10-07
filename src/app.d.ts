@@ -3,7 +3,6 @@
 declare global {
 	interface Window {
 		turnstile?: {
-			ready(callback: () => void): void;
 			render(
 				container: HTMLElement,
 				options: {

@@ -46,8 +46,12 @@
 				'Unable to load security verification. Please refresh the page and try again.';
 		};
 		const render = () => {
-			window.turnstile?.ready(() => {
-				if (disposed || !window.turnstile || !turnstileContainer) return;
+			if (disposed) return;
+			if (!window.turnstile || !turnstileContainer) {
+				showError();
+				return;
+			}
+			try {
 				turnstileWidgetId = window.turnstile.render(turnstileContainer, {
 					sitekey: env.PUBLIC_TURNSTILE_SITE_KEY!,
 					theme: 'light',
@@ -61,7 +65,9 @@
 					},
 					'error-callback': showError
 				});
-			});
+			} catch {
+				showError();
+			}
 		};
 
 		if (window.turnstile) {
