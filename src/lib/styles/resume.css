@@ -85,7 +85,7 @@
 	align-items: start;
 	gap: 36px;
 	padding: 36px 40px;
-	scroll-margin-top: 24px;
+	scroll-margin-top: var(--anchor-offset);
 }
 .resume-site .resume-section + .resume-section {
 	border-top: 1px solid var(--line);

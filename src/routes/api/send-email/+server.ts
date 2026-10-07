@@ -1,6 +1,5 @@
-import { SMTP2GO_API_KEY, SMTP2GO_FROM, SMTP2GO_TO } from '$env/static/private';
 import { env } from '$env/dynamic/private';
-import { PUBLIC_SMTP2GO_SEND_URI } from '$env/static/public';
+import { env as publicEnv } from '$env/dynamic/public';
 import { json, type RequestHandler } from '@sveltejs/kit';
 import { dev } from '$app/environment';
 
@@ -42,6 +41,7 @@ type SendEmailBody = {
 	email: string;
 	subject: string;
 	message: string;
+	turnstileToken: string;
 };
 
 export const POST: RequestHandler = async (event) => {
@@ -76,7 +76,7 @@ export const POST: RequestHandler = async (event) => {
 		);
 	}
 
-	const { name, email, subject, message } = (body ?? {}) as Partial<SendEmailBody>;
+	const { name, email, subject, message, turnstileToken } = (body ?? {}) as Partial<SendEmailBody>;
 
 	// Validate required fields
 	if (!isNonEmptyString(name)) {
@@ -115,6 +115,63 @@ export const POST: RequestHandler = async (event) => {
 		);
 	}
 
+	// Development never requires Turnstile keys or calls Cloudflare.
+	if (!dev) {
+		if (!isNonEmptyString(turnstileToken) || turnstileToken.length > 2048) {
+			return json(
+				{ ok: false, message: 'Please complete the security verification and try again.' },
+				{ status: 400, headers: { 'cache-control': 'no-store' } }
+			);
+		}
+		if (!env.TURNSTILE_SECRET_KEY) {
+			return json(
+				{ ok: false, message: 'Security verification is unavailable. Please try again later.' },
+				{ status: 500, headers: { 'cache-control': 'no-store' } }
+			);
+		}
+
+		try {
+			const response = await event.fetch(
+				env.TURNSTILE_CHALLENGE_URI || 'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+				{
+					method: 'POST',
+					body: new URLSearchParams({
+						secret: env.TURNSTILE_SECRET_KEY,
+						response: turnstileToken
+					}),
+					signal: AbortSignal.timeout(10000)
+				}
+			);
+			if (!response.ok) throw new Error(`Turnstile returned ${response.status}`);
+			const outcome = (await response.json()) as { success?: boolean } | null;
+			if (outcome?.success !== true) {
+				return json(
+					{ ok: false, message: 'Security verification failed or expired. Please try again.' },
+					{ status: 400, headers: { 'cache-control': 'no-store' } }
+				);
+			}
+		} catch (err) {
+			console.error('Turnstile verification error', err);
+			return json(
+				{ ok: false, message: 'Unable to verify your request. Please try again.' },
+				{ status: 502, headers: { 'cache-control': 'no-store' } }
+			);
+		}
+	}
+
+	if (dev && env.SMTP2GO_ENABLED !== 'true') {
+		return json(
+			{
+				ok: true,
+				message:
+					'Email not sent (development environment). Your message was received but not delivered.'
+			},
+			{ status: 200, headers: { 'cache-control': 'no-store' } }
+		);
+	}
+
+	const { SMTP2GO_API_KEY, SMTP2GO_FROM, SMTP2GO_TO } = env;
+	const { PUBLIC_SMTP2GO_SEND_URI } = publicEnv;
 	if (!SMTP2GO_API_KEY || !SMTP2GO_FROM || !SMTP2GO_TO || !PUBLIC_SMTP2GO_SEND_URI) {
 		return json(
 			{ ok: false, message: 'Email service is not configured. Please try again later.' },
@@ -144,20 +201,8 @@ export const POST: RequestHandler = async (event) => {
 		</div>
 	`;
 
-	// Check if email sending is enabled based on environment
-	if (dev && env.SMTP2GO_ENABLED !== 'true') {
-		return json(
-			{
-				ok: true,
-				message:
-					'Email not sent (development environment). Your message was received but not delivered.'
-			},
-			{ status: 200, headers: { 'cache-control': 'no-store' } }
-		);
-	}
-
 	try {
-		const response = await fetch(PUBLIC_SMTP2GO_SEND_URI, {
+		const response = await event.fetch(PUBLIC_SMTP2GO_SEND_URI, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

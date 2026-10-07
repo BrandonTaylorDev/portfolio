@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { tick } from 'svelte';
+	import { dev } from '$app/environment';
+	import { env } from '$env/dynamic/public';
+	import { onMount, tick } from 'svelte';
 
 	type Field = 'name' | 'email' | 'subject' | 'message';
 	const fields: {
@@ -24,6 +26,62 @@
 	let isSubmitting = $state(false);
 	let feedback = $state('');
 	let feedbackType = $state<'success' | 'error' | ''>('');
+	let turnstileContainer = $state<HTMLDivElement>();
+	let turnstileWidgetId: string | undefined;
+	let turnstileToken = $state('');
+	let turnstileError = $state('');
+
+	onMount(() => {
+		if (dev) return;
+		if (!env.PUBLIC_TURNSTILE_SITE_KEY) {
+			turnstileError = 'Security verification is unavailable. Please try again later.';
+			return;
+		}
+
+		let disposed = false;
+		const script = document.createElement('script');
+		const showError = () => {
+			turnstileToken = '';
+			turnstileError =
+				'Unable to load security verification. Please refresh the page and try again.';
+		};
+		const render = () => {
+			window.turnstile?.ready(() => {
+				if (disposed || !window.turnstile || !turnstileContainer) return;
+				turnstileWidgetId = window.turnstile.render(turnstileContainer, {
+					sitekey: env.PUBLIC_TURNSTILE_SITE_KEY!,
+					theme: 'light',
+					size: 'flexible',
+					callback: (token) => {
+						turnstileToken = token;
+						turnstileError = '';
+					},
+					'expired-callback': () => {
+						turnstileToken = '';
+					},
+					'error-callback': showError
+				});
+			});
+		};
+
+		if (window.turnstile) {
+			render();
+		} else {
+			script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+			script.async = true;
+			script.onload = render;
+			script.onerror = showError;
+			document.head.append(script);
+		}
+
+		return () => {
+			disposed = true;
+			script.onload = null;
+			script.onerror = null;
+			script.remove();
+			if (turnstileWidgetId !== undefined) window.turnstile?.remove(turnstileWidgetId);
+		};
+	});
 
 	function validate(field: Field, value: string): string {
 		if (!value.trim()) {
@@ -64,13 +122,20 @@
 			formElement.querySelector<HTMLElement>(`#contact-${firstInvalid.name}`)?.focus();
 			return;
 		}
+		if (!dev && !turnstileToken) {
+			feedbackType = 'error';
+			feedback = turnstileError || 'Please complete the security verification before sending.';
+			await tick();
+			feedbackElement.focus();
+			return;
+		}
 
 		isSubmitting = true;
 		try {
 			const response = await fetch('/api/send-email', {
 				method: 'POST',
 				headers: { 'content-type': 'application/json' },
-				body: JSON.stringify(values)
+				body: JSON.stringify({ ...values, ...(!dev ? { turnstileToken } : {}) })
 			});
 			const payload = (await response.json().catch(() => null)) as {
 				ok?: boolean;
@@ -89,6 +154,11 @@
 			feedbackType = 'error';
 			feedback = 'Unable to connect. Please check your connection and try again.';
 		} finally {
+			// Tokens are single-use, including when email delivery fails after verification.
+			if (!dev && turnstileWidgetId !== undefined) {
+				turnstileToken = '';
+				window.turnstile?.reset(turnstileWidgetId);
+			}
 			isSubmitting = false;
 			await tick();
 			feedbackElement.focus();
@@ -157,6 +227,12 @@
 				</div>
 			{/each}
 		</div>
+		{#if !dev}
+			<div class="contact-verification">
+				<div bind:this={turnstileContainer}></div>
+				{#if turnstileError}<p class="field-error" role="status">{turnstileError}</p>{/if}
+			</div>
+		{/if}
 		<button
 			class="button button-primary"
 			type="submit"
