@@ -371,6 +371,8 @@
 }
 .professional-site .experience-list + .text-link {
 	margin-top: 24px;
+	/* Match the timeline inset, metadata column, and gap in .experience-row. */
+	margin-inline-start: calc(68px + (100% - 68px) * 9 / 29);
 }
 .professional-site .foundation-grid {
 	display: grid;
@@ -395,6 +397,13 @@
 	margin-top: 18px;
 	font-size: 0.75rem;
 	color: var(--muted);
+}
+.professional-site .experience-dates,
+.professional-site .experience-role,
+.professional-site .experience-copy > p.contributions,
+.professional-site .foundation-item > .technology-list,
+.professional-site #impact .attribution {
+	color: color-mix(in srgb, var(--muted) 85%, var(--ink));
 }
 .professional-site .contact-section {
 	display: grid;
@@ -586,6 +595,9 @@
 		gap: 16px;
 		padding-left: 0;
 		padding-bottom: 32px;
+	}
+	.professional-site .experience-list + .text-link {
+		margin-inline-start: 0;
 	}
 	.professional-site .experience-row::before,
 	.professional-site .timeline-marker {

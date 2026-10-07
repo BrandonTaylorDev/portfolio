@@ -7,7 +7,7 @@
 	id="impact"
 	label="Selected impact"
 	title="Progress you can measure."
-	intro="Developing people, improving support operations, and expanding services: leadership that makes organizations perform better."
+	intro="Developing people, improving service delivery, and expanding capability — with measurable results."
 >
 	<div class="impact-grid">
 		{#each achievements as achievement}

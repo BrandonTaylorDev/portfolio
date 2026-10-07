@@ -29,7 +29,7 @@
 			/>
 		</div>
 		<figcaption>
-			<strong>{profile.name}</strong><span>IT leadership, grounded in experience.</span>
+			<strong>{profile.name}</strong><span>People. Technology. Operations.</span>
 		</figcaption>
 	</figure>
 </section>

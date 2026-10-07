@@ -5,7 +5,7 @@
 
 <Section
 	id="foundation"
-	label="The foundation for better decisions"
+	label="Technical perspective"
 	title="Leadership informed by experience."
 	intro="Technical depth helps me ask informed questions, guide teams and projects, and weigh service quality, continuity, and risk against organizational priorities."
 >

@@ -4,7 +4,7 @@ export const profile = {
 	name: 'Brandon Taylor',
 	positioning: 'IT Leadership',
 	introduction:
-		'I build effective IT teams, improve service delivery, and connect technology decisions to organizational priorities. My experience in people management, support operations, and project leadership shapes how I develop staff, strengthen services, and guide change.'
+		'I lead people, improve IT services, and connect technology decisions to organizational priorities. My experience in people management, support operations, and project leadership shapes how I develop staff, strengthen services, and guide change.'
 };
 
 export const achievements = [
