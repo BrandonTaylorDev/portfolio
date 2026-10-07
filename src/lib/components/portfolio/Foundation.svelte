@@ -5,9 +5,9 @@
 
 <Section
 	id="foundation"
-	label="Operational & technical depth"
+	label="The foundation for better decisions"
 	title="Leadership informed by experience."
-	intro="A practical understanding of IT services, business continuity, security, and automation informs how I lead projects and work with teams."
+	intro="Technical depth helps me ask informed questions, guide teams and projects, and weigh service quality, continuity, and risk against organizational priorities."
 >
 	<div class="foundation-grid">
 		{#each foundations as foundation}

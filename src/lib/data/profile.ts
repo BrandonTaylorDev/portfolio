@@ -4,26 +4,26 @@ export const profile = {
 	name: 'Brandon Taylor',
 	positioning: 'IT Leadership',
 	introduction:
-		'I help teams deliver better IT services by connecting people, technology, and business priorities. My experience spans team management, service improvement, and technology project delivery.'
+		'I build effective IT teams, improve service delivery, and connect technology decisions to organizational priorities. My experience in people management, support operations, and project leadership shapes how I develop staff, strengthen services, and guide change.'
 };
 
 export const achievements = [
 	{
-		value: '52%',
-		label: 'Reduction in ticket resolution time',
-		context: 'Led team efforts to improve support resolution strategies.',
+		value: '43%',
+		label: 'Increase in employee retention',
+		context: 'Hired and mentored part-time support staff, strengthening team retention.',
 		jobId: 'ius2'
 	},
 	{
-		value: '43%',
-		label: 'Increase in employee retention',
-		context: 'Hired and mentored part-time support staff.',
+		value: '52%',
+		label: 'Reduction in ticket resolution time',
+		context: 'Led the team in improving ticket resolution strategies and support performance.',
 		jobId: 'ius2'
 	},
 	{
 		value: '$150k+',
 		label: 'More than $150,000 in added revenue',
-		context: 'Led the expansion of DevOps services to multiple customers.',
+		context: 'Led organizational efforts to expand services to multiple customers.',
 		jobId: 'lightchange'
 	}
 ];
@@ -33,21 +33,26 @@ export const leadershipExperience = [
 		jobId: 'ius2',
 		focus: 'People & service delivery',
 		title: 'Building a stronger support operation.',
-		copy: 'At Indiana University Southeast, I managed Support Services, hired and mentored part-time staff, and led improvements to ticket resolution. I also developed software to extend the inventory system and coordinated equipment sales that funded refreshes.',
+		copy: 'I managed Support Services, hired and mentored part-time staff, and led improvements to ticket resolution. I extended inventory capabilities and coordinated annual equipment sales to help fund equipment refreshes.',
+		outcome:
+			'Team efforts reduced ticket resolution time by 52%. Hiring and mentoring increased employee retention by 43%.',
 		contribution: 'Team development · Service improvement · Resource stewardship'
 	},
 	{
 		jobId: 'lightchange',
 		focus: 'Service expansion & reliability',
 		title: 'Connecting technical capability to business value.',
-		copy: 'At LightChange Technologies, I led efforts to expand DevOps services to multiple customers, generating more than $150,000 in additional revenue. Alongside that work, I strengthened Kubernetes security and reliability and introduced Terraform resource definitions to simplify maintenance.',
+		copy: 'I led efforts to expand DevOps services to multiple customers. I strengthened platform reliability and access controls, directed a migration to a more resilient environment, and simplified maintenance with Terraform.',
+		outcome: 'Expanded service offerings generated more than $150,000 in additional revenue.',
 		contribution: 'Service development · Platform reliability · Operational efficiency'
 	},
 	{
 		jobId: 'ciscom2',
-		focus: 'IT operations & project delivery',
+		focus: 'Project leadership & customer priorities',
 		title: 'Delivering change with operational care.',
-		copy: 'At CisCom Solutions, I delivered cloud, security, and disaster recovery projects, developed scopes of work and bills of materials, and led migrations with zero unplanned downtime. Business reviews with customers and account representatives connected delivery decisions to customer needs.',
+		copy: 'I planned technology projects with scopes of work, work breakdown structures, and bills of materials. Business reviews with customers and account representatives addressed operational needs and revenue opportunities. I also mentored junior staff.',
+		outcome:
+			'Led complex migrations with no unplanned downtime, protecting customer operations during change.',
 		contribution: 'Project planning · Customer collaboration · Business continuity'
 	}
 ];
@@ -61,22 +66,22 @@ export function jobFor(id: string): Job {
 export const foundations = [
 	{
 		title: 'IT service delivery',
-		copy: 'Cloud services, workplace technology, and on-premises systems that support productive day-to-day work.',
+		copy: 'Understand the services people depend on, connect IT capabilities to organizational needs, and keep service quality central to operational decisions.',
 		technologies: 'Microsoft Azure · Microsoft 365 · VMware'
 	},
 	{
 		title: 'Business continuity',
-		copy: 'Reliable platforms, thoughtful migrations, and recovery planning that support business continuity.',
+		copy: 'Plan migrations and recovery with business operations in mind. Use experience with resilient platforms to assess continuity needs and reduce disruption during change.',
 		technologies: 'Kubernetes · HAProxy · Disaster recovery'
 	},
 	{
 		title: 'Security & risk',
-		copy: 'Access controls, least privilege, and practical security measures that help manage operational risk.',
+		copy: 'Make informed decisions about access controls, least privilege, and network security, balancing practical protection with the needs of people using the services.',
 		technologies: 'RBAC · Least privilege · Network security'
 	},
 	{
 		title: 'Continuous improvement',
-		copy: 'Standardized systems and repeatable workflows that reduce manual effort and simplify support.',
+		copy: 'Help teams work more effectively through standardization, repeatable processes, and automation that reduces manual effort and makes services easier to support.',
 		technologies: 'Terraform · Ansible · PowerShell'
 	}
 ];

@@ -12,7 +12,7 @@
 	id="experience"
 	label="Leadership in practice"
 	title="Leading teams. Improving services. Delivering change."
-	intro="Experience spanning higher education, technology services, and customer operations."
+	intro="From managing a support team to expanding customer services and guiding complex projects, my work connects people, operations, and business priorities."
 >
 	<ol class="experience-list" role="list" aria-label="Selected experience, newest to oldest">
 		{#each timeline as experience (experience.jobId)}
@@ -33,6 +33,7 @@
 						<p class="eyebrow">{experience.focus}</p>
 						<h3>{experience.title}</h3>
 						<p>{experience.copy}</p>
+						<p class="experience-outcome">{experience.outcome}</p>
 						<p class="contributions">{experience.contribution}</p>
 					</div>
 				</article>

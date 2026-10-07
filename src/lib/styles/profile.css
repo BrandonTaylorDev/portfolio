@@ -1,15 +1,15 @@
 .professional-site {
-	--page: #f8f9f6;
-	--surface: #ffffff;
-	--surface-soft: #eef2ef;
-	--ink: #172b3a;
-	--muted: #536370;
-	--accent: #14665c;
-	--accent-hover: #0b5149;
-	--line: #d4ded9;
-	--input-line: #788c84;
-	--error: #b42336;
-	color-scheme: light;
+	--page: #101c26;
+	--surface: #172632;
+	--surface-soft: #1c2d37;
+	--ink: #eef3f4;
+	--muted: #bac6ce;
+	--accent: #89d4c2;
+	--accent-hover: #b2e7db;
+	--line: #334650;
+	--input-line: #718992;
+	--error: #ffb0b9;
+	color-scheme: dark;
 	min-height: 100vh;
 	background: var(--page);
 	color: var(--ink);
@@ -23,22 +23,6 @@
 	font-size: 1rem;
 	line-height: 1.65;
 	-webkit-font-smoothing: antialiased;
-}
-
-@media (prefers-color-scheme: dark) {
-	.professional-site {
-		--page: #101c26;
-		--surface: #172632;
-		--surface-soft: #1c2d37;
-		--ink: #eef3f4;
-		--muted: #b0bec6;
-		--accent: #89d4c2;
-		--accent-hover: #b2e7db;
-		--line: #334650;
-		--input-line: #718992;
-		--error: #ffb0b9;
-		color-scheme: dark;
-	}
 }
 
 .professional-site :where(h1, h2, h3, p, figure) {
@@ -134,12 +118,12 @@
 	display: grid;
 	grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.85fr);
 	align-items: center;
-	gap: 70px;
-	padding-block: 104px 96px;
+	gap: 64px;
+	padding-block: 80px;
 }
 .professional-site .eyebrow {
 	color: var(--accent);
-	font-size: 0.72rem;
+	font-size: 0.75rem;
 	font-weight: 700;
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
@@ -159,7 +143,7 @@
 	max-width: 540px;
 	margin-top: 28px;
 	font-size: 1.04rem;
-	line-height: 1.8;
+	line-height: 1.75;
 	color: var(--muted);
 }
 .professional-site .hero-actions {
@@ -203,16 +187,12 @@
 .professional-site .hero-note {
 	margin-top: 26px;
 	color: var(--muted);
-	font-size: 0.75rem;
+	font-size: 0.8125rem;
 }
 .professional-site .hero-portrait {
-	position: relative;
 	align-self: center;
-	padding: 10px;
-	border: 1px solid var(--line);
-	border-radius: 8px;
-	background: var(--surface);
-	box-shadow: 12px 12px 0 color-mix(in srgb, var(--accent) 16%, var(--page));
+	width: min(100%, 320px);
+	justify-self: end;
 }
 .professional-site .portrait-frame {
 	position: relative;
@@ -229,30 +209,23 @@
 .professional-site figcaption {
 	display: flex;
 	flex-direction: column;
-	gap: 8px;
+	gap: 6px;
 	line-height: 1.5;
-	padding: 24px 14px 20px;
-}
-.professional-site figcaption::before {
-	content: '';
-	width: 40px;
-	height: 3px;
-	margin-bottom: 8px;
-	background: var(--accent);
+	padding-top: 18px;
 }
 .professional-site figcaption strong {
-	font-size: 1.6rem;
+	font-size: 1.25rem;
 	font-weight: 650;
 	letter-spacing: -0.035em;
 	line-height: 1.2;
 }
 .professional-site figcaption span {
 	color: var(--muted);
-	font-size: 1rem;
+	font-size: 0.875rem;
 	text-wrap: pretty;
 }
 .professional-site .profile-section {
-	padding-block: 80px;
+	padding-block: 68px;
 	border-top: 1px solid var(--line);
 	scroll-margin-top: 24px;
 }
@@ -280,14 +253,12 @@
 .professional-site .impact-card {
 	display: flex;
 	flex-direction: column;
-	padding: 30px 28px 26px;
-	background: var(--surface);
-	border: 1px solid var(--line);
-	border-radius: 5px;
+	padding: 28px 20px 0 0;
+	border-top: 1px solid var(--line);
 }
 .professional-site .impact-value {
 	color: var(--accent);
-	font-size: clamp(2.65rem, 4.3vw, 3.6rem);
+	font-size: clamp(2.75rem, 4.6vw, 4rem);
 	line-height: 1.15;
 	font-weight: 550;
 	letter-spacing: -0.065em;
@@ -301,16 +272,15 @@
 }
 .professional-site .impact-context {
 	color: var(--muted);
-	font-size: 0.875rem;
+	font-size: 0.9375rem;
 	margin-top: 12px;
 	margin-bottom: 24px;
 }
 .professional-site .attribution {
-	font-size: 0.73rem;
+	font-size: 0.8125rem;
 	color: var(--muted);
 	margin-top: auto;
 	padding-top: 16px;
-	border-top: 1px solid var(--line);
 }
 .professional-site .experience-list {
 	list-style: none;
@@ -320,9 +290,9 @@
 .professional-site .experience-row {
 	position: relative;
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-	gap: 48px;
-	padding: 0 0 48px 44px;
+	grid-template-columns: minmax(0, 0.9fr) minmax(0, 2fr);
+	gap: 40px;
+	padding: 0 0 40px 28px;
 }
 .professional-site .experience-row::before {
 	content: '';
@@ -331,16 +301,7 @@
 	top: 8px;
 	bottom: -8px;
 	width: 1px;
-	background: var(--input-line);
-}
-.professional-site .experience-row::after {
-	content: '';
-	position: absolute;
-	left: 6px;
-	top: 11px;
-	width: 24px;
-	height: 1px;
-	background: var(--input-line);
+	background: var(--line);
 }
 .professional-site .experience-item:last-child .experience-row {
 	padding-bottom: 0;
@@ -374,8 +335,8 @@
 }
 .professional-site .experience-dates {
 	font-size: 0.8rem;
-	font-weight: 600;
-	color: var(--accent);
+	font-weight: 400;
+	color: var(--muted);
 }
 .professional-site .experience-copy h3 {
 	font-weight: 600;
@@ -389,9 +350,14 @@
 	color: var(--muted);
 	font-size: 0.95rem;
 }
-.professional-site .experience-copy > .contributions {
-	font-size: 0.75rem !important;
-	line-height: 1.8;
+.professional-site .experience-copy > p.contributions {
+	font-size: 0.8125rem;
+	line-height: 1.65;
+}
+.professional-site .experience-copy > p.experience-outcome {
+	color: var(--ink);
+	font-weight: 550;
+	max-width: 62ch;
 }
 .professional-site .text-link {
 	display: inline-flex;
@@ -428,7 +394,7 @@
 .professional-site .foundation-item > .technology-list {
 	margin-top: 18px;
 	font-size: 0.75rem;
-	color: var(--accent);
+	color: var(--muted);
 }
 .professional-site .contact-section {
 	display: grid;
@@ -555,7 +521,7 @@
 		gap: 40px;
 	}
 	.professional-site .impact-card {
-		padding: 24px 20px;
+		padding: 24px 12px 0 0;
 	}
 }
 
@@ -586,26 +552,51 @@
 		font-size: clamp(1.8rem, 6.8vw, 3.1rem);
 	}
 	.professional-site .hero-portrait {
-		width: min(100%, 340px);
+		display: grid;
+		grid-template-columns: 104px minmax(0, 1fr);
+		align-items: center;
+		gap: 20px;
+		width: min(100%, 420px);
+		justify-self: start;
+	}
+	.professional-site .portrait-frame {
+		aspect-ratio: 1;
+	}
+	.professional-site figcaption {
+		padding-top: 0;
 	}
 	.professional-site .profile-section {
 		padding-block: 56px;
 	}
 	.professional-site .impact-grid {
 		grid-template-columns: 1fr;
-		gap: 16px;
+		gap: 28px;
 	}
 	.professional-site .impact-card {
-		padding: 28px;
+		padding: 24px 0 0;
+	}
+	.professional-site .impact-card h3 {
+		margin-top: 12px;
+	}
+	.professional-site .impact-context {
+		margin-bottom: 12px;
 	}
 	.professional-site .experience-row {
 		grid-template-columns: 1fr;
-		gap: 20px;
-		padding-left: 32px;
-		padding-bottom: 40px;
+		gap: 16px;
+		padding-left: 0;
+		padding-bottom: 32px;
 	}
-	.professional-site .experience-row::after {
-		width: 16px;
+	.professional-site .experience-row::before,
+	.professional-site .timeline-marker {
+		display: none;
+	}
+	.professional-site .experience-item + .experience-item {
+		padding-top: 28px;
+		border-top: 1px solid var(--line);
+	}
+	.professional-site .experience-company {
+		margin-top: 6px;
 	}
 	.professional-site .foundation-grid {
 		gap: 28px;
@@ -638,14 +629,13 @@
 	}
 }
 
-@keyframes profile-fade-in-left {
-	from {
-		opacity: 0;
-		transform: translateX(-30px);
+@media (max-width: 360px) {
+	.professional-site .site-header nav {
+		gap: 10px;
 	}
-	to {
-		opacity: 1;
-		transform: translateX(0);
+	.professional-site .site-header .nav-contact {
+		gap: 8px;
+		padding-inline: 8px;
 	}
 }
 
@@ -658,17 +648,6 @@
 	}
 }
 
-@keyframes profile-fade-in-bottom {
-	from {
-		opacity: 0;
-		transform: translateY(30px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
 @media (prefers-reduced-motion: no-preference) {
 	.professional-site .scroll-pending {
 		opacity: 0;
@@ -677,38 +656,10 @@
 		opacity: 1;
 	}
 	.professional-site .scroll-revealed {
-		animation: profile-fade-in-bottom 250ms ease-out var(--scroll-delay, 0ms) both;
-	}
-	.professional-site .scroll-revealed.scroll-fade {
-		animation-name: profile-fade-in;
-	}
-	.professional-site .scroll-revealed.scroll-from-left {
-		animation-name: profile-fade-in-left;
+		animation: profile-fade-in 180ms ease-out both;
 	}
 	.professional-site .scroll-revealed:focus-within {
 		animation: none;
-	}
-	.professional-site .hero-copy > :where(p, h1),
-	.professional-site .hero-actions > a {
-		animation: profile-fade-in-left 250ms ease-out both;
-	}
-	.professional-site .hero-copy > h1 {
-		animation-delay: 100ms;
-	}
-	.professional-site .hero-introduction {
-		animation-delay: 200ms;
-	}
-	.professional-site .hero-actions > a:first-child {
-		animation-delay: 300ms;
-	}
-	.professional-site .hero-actions > a:last-child {
-		animation-delay: 400ms;
-	}
-	.professional-site .hero-copy > .hero-note {
-		animation-delay: 450ms;
-	}
-	.professional-site .hero-portrait {
-		animation: profile-fade-in 250ms ease-out 500ms both;
 	}
 }
 

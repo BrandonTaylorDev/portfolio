@@ -7,7 +7,7 @@
 	id="impact"
 	label="Selected impact"
 	title="Progress you can measure."
-	intro="A selection of outcomes from my work in support operations and platform engineering."
+	intro="Developing people, improving support operations, and expanding services: leadership that makes organizations perform better."
 >
 	<div class="impact-grid">
 		{#each achievements as achievement}

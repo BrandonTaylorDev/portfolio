@@ -4,7 +4,6 @@
 
 <section class="hero" aria-labelledby="hero-heading">
 	<div class="hero-copy">
-		<p class="eyebrow">{profile.positioning}</p>
 		<h1 id="hero-heading">
 			Stronger teams.<br />Smarter IT.<br /><span>Better outcomes.</span>
 		</h1>
@@ -30,7 +29,7 @@
 			/>
 		</div>
 		<figcaption>
-			<strong>{profile.name}</strong><span>People leadership. Technical depth.</span>
+			<strong>{profile.name}</strong><span>IT leadership, grounded in experience.</span>
 		</figcaption>
 	</figure>
 </section>

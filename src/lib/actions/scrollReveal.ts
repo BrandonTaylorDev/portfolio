@@ -3,28 +3,11 @@ export function scrollReveal(node: HTMLElement) {
 	const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
 	if (preference.matches || !('IntersectionObserver' in window)) return;
 
-	const targets: HTMLElement[] = [];
-	for (const section of node.querySelectorAll<HTMLElement>('.profile-section')) {
-		const introduction = section.querySelector<HTMLElement>('.contact-introduction');
-		introduction?.querySelectorAll<HTMLElement>(':scope > *').forEach((item, index) => {
-			item.classList.add('scroll-from-left');
-			item.style.setProperty('--scroll-delay', `${index * 100}ms`);
-			targets.push(item);
-		});
-		const heading = section.querySelector<HTMLElement>('.section-heading');
-		if (heading) {
-			heading.classList.add('scroll-fade');
-			targets.push(heading);
-		}
-		const items = section.querySelectorAll<HTMLElement>(
-			'.impact-card, .experience-row, .foundation-item, form'
-		);
-		items.forEach((item, index) => {
-			item.style.setProperty('--scroll-delay', `${200 + index * 100}ms`);
-			if (item.matches('.experience-row')) item.classList.add('scroll-fade');
-			targets.push(item);
-		});
-	}
+	const targets = Array.from(
+		node.querySelectorAll<HTMLElement>(
+			'.section-heading, .contact-introduction > *, .impact-card, .experience-row, .foundation-item, form'
+		)
+	);
 
 	const pending = new Set(targets);
 	const observer = new IntersectionObserver(
@@ -56,13 +39,7 @@ export function scrollReveal(node: HTMLElement) {
 	function clearMotion() {
 		observer.disconnect();
 		for (const target of targets) {
-			target.classList.remove(
-				'scroll-pending',
-				'scroll-revealed',
-				'scroll-fade',
-				'scroll-from-left'
-			);
-			target.style.removeProperty('--scroll-delay');
+			target.classList.remove('scroll-pending', 'scroll-revealed');
 		}
 		pending.clear();
 	}
